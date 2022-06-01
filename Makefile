@@ -6,25 +6,29 @@
 #    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/01 02:02:58 by hannah           ###   ########.fr        #
+#    Updated: 2022/06/01 15:21:25 by hannah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		= minishell
-CC 			= cc
+NAME 			= minishell
+CC 				= cc
 ifdef DEBUG
-	CFLAGS	= -g3 -fsanitize=address
+	CFLAGS		= -g3 -fsanitize=address
 else
-	CFLAGS = -Wall -Wextra -Werror
+	CFLAGS 		= -Wall -Wextra -Werror
 endif
-AR			= ar rcs
-RM			= rm -f
+AR				= ar rcs
+RM				= rm -f
 
 HEADERS 		= ./include/
 SRCS_DIR		= ./src/
 
 LIBFT_DIR 		= ./lib/libft/
-LIBFT_FLAGS		= -L ./$(LIBFT_DIR) -lft
+#LIBFT_FLAGS		= -L ./$(LIBFT_DIR) -lft
+
+LIB_DIR			= /opt/homebrew/Cellar/readline/8.1.2/lib
+LIB_HEADER		= /opt/homebrew/Cellar/readline/8.1.2/include
+LIB_FLAGS		= -lreadline -L $(LIB_DIR) -I $(LIB_HEADER)
 
 SRC				= main.c
 SRCS			= $(addprefix $(SRCS_DIR), $(SRC))
@@ -35,7 +39,7 @@ OBJS 			= $(SRCS:.c=.o)
 
 $(NAME): $(OBJS)
 	make -C $(LIBFT_DIR)
-	$(CC) $(CFLAGS) -lreadline -L/opt/homebrew/Cellar/readline/8.1.2/lib -I/opt/homebrew/Cellar/readline/8.1.2/include -I $(HEADERS) -o $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) $(LIB_FLAGS) -I $(HEADERS) -o $(NAME) $(OBJS)
 
 .PHONY	: all
 all		: $(NAME)
