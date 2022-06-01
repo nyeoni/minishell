@@ -3,79 +3,59 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/03 20:36:43 by nkim              #+#    #+#              #
-#    Updated: 2022/05/28 21:17:28 by nkim             ###   ########.fr        #
+#    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
+#    Updated: 2022/06/01 02:02:58 by hannah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME					= minishell
+NAME 		= minishell
+CC 			= cc
+ifdef DEBUG
+	CFLAGS	= -g3 -fsanitize=address
+else
+	CFLAGS = -Wall -Wextra -Werror
+endif
+AR			= ar rcs
+RM			= rm -f
 
-CC						= gcc
-CFLAGS					= -Wall -Werror -Wextra
-AR						= ar rcs
-RM						= rm -rf
+HEADERS 		= ./include/
+SRCS_DIR		= ./src/
 
-LIBFT_DIR				= ./libft/
-LIBFT_FLAGS				= -L ./$(LIBFT_DIR) -lft
-LIBFT_FILE				= $(LIBFT_DIR)libft.a
+LIBFT_DIR 		= ./lib/libft/
+LIBFT_FLAGS		= -L ./$(LIBFT_DIR) -lft
 
-INCS_DIR				= ./include/
-SRCS_DIR				= ./src/
+SRC				= main.c
+SRCS			= $(addprefix $(SRCS_DIR), $(SRC))
+OBJS 			= $(SRCS:.c=.o)
 
-INCS					= -I include
+.c.o:
+	$(CC) $(CFLAGS) -I $(HEADERS) -o $@ -c $?
 
-SRC						= main.c
-SRCS					= $(addprefix $(SRCS_DIR), $(SRC))
-OBJS					= $(SRCS:.c=.o)
-
-SRC_BONUS				= main_bonus.c utils_bonus.c
-SRCS_BONUS				= $(addprefix $(SRCS_DIR_BONUS), $(SRC_BONUS))
-OBJS_BONUS				= $(SRCS_BONUS:.c=.o)
-
-.c.o :
-	$(CC) $(CFLAGS) -I $(INCS_DIR) -I $(INCS_DIR_BONUS) -o $@ -c $?
-
-$(NAME) : $(OBJS)
-	@echo "\033[33m----Compiling lib----"
+$(NAME): $(OBJS)
 	make -C $(LIBFT_DIR)
-	$(CC) -o $(NAME) $(OBJS) $(LIBFT_FLAGS) -I $(INCS_DIR)
-	@echo "\n----Pipex Compiled! 😻----"
+	$(CC) $(CFLAGS) -lreadline -L/opt/homebrew/Cellar/readline/8.1.2/lib -I/opt/homebrew/Cellar/readline/8.1.2/include -I $(HEADERS) -o $(NAME) $(OBJS)
 
-all : $(NAME)
+.PHONY	: all
+all		: $(NAME)
 
-clean :
+.PHONY	: clean
+clean	:
 	make -C $(LIBFT_DIR) clean
-	$(RM) $(OBJS) $(OBJS_BONUS) a.out.dSYM
+	$(RM) $(OBJS) a.out a.out.dSYM
 
-fclean : clean
-	@echo "\n\033[31m----Delete everything 👌!----"
+.PHONY	: fclean
+fclean	: clean
 	make -C $(LIBFT_DIR) fclean
-	$(RM) $(NAME) a.out.dSYM
-	@echo "\n\033[31m----fclean done 👌!----\n"
+	$(RM) $(NAME) a.out a.out.dSYM
 
-re : fclean all
+.PHONY	: cc
+cc 		: $(NAME) $(SOURCES)
 
-bonus : $(OBJS_BONUS)
-	@echo "\033[33m----Compiling lib----"
-	make -C $(LIBFT_DIR)
-	$(CC) -o $(NAME) $(OBJS_BONUS) $(LIBFT_FLAGS) -I $(INCS_DIR_BONUS)
-	@echo "\n----Pipex bonus Compiled! 😻----"
+.PHONY	: re
+re		: fclean all
 
-test :
-	make -C $(LIBFT_DIR)
-	$(CC) -g -o $(NAME) $(SRCS) $(LIBFT_FLAGS) -I $(INCS_DIR)
-
-leak :
-	make -C $(LIBFT_DIR)
-	$(CC) -g3 -fsanitize=address -o $(NAME) $(SRCS) $(LIBFT_FLAGS) -I $(INCS_DIR)
-
-bonus_leak :
-	make -C $(LIBFT_DIR)
-	$(CC) -g3 -fsanitize=address -o $(NAME) $(SRCS_BONUS) $(LIBFT_FLAGS) -I $(INCS_DIR_BONUS)
-
-norm :
-	norminette $(SRCS) $(INCS_DIR)
-
-PHONY	: all clean fclean re bonus
+.PHONY	: debug
+debug	:
+	make DEBUG=1 all
