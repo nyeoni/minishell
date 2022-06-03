@@ -5,5 +5,8 @@
 minishell
 *.out
 
+# lib
+*.a
+
 # object
 *.o
