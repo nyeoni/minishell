@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/01 15:21:25 by hannah           ###   ########.fr        #
+#    Updated: 2022/06/03 17:55:28 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,15 @@ HEADERS 		= ./include/
 SRCS_DIR		= ./src/
 
 LIBFT_DIR 		= ./lib/libft/
-#LIBFT_FLAGS		= -L ./$(LIBFT_DIR) -lft
 
-LIB_DIR			= /opt/homebrew/Cellar/readline/8.1.2/lib
-LIB_HEADER		= /opt/homebrew/Cellar/readline/8.1.2/include
+# hannakim
+# LIB_DIR			= /opt/homebrew/Cellar/readline/8.1.2/lib
+# LIB_HEADER		= /opt/homebrew/Cellar/readline/8.1.2/include
+
+# nayeon
+LIB_DIR="-L/usr/local/opt/readline/lib"
+LIB_HEADER="-I/usr/local/opt/readline/include"
+
 LIB_FLAGS		= -lreadline -L $(LIB_DIR) -I $(LIB_HEADER)
 
 SRC				= main.c
