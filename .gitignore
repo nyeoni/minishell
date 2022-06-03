@@ -1,0 +1,9 @@
+# vscode
+.vscode
+
+# execute
+minishell
+*.out
+
+# object
+*.o
