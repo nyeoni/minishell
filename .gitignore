@@ -1,0 +1,14 @@
+# vscode
+.vscode
+
+# execute
+minishell
+*.out
+
+# lib
+*.a
+libft.a
+lib/libft/libft.a
+
+# object
+*.o

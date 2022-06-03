@@ -1,0 +1,12 @@
+*.pdf
+pdf/
+images/
+*.dSYM
+a.out
+.vscode
+.vscode/
+.vscode/*
+.idea
+born2beroot/*
+./.vscode/*
+*.o
