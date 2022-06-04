@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:14:23 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/04 21:56:16 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/04 21:58:08 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 
 # define AST_PIPELINE 0
 # define AST_COMMAND 1
-# define AST_SIMPLE_COMMAND 2
-# define AST_REDIRECTS 3
-# define AST_IO_REDIRECT 4
+# define AST_REDIRECTS 2
 
 typedef struct s_command		t_command;
 typedef struct s_simple_command	t_simple_command;
@@ -28,9 +26,9 @@ typedef struct s_io_redirect	t_io_redirect;
 
 /* ast tree generate node
    t_ast can be...
-   pipe_line
-   command
-   redirects
+   pipe_line -> 0
+   command   -> 1
+   redirects -> 2
 */
 typedef struct					s_ast
 {
@@ -49,7 +47,6 @@ typedef struct					s_pipe_line
    1 0
    0 1
    1 1
-   여기서 나중에 파싱트리 만들때 순서 바꾸는 거 잊지 말것
 */
 typedef struct					s_command
 {
