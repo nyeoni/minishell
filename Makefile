@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/20 15:23:27 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/20 16:27:42 by hannkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ RM				= rm -f
 HEADERS 		= ./include/
 SRCS_DIR		= ./src/
 
-LIBFT_DIR 		= ./libft/
+LIBFT_DIR 		= libft/
 LIBFT_FLAGS		= -L ./$(LIBFT_DIR) -lft
 
 # hannakim
@@ -48,6 +48,7 @@ SRC				= main.c \
 				$(addprefix $(SRC_UTILS_DIR), $(SRC_UTILS)) \
 				$(addprefix $(SRC_PARSER_DIR), $(SRC_PARSER))
 SRCS			= $(addprefix $(SRCS_DIR), $(SRC))
+SRCS			+= $(SRC_BUILTIN) $(SRC_ERROR)
 OBJS 			= $(SRCS:.c=.o)
 
 .c.o:

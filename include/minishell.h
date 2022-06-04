@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 18:36:42 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 14:32:09 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 16:24:18 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include "ast.h"
 # include <readline/readline.h>
 # include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <sys/errno.h>
 
 # define NULL_LINE 0;
 # define ERROR_FLAG -1
@@ -50,5 +53,14 @@ void				syntax_command(t_ast *ast_command);
 void				syntax_simple_command(t_simple_command *simple_command);
 void				syntax_redirects(t_ast *ast_redirects);
 void				syntax_io_redirect(t_io_redirect *io_redirect);
+
+/* BUILTIN */
+void	ft_echo(char **argv);
+void	ft_cd(char **argv);
+void	ft_pwd(char **argv);
+void	ft_env(void);
+
+/* ERROR */
+void	throw_error(char *cmd, char *argv, char *err);
 
 #endif

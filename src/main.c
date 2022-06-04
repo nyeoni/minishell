@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 14:44:29 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 16:27:17 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,53 @@ void	init_manger(char *command_line)
 	g_manager.rc = 0;
 }
 
-int	main(int argc, char **argv, char **envp)
+t_list	*env;
+
+void	initiate_env(char **envp)
 {
-	char	*command_line;
-	t_token	tmp;
+	while (*envp)
+	{
+		ft_lstadd_back(&env, ft_lstnew(*envp));
+		envp++;
+	}
+}
+
+void	execute_cmd(char **argv)
+{
+	if (ft_strncmp(*argv, "cd", 3))
+		ft_cd(argv);
+	else if (ft_strncmp(*argv, "echo", 5))
+		ft_echo(argv);
+	else if (ft_strncmp(*argv, "pwd", 4))
+	{
+		ft_pwd(argv);
+		printf("pwd\n");
+	}
+	else if (ft_strncmp(*argv, "env", 4))
+	{
+		ft_env();
+		printf("env\n");
+	}
+}
+
+int	main (int argc, char **argv, char **envp)
+{
+	char *prompt;
+//	char	*str = "cd ../libft";
+	char	**arg;
 	t_ast	*AST;
 
+	if (argc > 1)
+	{
+		printf("ERROR : %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+	initiate_env(envp);
+	
 	while (1)
 	{
-		command_line = readline("Enter a line : ");
-		init_manger(command_line);
+		prompt = readline("blackhole-shell$ ");
+		init_manger(prompt);
 		// test tokenization
 		// tmp = get_token();
 		// while (tmp.type != T_NULL)
@@ -41,6 +78,12 @@ int	main(int argc, char **argv, char **envp)
 		// test parsing
 		AST = syntax_analyzer();
 		// printf("%s\n", command_line);
+
+		arg = ft_split(prompt, ' ');
+		execute_cmd(arg);
+		// parse
+		// execute command : builtin or general
+		free(prompt);
 	}
 	return (0);
 }
