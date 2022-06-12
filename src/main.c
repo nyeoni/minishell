@@ -6,7 +6,11 @@
 /*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/06/20 16:27:17 by hannkim          ###   ########.fr       */
+=======
+/*   Updated: 2022/06/05 16:46:08 by hannkim          ###   ########.fr       */
+>>>>>>> 6505d87 (feat: Add builtin functions)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +38,25 @@ void	initiate_env(char **envp)
 
 void	execute_cmd(char **argv)
 {
-	if (ft_strncmp(*argv, "cd", 3))
+	if (!ft_strncmp(*argv, "cd", 3))
 		ft_cd(argv);
-	else if (ft_strncmp(*argv, "echo", 5))
+	else if (!ft_strncmp(*argv, "echo", 5))
 		ft_echo(argv);
-	else if (ft_strncmp(*argv, "pwd", 4))
-	{
+	else if (!ft_strncmp(*argv, "pwd", 4))
 		ft_pwd(argv);
-		printf("pwd\n");
-	}
-	else if (ft_strncmp(*argv, "env", 4))
-	{
+	else if (!ft_strncmp(*argv, "env", 4))
 		ft_env();
-		printf("env\n");
-	}
+	else if (!ft_strncmp(*argv, "exit", 5))
+		ft_exit();
+	else if (!ft_strncmp(*argv, "export", 7))
+		ft_export(argv);
+	else if (!ft_strncmp(*argv, "unset", 6))
+		ft_unset(argv);
 }
 
 int	main (int argc, char **argv, char **envp)
 {
-	char *prompt;
-//	char	*str = "cd ../libft";
+	char	*prompt;
 	char	**arg;
 	t_ast	*AST;
 

@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:13 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/04 20:16:13 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/05 16:18:45 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,3 @@ void	ft_echo(char **argv)
 	if (!option)
 		ft_putstr_fd("\n", STDOUT_FILENO);
 }
-
-//int main()
-//{
-////	char *str = "echo   -n   \"hello im hannh         \"";
-//	char *str = "echo     -n  ";
-//	char **argv;
-//
-//	argv = ft_split(str, ' ');
-//	echo(argv);
-//
-//	return (0);
-//}

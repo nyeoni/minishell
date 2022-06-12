@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:37 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/04 20:22:37 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/04 21:49:49 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_pwd(char **argv)
 {
 	char	*cwd;
 
-	if (!argv[1])
+	if (argv[1])
 	{
 		throw_error("pwd", NULL, strerror(errno));
 		return ;
@@ -28,5 +28,6 @@ void	ft_pwd(char **argv)
 		return ;
 	}
 	ft_putstr_fd(cwd, STDOUT_FILENO);
+	ft_putstr_fd("\n", STDOUT_FILENO);
 	free(cwd);
 }

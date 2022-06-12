@@ -59,8 +59,16 @@ void	ft_echo(char **argv);
 void	ft_cd(char **argv);
 void	ft_pwd(char **argv);
 void	ft_env(void);
+<<<<<<< HEAD
 
 /* ERROR */
+=======
+void	ft_exit(void);
+void	ft_export(char **argv);
+void	ft_unset(char **argv);
+t_list	*get_env(char *identifier);
+>>>>>>> 6505d87 (feat: Add builtin functions)
 void	throw_error(char *cmd, char *argv, char *err);
+void	throw_error_env(char *cmd, char *argv);
 
 #endif
