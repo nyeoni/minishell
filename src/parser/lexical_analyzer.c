@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:11:59 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 01:17:27 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 04:41:39 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,61 +41,29 @@ void	get_pipe(t_token *token, char **begin, char **end)
 
 void	get_redirect_op(t_token *token, char **begin, char **end)
 {
-	if (**begin == T_IN && *(*begin + 1) == T_IN)
-	{
-		token->type = T_HEREDOC;
+	token->type = T_REDIRECT;
+	if (**begin == U_IN && *(*begin + 1) == U_IN)
 		*end += 2;
-	}
-	else if (**begin == T_OUT && *(*begin + 1) == T_OUT)
-	{
-		token->type = T_APPEND;
+	else if (**begin == U_OUT && *(*begin + 1) == U_OUT)
 		*end += 2;
-	}
-	else if (**begin == T_IN)
-	{
-		token->type = T_IN;
+	else if (**begin == U_IN)
 		(*end)++;
-	}
-	else if (**begin == T_OUT)
-	{
-		token->type = T_OUT;
+	else if (**begin == U_OUT)
 		(*end)++;
-	}
 }
 
-void	lexical_analysis(t_token *token, char **begin, char **end)
+void	lexical_analyzer(t_token *token, char **begin, char **end)
 {
 	while (ft_isspace(manager.command_line[manager.rc]))
 		manager.rc++;
 	*begin = &manager.command_line[manager.rc];
 	*end = *begin;
-	if (**begin == T_DOUBLE_QUOTES || **begin == T_SINGLE_QUOTES)
+	if (**begin == U_DOUBLE_QUOTES || **begin == U_SINGLE_QUOTES)
 		get_quote(token, begin, end);
-	else if (**begin == T_IN || **begin == T_OUT)
+	else if (**begin == U_IN || **begin == U_OUT)
 		get_redirect_op(token, begin, end);
-	else if (**begin == T_PIPE)
+	else if (**begin == U_PIPE)
 		get_pipe(token, begin, end);
 	else
 		get_word(token, begin, end);
-}
-
-t_token	get_token()
-{
-	char	*begin;
-	char	*end;
-	t_token	token;
-
-	token.type = T_NULL;
-	token.value = NULL;
-	printf("manager.rc: %d\n", manager.rc);
-	if (manager.rc >= manager.command_len)
-		return (token); // EOF error
-	lexical_analysis(&token, &begin, &end);
-	token.value = ft_calloc(end - begin + 1, sizeof(char));
-	if (!token.value)
-		return (token); // malloc error
-	if (!ft_strlcpy(token.value, begin, end - begin + 1))
-		return (token); // copy error
-	manager.rc += end - begin;
-	return (token);
 }
