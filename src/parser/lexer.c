@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:11:59 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/19 23:45:28 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 01:17:27 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,8 @@
 void	get_word(t_token *token, char **begin, char **end)
 {
 	token->type = T_WORD;
-	while (**end && (!ft_isspace(**end)))
-	{
-		if (ft_strchr("<>|\"'", *(*end + 1)))
-			return ;
-		else
-			(*end)++;
-	}
+	while (**end && (!ft_isspace(**end)) && !ft_strchr("<>|\"'", **end))
+		(*end)++;
 }
 
 void	get_quote(t_token *token, char **begin, char **end)
