@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 18:36:42 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/12 14:22:13 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 00:44:35 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,16 @@ typedef struct s_manager
   int rc; // read counter
 } t_manager;
 
+typedef enum e_fetch_type
+{
+	GET,
+	UPDATE
+} t_fetch_type;
+
 extern t_manager manager;
 
 /* UTILS */
 int	ft_isspace(int c);
 
 /* PARSER */
-char		*get_token();
+t_token get_token();
