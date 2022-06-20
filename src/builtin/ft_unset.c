@@ -6,23 +6,34 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:42 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/05 17:09:06 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/19 22:31:40 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-extern t_list	*env;
-
 void	ft_unset(char **argv)
 {
+	t_env	*target;
+
+	if (!argv[1])
+		return ;
 	argv++;
 	while (*argv)
 	{
-		if (**argv == '=')
+		if (ft_strchr(*argv, '='))
 			throw_error_env("unset", *argv);
-		else if (ft_strchr(*argv, '='))
-//			ft_lstadd_back(&env, ft_lstnew(*argv));
+		else if (is_valid_identifier(*argv) == EXIT_FAILURE)
+			throw_error_env("unset", *argv);
+		else
+		{
+			target = get_env(*argv);
+			if (target)
+			{
+				printf("HELLO WORLD\n");
+				remove_env(target);
+			}
+		}
 		argv++;
 	}
 }

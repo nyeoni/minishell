@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:06 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/04 20:23:01 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/19 22:08:15 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 void	ft_cd(char **argv)
 {
+	t_env	*ptr;
 	char	*home;
 	int		ret;
 
 	if (!argv[1])
 	{
-		home = getenv("HOME");
-		if (!home)
-			throw_error("cd", NULL, strerror(errno));
+		ptr = get_env("HOME");
+//		if (!ptr)
+//			throw_error("cd", NULL, strerror(errno));
+		home = ptr->value;
 		ret = chdir(home);		// home
 		if (ret < 0)
 			throw_error("cd", NULL, strerror(errno));

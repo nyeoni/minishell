@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 19:03:31 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/12 13:25:08 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/20 11:15:30 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,7 @@ void	throw_error(char *cmd, char *argv, char *err)
 	ft_putstr_fd(err, STDERR_FILENO);
 	ft_putstr_fd("\n", STDERR_FILENO);
 }
+
+//void	exit_msg()
+//{
+//}

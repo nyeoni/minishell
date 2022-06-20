@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/04 18:20:19 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/19 22:30:53 by hannkim          ###   ########.fr       */
+/*   Created: 2022/06/12 15:07:18 by hannkim           #+#    #+#             */
+/*   Updated: 2022/06/19 22:32:40 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	ft_env(void)
+void	free_env(void)
 {
-	t_env *ptr;
+	t_env	*tmp;
 
-	ptr = manager.env;
-	while (ptr)
+	while (manager.env)
 	{
-		ft_putstr_fd(ptr->name, STDOUT_FILENO);
-		write(STDOUT_FILENO, "=", 1);
-		ft_putstr_fd(ptr->value, STDOUT_FILENO);
-		write(STDOUT_FILENO, "\n", 1);
-		ptr = ptr->next;
+		tmp = manager.env;
+		manager.env = manager.env->next;
+		if (tmp->name)
+			free(tmp->name);
+		if (tmp->value)
+			free(tmp->value);
+		free(tmp);
 	}
 }
