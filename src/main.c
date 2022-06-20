@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 16:29:44 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/20 16:30:26 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	initiate_env(char **envp)
 {
 	while (*envp)
 	{
-		ft_lstadd_back(&env, ft_lstnew(*envp));
-		envp++;
+		add_env(get_name(*ptr), get_value(*ptr));
+		ptr++;
 	}
 }
 
