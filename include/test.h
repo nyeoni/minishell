@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   test.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:22:32 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 18:34:03 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 19:27:07 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TEST_H
 # define TEST_H
+
 void	test_token(void);
+void	test_builtin(void);
 
 #endif
