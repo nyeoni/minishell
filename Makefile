@@ -6,7 +6,7 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/20 15:22:36 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/20 15:23:04 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,9 @@ LIB_HEADER		= /opt/homebrew/Cellar/readline/8.1.2/include
 LIB_FLAGS		= -lreadline -L $(LIB_DIR) -I $(LIB_HEADER)
 
 PARSER_DIR_SRC	= parser/
-PARSER_SRC		= lexer.c parser.c
+PARSER_SRC		= lexical_analyzer.c syntax_analyzer.c token.c \
+					syntax_pipe_line.c syntax_command.c syntax_redirects.c \
+					syntax_simple_command.c syntax_io_redirect.c
 
 UTILS_DIR_SRC	= utils/
 UTILS_SRC		= ft_isspace.c
@@ -49,7 +51,7 @@ SRCS			= $(addprefix $(SRCS_DIR), $(SRC))
 OBJS 			= $(SRCS:.c=.o)
 
 .c.o:
-	$(CC) $(CFLAGS) -I $(HEADERS) -o $@ -c $?
+	$(CC) $(CFLAGS) -I$(HEADERS) -o $@ -c $?
 
 $(NAME): $(OBJS)
 	make -C $(LIBFT_DIR)
