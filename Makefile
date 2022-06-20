@@ -3,17 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/20 15:23:27 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/20 16:32:59 by hannkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= minishell
 CC 				= cc
 ifdef DEBUG
-	CFLAGS		= -g3 -fsanitize=address
+	CFLAGS		= -g
+	#CFLAGS		= -g3 -fsanitize=address
 else
 	CFLAGS 		= -Wall -Wextra -Werror
 endif
@@ -23,7 +24,7 @@ RM				= rm -f
 HEADERS 		= ./include/
 SRCS_DIR		= ./src/
 
-LIBFT_DIR 		= ./libft/
+LIBFT_DIR 		= libft/
 LIBFT_FLAGS		= -L ./$(LIBFT_DIR) -lft
 
 # hannakim
@@ -42,11 +43,27 @@ SRC_PARSER		= lexical_analyzer.c syntax_analyzer.c token.c \
 					syntax_simple_command.c syntax_io_redirect.c
 
 SRC_UTILS_DIR	= utils/
-SRC_UTILS		= ft_isspace.c
+SRC_UTILS		= ft_isspace.c free.c
+
+SRC_BUILTIN_DIR	= builtin/
+SRC_BUILTIN		= ft_echo.c ft_cd.c ft_pwd.c ft_export.c ft_unset.c \
+							ft_env.c ft_exit.c
+SRC_ERROR_DIR	= error/
+SRC_ERROR		= throw_error.c
+
+SRC_ENV_DIR	= env/
+SRC_ENV		= env_list.c env_utils.c
+
+SRC_FORK_DIR	= fork/
+SRC_FORK		= processor.c
 
 SRC				= main.c \
-				$(addprefix $(SRC_UTILS_DIR), $(SRC_UTILS)) \
-				$(addprefix $(SRC_PARSER_DIR), $(SRC_PARSER))
+					$(addprefix $(SRC_PARSER_DIR), $(SRC_PARSER)) \
+					$(addprefix $(SRC_BUILTIN_DIR), $(SRC_BUILTIN)) \
+					$(addprefix $(SRC_ERROR_DIR), $(SRC_ERROR)) \
+					$(addprefix $(SRC_UTILS_DIR), $(SRC_UTILS)) \
+					$(addprefix $(SRC_ENV_DIR), $(SRC_ENV)) \
+
 SRCS			= $(addprefix $(SRCS_DIR), $(SRC))
 OBJS 			= $(SRCS:.c=.o)
 
