@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:19 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/20 12:08:56 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/20 16:44:36 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_env(void)
 {
 	t_env	*ptr;
 
-	ptr = manager.env;
+	ptr = g_manager.env;
 	while (ptr)
 	{
 		ft_putstr_fd(ptr->name, STDOUT_FILENO);

@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 18:36:42 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 16:36:58 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/20 16:58:02 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ typedef enum e_fetch_type
 extern t_manager	g_manager;
 
 /* UTILS */
-int					ft_isspace(int c);
+int		ft_isspace(int c);
+void	free_env(void);
 
 /* PARSER */
 t_token				fetch_token(t_fetch_type type);
@@ -66,13 +67,20 @@ void	ft_echo(char **argv);
 void	ft_cd(char **argv);
 void	ft_pwd(char **argv);
 void	ft_env(void);
-
-/* ERROR */
 void	ft_exit(void);
 void	ft_export(char **argv);
 void	ft_unset(char **argv);
-t_list	*get_env(char *identifier);
+
+/* ERROR */
 void	throw_error(char *cmd, char *argv, char *err);
 void	throw_error_env(char *cmd, char *argv);
+
+/* ENV */
+t_env	*get_env(char *identifier);
+int		is_valid_identifier(char *identifier);
+char	*get_name(char *argv);
+char	*get_value(char *argv);
+void	add_env(char *name, char *value);
+void	remove_env(t_env *target);
 
 #endif
