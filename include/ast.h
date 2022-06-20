@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:14:23 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 03:56:52 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 14:34:16 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ typedef struct s_io_redirect	t_io_redirect;
    command   -> 1
    redirects -> 2
 */
-typedef struct					s_ast
+typedef struct s_ast
 {
 	int							type;
 	void						*data;
 }								t_ast;
 
 /* <pipe_line>   -> <command> { '|' <pipe_line> } */
-typedef struct					s_pipe_line
+typedef struct s_pipe_line
 {
 	t_ast						*command;
 	t_ast						*pipe_line;
@@ -48,31 +48,31 @@ typedef struct					s_pipe_line
    0 1
    1 1
 */
-typedef struct					s_command
+typedef struct s_command
 {
 	struct s_simple_command		*simple_command;
 	t_ast						*redirects;
 }								t_command;
 
 /* <simple_command> -> <exec_path> { <argv> } */
-typedef struct					s_simple_command
+typedef struct s_simple_command
 {
-	char *						exec_path;
-	char *						argv;
+	char						*exec_path;
+	char						*argv;
 }								t_simple_command;
 
 /* <redirects> -> <io_redirect> { <redirects> } */
-typedef struct					s_redirects
+typedef struct s_redirects
 {
 	struct s_io_redirect		*io_redirect;
 	t_ast						*redirects;
 }								t_redirects;
 
 /* <io_redirect> -> <redirect_op> <file_path> */
-typedef struct					s_io_redirect
+typedef struct s_io_redirect
 {
-	char *						redirect_op;
-	char *						file_path;
+	char						*redirect_op;
+	char						*file_path;
 }								t_io_redirect;
 
 #endif
