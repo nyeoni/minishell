@@ -5,8 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+<<<<<<< HEAD
 /*   Created: 2022/06/03 18:36:42 by nkim              #+#    #+#             */
 /*   Updated: 2022/06/20 16:29:50 by hannkim          ###   ########.fr       */
+=======
+/*   Created: 2022/06/20 15:28:59 by hannkim           #+#    #+#             */
+/*   Updated: 2022/06/20 15:29:44 by hannkim          ###   ########.fr       */
+>>>>>>> 9fdee48 (chore: delete exit_msg comment)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +32,10 @@
 
 typedef struct s_manager
 {
-	t_list			**envp;
-	char			*command_line;
-	int				rc;
-}					t_manager;
+	t_env	*env;
+	char	*command_line;
+	int		rc;
+}	t_manager;
 
 typedef enum e_fetch_type
 {
