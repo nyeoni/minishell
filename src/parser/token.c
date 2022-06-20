@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:36:17 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 04:56:18 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 14:32:34 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_token	get_token()
 
 	token.type = T_NULL;
 	token.value = NULL;
-	if (manager.rc >= ft_strlen(manager.command_line))
+	if (g_manager.rc >= ft_strlen(g_manager.command_line))
 		return (token); // EOF error
 	lexical_analyzer(&token, &begin, &end);
 	token.value = ft_calloc(end - begin + 1, sizeof(char));
@@ -32,7 +32,7 @@ t_token	get_token()
 		return (token); // malloc error
 	if (!ft_strlcpy(token.value, begin, end - begin + 1))
 		return (token); // copy error
-	manager.rc += end - begin;
+	g_manager.rc += end - begin;
 	return (token);
 }
 

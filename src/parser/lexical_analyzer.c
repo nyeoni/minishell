@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   lexical_analyzer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:11:59 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 04:41:39 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 14:32:09 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void	get_redirect_op(t_token *token, char **begin, char **end)
 
 void	lexical_analyzer(t_token *token, char **begin, char **end)
 {
-	while (ft_isspace(manager.command_line[manager.rc]))
-		manager.rc++;
-	*begin = &manager.command_line[manager.rc];
+	while (ft_isspace(g_manager.command_line[g_manager.rc]))
+		g_manager.rc++;
+	*begin = &g_manager.command_line[g_manager.rc];
 	*end = *begin;
 	if (**begin == U_DOUBLE_QUOTES || **begin == U_SINGLE_QUOTES)
 		get_quote(token, begin, end);
