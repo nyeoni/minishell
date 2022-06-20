@@ -6,11 +6,12 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 17:35:29 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 18:39:36 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "test.h"
 
 t_manager	g_manager;
 
@@ -66,19 +67,10 @@ int	main(int argc, char **argv, char **envp)
 	{
 		command_line = readline("blackhole-shell$ ");
 		init_manger(command_line);
+		test_token();
 		AST = syntax_analyzer();
 		execute_cmd(arg);
 		free(command_line);
 	}
 	return (0);
 }
-
-/*
-test tokenization
-tmp = get_token();
-while (tmp.type != T_NULL)
-{
-	printf("%d: %s\n", tmp.type, tmp.value);
-	tmp = get_token();
-}
-*/
