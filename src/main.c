@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 17:28:52 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 17:35:29 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,12 @@ int	main(int argc, char **argv, char **envp)
 	return (0);
 }
 
-// test tokenization
-// tmp = get_token();
-// while (tmp.type != T_NULL)
-// {
-// 	printf("%d: %s\n", tmp.type, tmp.value);
-// 	tmp = get_token();
-// }
+/*
+test tokenization
+tmp = get_token();
+while (tmp.type != T_NULL)
+{
+	printf("%d: %s\n", tmp.type, tmp.value);
+	tmp = get_token();
+}
+*/
