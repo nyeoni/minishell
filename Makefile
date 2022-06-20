@@ -6,7 +6,7 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/20 15:23:04 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/20 15:23:27 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,17 +36,17 @@ LIB_HEADER		= /opt/homebrew/Cellar/readline/8.1.2/include
 
 LIB_FLAGS		= -lreadline -L $(LIB_DIR) -I $(LIB_HEADER)
 
-PARSER_DIR_SRC	= parser/
-PARSER_SRC		= lexical_analyzer.c syntax_analyzer.c token.c \
+SRC_PARSER_DIR	= parser/
+SRC_PARSER		= lexical_analyzer.c syntax_analyzer.c token.c \
 					syntax_pipe_line.c syntax_command.c syntax_redirects.c \
 					syntax_simple_command.c syntax_io_redirect.c
 
-UTILS_DIR_SRC	= utils/
-UTILS_SRC		= ft_isspace.c
+SRC_UTILS_DIR	= utils/
+SRC_UTILS		= ft_isspace.c
 
 SRC				= main.c \
-				$(addprefix $(UTILS_DIR_SRC), $(UTILS_SRC)) \
-				$(addprefix $(PARSER_DIR_SRC), $(PARSER_SRC))
+				$(addprefix $(SRC_UTILS_DIR), $(SRC_UTILS)) \
+				$(addprefix $(SRC_PARSER_DIR), $(SRC_PARSER))
 SRCS			= $(addprefix $(SRCS_DIR), $(SRC))
 OBJS 			= $(SRCS:.c=.o)
 
