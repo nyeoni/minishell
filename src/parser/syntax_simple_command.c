@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:58:37 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 05:19:52 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 14:41:31 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	syntax_simple_command(t_simple_command *simple_command)
 {
-	char *tmp;
+	char	*tmp;
 
 	printf("===simple_command===\n");
 	simple_command = ft_calloc(1, sizeof(t_simple_command));
@@ -23,8 +23,7 @@ void	syntax_simple_command(t_simple_command *simple_command)
 	if (fetch_token(GET).type == T_WORD)
 	{
 		tmp = ft_strjoin(simple_command->exec_path, " ");
-		simple_command->argv =
-			ft_strjoin(tmp, match(T_WORD));
+		simple_command->argv = ft_strjoin(tmp, match(T_WORD));
 		free(tmp);
 	}
 	printf("s2: %s\n", simple_command->argv);

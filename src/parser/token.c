@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:36:17 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 14:32:34 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 14:38:51 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
    get_token
    get token for lexical_analyzer
 */
-t_token	get_token()
+t_token	get_token(void)
 {
 	char	*begin;
 	char	*end;
