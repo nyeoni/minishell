@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 17:35:29 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 18:27:16 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	execute_cmd(char **argv)
 		ft_unset(argv);
 }
 
+#include "test.h"
 int	main(int argc, char **argv, char **envp)
 {
 	char	*command_line;
@@ -66,19 +67,12 @@ int	main(int argc, char **argv, char **envp)
 	{
 		command_line = readline("blackhole-shell$ ");
 		init_manger(command_line);
-		AST = syntax_analyzer();
+		test_token();
+
+		// AST = syntax_analyzer();
+
 		execute_cmd(arg);
 		free(command_line);
 	}
 	return (0);
 }
-
-/*
-test tokenization
-tmp = get_token();
-while (tmp.type != T_NULL)
-{
-	printf("%d: %s\n", tmp.type, tmp.value);
-	tmp = get_token();
-}
-*/
