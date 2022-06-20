@@ -5,13 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
 /*   Created: 2022/06/03 18:36:42 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 16:29:50 by hannkim          ###   ########.fr       */
-=======
-/*   Created: 2022/06/20 15:28:59 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/20 15:29:44 by hannkim          ###   ########.fr       */
->>>>>>> 9fdee48 (chore: delete exit_msg comment)
+/*   Updated: 2022/06/20 16:36:58 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +24,13 @@
 # define NULL_LINE 0;
 # define ERROR_FLAG -1
 # define SUCCESS_FLAG 0
+
+typedef struct s_env
+{
+	char			*name;
+	char			*value;
+	struct s_env	*next;
+}	t_env;
 
 typedef struct s_manager
 {
