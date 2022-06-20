@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:14:23 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/04 21:58:08 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 03:56:52 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ typedef struct					s_command
 /* <simple_command> -> <exec_path> { <argv> } */
 typedef struct					s_simple_command
 {
-	WORD						exec_path;
-	WORD						argv;
+	char *						exec_path;
+	char *						argv;
 }								t_simple_command;
 
 /* <redirects> -> <io_redirect> { <redirects> } */
@@ -71,8 +71,8 @@ typedef struct					s_redirects
 /* <io_redirect> -> <redirect_op> <file_path> */
 typedef struct					s_io_redirect
 {
-	REDIRECT_OP					redirect_op;
-	WORD						file_path;
+	char *						redirect_op;
+	char *						file_path;
 }								t_io_redirect;
 
 #endif
