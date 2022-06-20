@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:19 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/19 22:30:53 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/20 12:08:56 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_env(void)
 {
-	t_env *ptr;
+	t_env	*ptr;
 
 	ptr = manager.env;
 	while (ptr)

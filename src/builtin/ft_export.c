@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:31 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/20 11:26:51 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/20 12:18:26 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	env_quotes(void)
 {
-	t_env *ptr;
+	t_env	*ptr;
 
 	ptr = manager.env;
 	while (ptr)
@@ -27,12 +27,26 @@ static void	env_quotes(void)
 	}
 }
 
-void	ft_export(char **argv)
+static void	exec_export(char *argv)
 {
 	t_env	*ptr;
 	char	*name;
 
-	if (!argv[1])		// export
+	name = get_name(argv);
+	ptr = get_env(name);
+	if (ptr)
+	{
+		free(ptr->value);
+		ptr->value = get_value(argv);
+		free(name);
+	}		
+	else
+		add_env(name, get_value(argv));
+}
+
+void	ft_export(char **argv)
+{
+	if (!argv[1])
 	{
 		env_quotes();
 		return ;
@@ -45,18 +59,7 @@ void	ft_export(char **argv)
 			if (is_valid_identifier(*argv) == EXIT_FAILURE)
 				throw_error_env("export", *argv);
 			else
-			{
-				name = get_name(*argv);
-				ptr = get_env(name);
-				if (ptr)	// 해당 변수명이 이미 만들어져 있는 경우 -> 덮어 쓰기
-				{
-					free(ptr->value);
-					ptr->value = get_value(*argv);
-					free(name);
-				}		
-				else
-					add_env(name, get_value(*argv));
-			}
+				exec_export(*argv);
 		}
 		argv++;
 	}
