@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_token.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:11:37 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 18:33:35 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 19:29:22 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,27 @@ void	test_token(void)
 	while (token.type != T_NULL)
 	{
 		printf("%d: %s\n", token.type, token.value);
+		free(token.value);
 		token = get_token();
 	}
+	free(token.value);
+}
+
+/* main insert below readline() */
+void	test_builtin(void)
+{
+	char	**arg;
+	char	**ptr;
+	char	*tmp;
+
+	arg = ft_split(g_manager.command_line, ' ');
+	execute_cmd(arg);
+	ptr = arg;
+	while (*ptr)
+	{
+		tmp = *ptr;
+		ptr++;
+		free(tmp);
+	}
+	free(arg);
 }
