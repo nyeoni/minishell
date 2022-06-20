@@ -6,12 +6,12 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:22:32 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 18:22:57 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 18:34:03 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TEST_H
 # define TEST_H
-void test_token();
+void	test_token(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:11:37 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 18:22:10 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 18:33:35 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 t_token	get_token(void);
 
 /* main insert below init_manager(command_line) */
-void test_token()
+void	test_token(void)
 {
-	t_token token;
+	t_token	token;
 
 	token = get_token();
 	while (token.type != T_NULL)
 	{
 		printf("%d: %s\n", token.type, token.value);
-
 		token = get_token();
 	}
 }
