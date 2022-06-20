@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:58:37 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 14:41:31 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 15:19:12 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ void	syntax_simple_command(t_simple_command *simple_command)
 	if (fetch_token(GET).type == T_WORD)
 	{
 		tmp = ft_strjoin(simple_command->exec_path, " ");
+		simple_command->argv = ft_strjoin(tmp, match(T_WORD));
+		free(tmp);
+	}
+	while (fetch_token(GET).type == T_WORD)
+	{
+		tmp = ft_strjoin(simple_command->argv, " ");
 		simple_command->argv = ft_strjoin(tmp, match(T_WORD));
 		free(tmp);
 	}
