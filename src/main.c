@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 17:11:32 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/20 17:35:29 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	execute_cmd(char **argv)
 		ft_unset(argv);
 }
 
-int	main (int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
-	char	*prompt;
+	char	*command_line;
 	char	**arg;
 	t_ast	*AST;
 
@@ -64,20 +64,21 @@ int	main (int argc, char **argv, char **envp)
 	initiate_env(envp);
 	while (1)
 	{
-		prompt = readline("blackhole-shell$ ");
-		init_manger(prompt);
-		// test tokenization
-		// tmp = get_token();
-		// while (tmp.type != T_NULL)
-		// {
-		// 	printf("%d: %s\n", tmp.type, tmp.value);
-		// 	tmp = get_token();
-		// }
-		// test parsing
+		command_line = readline("blackhole-shell$ ");
+		init_manger(command_line);
 		AST = syntax_analyzer();
-		// printf("%s\n", command_line);
 		execute_cmd(arg);
-		free(prompt);
+		free(command_line);
 	}
 	return (0);
 }
+
+/*
+test tokenization
+tmp = get_token();
+while (tmp.type != T_NULL)
+{
+	printf("%d: %s\n", tmp.type, tmp.value);
+	tmp = get_token();
+}
+*/

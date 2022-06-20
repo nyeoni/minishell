@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 18:36:42 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 16:58:02 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/20 17:26:48 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ typedef struct s_env
 	char			*name;
 	char			*value;
 	struct s_env	*next;
-}	t_env;
+}					t_env;
 
 typedef struct s_manager
 {
-	t_env	*env;
-	char	*command_line;
-	int		rc;
-}	t_manager;
+	t_env			*env;
+	char			*command_line;
+	int				rc;
+}					t_manager;
 
 typedef enum e_fetch_type
 {
@@ -48,8 +48,8 @@ typedef enum e_fetch_type
 extern t_manager	g_manager;
 
 /* UTILS */
-int		ft_isspace(int c);
-void	free_env(void);
+int					ft_isspace(int c);
+void				free_env(void);
 
 /* PARSER */
 t_token				fetch_token(t_fetch_type type);
@@ -63,24 +63,24 @@ void				syntax_redirects(t_ast *ast_redirects);
 void				syntax_io_redirect(t_io_redirect *io_redirect);
 
 /* BUILTIN */
-void	ft_echo(char **argv);
-void	ft_cd(char **argv);
-void	ft_pwd(char **argv);
-void	ft_env(void);
-void	ft_exit(void);
-void	ft_export(char **argv);
-void	ft_unset(char **argv);
+void				ft_echo(char **argv);
+void				ft_cd(char **argv);
+void				ft_pwd(char **argv);
+void				ft_env(void);
+void				ft_exit(void);
+void				ft_export(char **argv);
+void				ft_unset(char **argv);
 
 /* ERROR */
-void	throw_error(char *cmd, char *argv, char *err);
-void	throw_error_env(char *cmd, char *argv);
+void				throw_error(char *cmd, char *argv, char *err);
+void				throw_error_env(char *cmd, char *argv);
 
 /* ENV */
-t_env	*get_env(char *identifier);
-int		is_valid_identifier(char *identifier);
-char	*get_name(char *argv);
-char	*get_value(char *argv);
-void	add_env(char *name, char *value);
-void	remove_env(t_env *target);
+t_env				*get_env(char *identifier);
+int					is_valid_identifier(char *identifier);
+char				*get_name(char *argv);
+char				*get_value(char *argv);
+void				add_env(char *name, char *value);
+void				remove_env(t_env *target);
 
 #endif

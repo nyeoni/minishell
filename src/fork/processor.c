@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   processor.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:05:28 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/20 11:13:31 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/20 17:32:52 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static char	*find_file(t_args *args, int cmd_index)
 	return (args->cmds[cmd_index][0]);
 }
 
+/*
 static void	cmd_execve(t_args *args, int cmd_index)
 {
 	char	*filename;
@@ -37,6 +38,15 @@ static void	cmd_execve(t_args *args, int cmd_index)
 	execve(filename, args->cmds[cmd_index], args->envp);
 	throw_error();
 //	exit_msg(strerror(errno));
+}
+*/
+static void	cmd_execve(t_args *args, int cmd_index)
+{
+	char	*filename;
+
+	filename = find_file(args, cmd_index);
+	execve(filename, args->cmds[cmd_index], args->envp);
+	throw_error();
 }
 
 void	child_process1(t_args *args)

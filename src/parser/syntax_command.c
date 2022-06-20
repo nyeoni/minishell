@@ -6,12 +6,13 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:58:02 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 16:17:17 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 17:32:00 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+// TODO: else 다음에 Syntax error 처리하기
 void	syntax_command(t_ast *ast_command)
 {
 	t_command	*command;
@@ -33,6 +34,5 @@ void	syntax_command(t_ast *ast_command)
 	}
 	else
 	{
-		// Syntax error
 	}
 }
