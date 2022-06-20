@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:58:02 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 14:43:26 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 16:17:17 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,9 @@ void	syntax_command(t_ast *ast_command)
 	else if (fetch_token(GET).type == T_REDIRECT)
 	{
 		syntax_redirects(command->redirects);
+	}
+	else
+	{
+		// Syntax error
 	}
 }
