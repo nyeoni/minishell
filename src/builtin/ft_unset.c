@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:42 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/19 22:31:40 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/20 17:10:40 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	ft_unset(char **argv)
 			target = get_env(*argv);
 			if (target)
 			{
-				printf("HELLO WORLD\n");
 				remove_env(target);
 			}
 		}

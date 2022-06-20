@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:23:16 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/20 12:25:18 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/20 16:44:58 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_env	*get_env(char *identifier)
 	t_env				*ptr;
 	unsigned int		len;
 
-	ptr = manager.env;
+	ptr = g_manager.env;
 	len = ft_strlen(identifier);
 	while (ptr)
 	{

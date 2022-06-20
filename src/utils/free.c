@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:07:18 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/19 22:32:40 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/20 16:46:44 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	free_env(void)
 {
 	t_env	*tmp;
 
-	while (manager.env)
+	while (g_manager.env)
 	{
-		tmp = manager.env;
-		manager.env = manager.env->next;
+		tmp = g_manager.env;
+		g_manager.env = g_manager.env->next;
 		if (tmp->name)
 			free(tmp->name);
 		if (tmp->value)

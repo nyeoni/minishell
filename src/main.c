@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 16:30:26 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/20 17:11:32 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ t_manager	g_manager;
 
 void	init_manger(char *command_line)
 {
-	g_manager.envp = 0;
 	g_manager.command_line = command_line;
 	g_manager.rc = 0;
 }
 
-t_list	*env;
-
 void	initiate_env(char **envp)
 {
-	while (*envp)
+	char	**ptr;
+
+	ptr = envp;
+	while (*ptr)
 	{
 		add_env(get_name(*ptr), get_value(*ptr));
 		ptr++;
@@ -62,7 +62,6 @@ int	main (int argc, char **argv, char **envp)
 		exit(EXIT_FAILURE);
 	}
 	initiate_env(envp);
-	
 	while (1)
 	{
 		prompt = readline("blackhole-shell$ ");
@@ -77,11 +76,7 @@ int	main (int argc, char **argv, char **envp)
 		// test parsing
 		AST = syntax_analyzer();
 		// printf("%s\n", command_line);
-
-		arg = ft_split(prompt, ' ');
 		execute_cmd(arg);
-		// parse
-		// execute command : builtin or general
 		free(prompt);
 	}
 	return (0);
