@@ -6,7 +6,7 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/12 14:35:13 by hannkim          ###   ########.fr        #
+#    Updated: 2022/06/20 15:23:27 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ HEADERS 		= ./include/
 SRCS_DIR		= ./src/
 
 LIBFT_DIR 		= ./libft/
+LIBFT_FLAGS		= -L ./$(LIBFT_DIR) -lft
 
 # hannakim
 LIB_DIR			= /opt/homebrew/Cellar/readline/8.1.2/lib
@@ -35,16 +36,26 @@ LIB_HEADER		= /opt/homebrew/Cellar/readline/8.1.2/include
 
 LIB_FLAGS		= -lreadline -L $(LIB_DIR) -I $(LIB_HEADER)
 
-SRC				= main.c
+SRC_PARSER_DIR	= parser/
+SRC_PARSER		= lexical_analyzer.c syntax_analyzer.c token.c \
+					syntax_pipe_line.c syntax_command.c syntax_redirects.c \
+					syntax_simple_command.c syntax_io_redirect.c
+
+SRC_UTILS_DIR	= utils/
+SRC_UTILS		= ft_isspace.c
+
+SRC				= main.c \
+				$(addprefix $(SRC_UTILS_DIR), $(SRC_UTILS)) \
+				$(addprefix $(SRC_PARSER_DIR), $(SRC_PARSER))
 SRCS			= $(addprefix $(SRCS_DIR), $(SRC))
 OBJS 			= $(SRCS:.c=.o)
 
 .c.o:
-	$(CC) $(CFLAGS) -I $(HEADERS) -o $@ -c $?
+	$(CC) $(CFLAGS) -I$(HEADERS) -o $@ -c $?
 
 $(NAME): $(OBJS)
 	make -C $(LIBFT_DIR)
-	$(CC) $(CFLAGS) $(LIB_FLAGS) -I $(HEADERS) -o $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) $(LIB_FLAGS) $(LIBFT_FLAGS) -I $(HEADERS) -o $(NAME) $(OBJS)
 
 .PHONY	: all
 all		: $(NAME)
