@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/22 18:35:27 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/23 17:12:07 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,9 @@ char				*get_value(char *argv);
 void				add_env(char *name, char *value);
 void				remove_env(t_env *target);
 
-/* EXECUTE */
+/* EXEC */
 void				ft_execve(char **argv);
+void exec_ast(t_ast *ast);
 
 /* SIGNAL */
 void				exit_eof(char *command_line);
