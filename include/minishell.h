@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 18:36:42 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 17:26:48 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 19:00:22 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void				syntax_redirects(t_ast *ast_redirects);
 void				syntax_io_redirect(t_io_redirect *io_redirect);
 
 /* BUILTIN */
+void				execute_cmd(char **argv);
 void				ft_echo(char **argv);
 void				ft_cd(char **argv);
 void				ft_pwd(char **argv);

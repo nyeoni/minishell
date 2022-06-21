@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_analyzer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:12:20 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 14:37:34 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/20 19:31:01 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ char	*match(t_type type)
 */
 t_ast	*syntax_analyzer(void)
 {
-	t_ast	*AST;
+	t_ast	*ast;
 
 	fetch_token(UPDATE);
 	if (fetch_token(GET).type == T_NULL)
 		return (NULL);
-	syntax_pipe_line(AST);
-	return (AST);
+	syntax_pipe_line(ast);
+	return (ast);
 }
