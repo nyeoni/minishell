@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:14:23 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 14:34:16 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/21 14:43:10 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,22 @@
 
 # include "token.h"
 
-# define AST_PIPELINE 0
-# define AST_COMMAND 1
-# define AST_REDIRECTS 2
+// # define AST_PIPELINE 0
+// # define AST_COMMAND 1
+// # define AST_REDIRECTS 2
 
 typedef struct s_command		t_command;
 typedef struct s_simple_command	t_simple_command;
 typedef struct s_redirects		t_redirects;
 typedef struct s_io_redirect	t_io_redirect;
+
+typedef enum e_ast_type
+{
+	AST_NULL,
+	AST_PIPELINE,
+	AST_COMMAND,
+	AST_REDIRECTS
+}				t_ast_type;
 
 /* ast tree generate node
    t_ast can be...
@@ -32,7 +40,7 @@ typedef struct s_io_redirect	t_io_redirect;
 */
 typedef struct s_ast
 {
-	int							type;
+	t_ast_type					type;
 	void						*data;
 }								t_ast;
 
