@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_analyzer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:12:20 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/21 15:43:33 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/21 23:38:58 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,5 @@ t_ast	*syntax_analyzer(void)
 	if (fetch_token(GET).type == T_NULL)
 		return (NULL);
 	syntax_pipe_line(&ast);
-	printf("type: %d\n", ast->type);
 	return (ast);
 }

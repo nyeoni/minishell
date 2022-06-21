@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/21 15:43:54 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/21 23:32:26 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	execute_cmd(char **argv)
 		ft_export(argv);
 	else if (!ft_strncmp(*argv, "unset", 6))
 		ft_unset(argv);
+	else
+		ft_execve(argv);
 }
 
 int	main(int argc, char **argv, char **envp)

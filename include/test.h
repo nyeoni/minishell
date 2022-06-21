@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:22:32 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/21 15:43:49 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/21 23:21:12 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 
 void	test_token(void);
 void	test_ast(t_ast *ast);
-
-void	test_token(void);
 void	test_builtin(void);
 
 #endif
