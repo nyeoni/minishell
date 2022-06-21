@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/21 15:33:47 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/21 23:19:44 by hannkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,9 @@ SRC_FORK		= processor.c
 SRC_TEST_DIR	= __test__/
 SRC_TEST		= test_token.c test_ast.c
 
+SRC_EXECUTE_DIR	= execute/
+SRC_EXECUTE		= cmd_execve.c
+
 SRC				= main.c \
 					$(addprefix $(SRC_PARSER_DIR), $(SRC_PARSER)) \
 					$(addprefix $(SRC_BUILTIN_DIR), $(SRC_BUILTIN)) \
@@ -67,6 +70,7 @@ SRC				= main.c \
 					$(addprefix $(SRC_UTILS_DIR), $(SRC_UTILS)) \
 					$(addprefix $(SRC_ENV_DIR), $(SRC_ENV)) \
 					$(addprefix $(SRC_TEST_DIR), $(SRC_TEST))
+					$(addprefix $(SRC_EXECUTE_DIR), $(SRC_EXECUTE))
 
 SRCS			= $(addprefix $(SRCS_DIR), $(SRC))
 OBJS 			= $(SRCS:.c=.o)
