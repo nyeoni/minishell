@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 18:36:42 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/21 23:18:02 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/21 23:32:52 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,6 @@ void				add_env(char *name, char *value);
 void				remove_env(t_env *target);
 
 /* EXECUTE */
-void				cmd_execve(char **argv);
+void				ft_execve(char **argv);
 
 #endif

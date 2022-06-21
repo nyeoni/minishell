@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/21 23:21:56 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/21 23:32:26 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	execute_cmd(char **argv)
 	else if (!ft_strncmp(*argv, "unset", 6))
 		ft_unset(argv);
 	else
-		execute_cmd(argv);
+		ft_execve(argv);
 }
 
 int	main(int argc, char **argv, char **envp)

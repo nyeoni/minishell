@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:22:30 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/21 20:22:11 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/21 23:32:42 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static char	*find_file(char *cmd, char **path)
 }
 
 /* error -> envp, filename free? -> exit? */
-void	cmd_execve(char **argv)
+void	ft_execve(char **argv)
 {
 	char	**envp;
 	char	**path;

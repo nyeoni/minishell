@@ -6,7 +6,7 @@
 #    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/21 23:19:44 by hannkim          ###   ########.fr        #
+#    Updated: 2022/06/21 23:38:15 by hannkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,8 +60,8 @@ SRC_FORK		= processor.c
 SRC_TEST_DIR	= __test__/
 SRC_TEST		= test_token.c test_ast.c
 
-SRC_EXECUTE_DIR	= execute/
-SRC_EXECUTE		= cmd_execve.c
+SRC_EXEC_DIR	= exec/
+SRC_EXEC		= ft_execve.c
 
 SRC				= main.c \
 					$(addprefix $(SRC_PARSER_DIR), $(SRC_PARSER)) \
@@ -69,8 +69,8 @@ SRC				= main.c \
 					$(addprefix $(SRC_ERROR_DIR), $(SRC_ERROR)) \
 					$(addprefix $(SRC_UTILS_DIR), $(SRC_UTILS)) \
 					$(addprefix $(SRC_ENV_DIR), $(SRC_ENV)) \
-					$(addprefix $(SRC_TEST_DIR), $(SRC_TEST))
-					$(addprefix $(SRC_EXECUTE_DIR), $(SRC_EXECUTE))
+					$(addprefix $(SRC_TEST_DIR), $(SRC_TEST)) \
+					$(addprefix $(SRC_EXEC_DIR), $(SRC_EXEC))
 
 SRCS			= $(addprefix $(SRCS_DIR), $(SRC))
 OBJS 			= $(SRCS:.c=.o)
