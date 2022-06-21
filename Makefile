@@ -6,7 +6,7 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/20 18:25:11 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/21 15:33:47 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ SRC_FORK_DIR	= fork/
 SRC_FORK		= processor.c
 
 SRC_TEST_DIR	= __test__/
-SRC_TEST		= test_token.c
+SRC_TEST		= test_token.c test_ast.c
 
 SRC				= main.c \
 					$(addprefix $(SRC_PARSER_DIR), $(SRC_PARSER)) \

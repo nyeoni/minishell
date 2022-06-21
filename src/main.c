@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 19:30:17 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/21 15:43:54 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,8 @@ int	main(int argc, char **argv, char **envp)
 	{
 		command_line = readline("blackhole-shell$ ");
 		init_manger(command_line);
-		test_token();
 		ast = syntax_analyzer();
-		test_builtin();
+		test_ast(ast);
 		free(command_line);
 	}
 	return (0);
