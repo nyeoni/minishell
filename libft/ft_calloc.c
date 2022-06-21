@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 20:49:59 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/21 11:25:02 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/21 18:09:06 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_calloc(size_t count, size_t size)
 
 	res = (void *)malloc(size * count);
 	if (!(res))
-		exit(EXIT_FAILURE);
+		return (0);
 	i = 0;
 	while (i < size * count)
 	{
