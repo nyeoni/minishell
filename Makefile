@@ -6,7 +6,7 @@
 #    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/21 23:38:15 by hannkim          ###   ########.fr        #
+#    Updated: 2022/06/22 17:58:13 by hannkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ LIB_HEADER		= /opt/homebrew/Cellar/readline/8.1.2/include
 # LIB_DIR="/usr/local/opt/readline/lib"
 # LIB_HEADER="/usr/local/opt/readline/include"
 
-LIB_FLAGS		= -lreadline -L $(LIB_DIR) -I $(LIB_HEADER)
+LIB_FLAGS		= -lreadline -L$(LIB_DIR) -I$(LIB_HEADER)
 
 SRC_PARSER_DIR	= parser/
 SRC_PARSER		= lexical_analyzer.c syntax_analyzer.c token.c \
@@ -63,6 +63,9 @@ SRC_TEST		= test_token.c test_ast.c
 SRC_EXEC_DIR	= exec/
 SRC_EXEC		= ft_execve.c
 
+SRC_SIGNAL_DIR	= signal/
+SRC_SIGNAL		= ft_signal.c ft_eof.c
+
 SRC				= main.c \
 					$(addprefix $(SRC_PARSER_DIR), $(SRC_PARSER)) \
 					$(addprefix $(SRC_BUILTIN_DIR), $(SRC_BUILTIN)) \
@@ -70,17 +73,18 @@ SRC				= main.c \
 					$(addprefix $(SRC_UTILS_DIR), $(SRC_UTILS)) \
 					$(addprefix $(SRC_ENV_DIR), $(SRC_ENV)) \
 					$(addprefix $(SRC_TEST_DIR), $(SRC_TEST)) \
-					$(addprefix $(SRC_EXEC_DIR), $(SRC_EXEC))
+					$(addprefix $(SRC_EXEC_DIR), $(SRC_EXEC)) \
+					$(addprefix $(SRC_SIGNAL_DIR), $(SRC_SIGNAL))
 
 SRCS			= $(addprefix $(SRCS_DIR), $(SRC))
 OBJS 			= $(SRCS:.c=.o)
 
 .c.o:
-	$(CC) $(CFLAGS) -I$(HEADERS) -o $@ -c $?
+	$(CC) $(CFLAGS) -I $(HEADERS) -I $(LIB_HEADER) -o $@ -c $?
 
 $(NAME): $(OBJS)
 	make -C $(LIBFT_DIR)
-	$(CC) $(CFLAGS) $(LIB_FLAGS) $(LIBFT_FLAGS) -I $(HEADERS) -o $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) $(LIB_FLAGS) $(LIBFT_FLAGS) -o $(NAME) $(OBJS)
 
 .PHONY	: all
 all		: $(NAME)

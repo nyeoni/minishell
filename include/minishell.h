@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/03 18:36:42 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/21 23:32:52 by hannkim          ###   ########.fr       */
+/*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
+/*   Updated: 2022/06/22 18:35:27 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 # include "../libft/libft.h"
 # include "ast.h"
-# include <readline/readline.h>
 # include <stdio.h>
-# include <stdlib.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 # include <string.h>
 # include <sys/errno.h>
 # include <sys/stat.h>
+# include <signal.h>
 
 # define NULL_LINE 0;
 # define ERROR_FLAG -1
@@ -87,5 +88,9 @@ void				remove_env(t_env *target);
 
 /* EXECUTE */
 void				ft_execve(char **argv);
+
+/* SIGNAL */
+void				exit_eof(char *command_line);
+void				ft_signal(void);
 
 #endif
