@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/21 23:32:26 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/22 18:15:39 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,13 @@ int	main(int argc, char **argv, char **envp)
 		exit(EXIT_FAILURE);
 	}
 	initiate_env(envp);
+	ft_signal();
 	while (1)
 	{
 		command_line = readline("blackhole-shell$ ");
+		exit_eof(command_line);
+		if (*command_line)
+			add_history(command_line);
 		init_manger(command_line);
 		ast = syntax_analyzer();
 		test_ast(ast);

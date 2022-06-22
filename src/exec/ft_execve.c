@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_execve.c                                       :+:      :+:    :+:   */
+/*   ft_execve.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:22:30 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/21 23:32:42 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/22 18:27:07 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,7 @@ void	ft_execve(char **argv)
 		i++;
 	}
 	free(path);
+	signal(SIGQUIT, SIG_DFL);
 	execve(filename, argv, envp);
+	exit(EXIT_FAILURE);
 }
