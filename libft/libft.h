@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 19:17:14 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/22 02:25:07 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/22 20:36:08 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_calloc(size_t nmemb, size_t size);
 void				*ft_realloc(void *ptr, size_t size);
+void				*ft_ptrrealloc(void *buf, int before_size, int after_size);
 
 size_t				ft_strlen(const char *s);
 size_t				ft_strlcpy(char *dest, const char *src, size_t size);
