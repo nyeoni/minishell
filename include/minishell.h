@@ -6,15 +6,17 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/23 17:13:21 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/24 02:59:04 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "../libft/libft.h"
+# include "libft.h"
 # include "ast.h"
+# include "error.h"
+
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
@@ -79,8 +81,6 @@ void				ft_export(char **argv);
 void				ft_unset(char **argv);
 
 /* ERROR */
-void				throw_error(char *cmd, char *argv, char *err);
-void				throw_error_env(char *cmd, char *argv);
 
 /* ENV */
 t_env				*get_env(char *identifier);
