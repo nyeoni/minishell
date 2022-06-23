@@ -3,18 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/22 17:58:13 by hannkim          ###   ########.fr        #
+#    Updated: 2022/06/23 17:13:14 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= minishell
 CC 				= cc
 ifdef DEBUG
-	CFLAGS		= -g
-	#CFLAGS		= -g3 -fsanitize=address
+	CFLAGS		= -g3 -fsanitize=address
 else
 	CFLAGS 		= -Wall -Wextra -Werror
 endif
@@ -27,20 +26,16 @@ SRCS_DIR		= ./src/
 LIBFT_DIR 		= libft/
 LIBFT_FLAGS		= -L ./$(LIBFT_DIR) -lft
 
-# hannakim
 LIB_DIR			= /opt/homebrew/Cellar/readline/8.1.2/lib
 LIB_HEADER		= /opt/homebrew/Cellar/readline/8.1.2/include
 
-# nayeon
-# LIB_DIR="/usr/local/opt/readline/lib"
-# LIB_HEADER="/usr/local/opt/readline/include"
-
-LIB_FLAGS		= -lreadline -L$(LIB_DIR) -I$(LIB_HEADER)
+LIB_FLAGS		= -lreadline -L $(LIB_DIR) -I $(LIB_HEADER)
 
 SRC_PARSER_DIR	= parser/
 SRC_PARSER		= lexical_analyzer.c syntax_analyzer.c token.c \
 					syntax_pipe_line.c syntax_command.c syntax_redirects.c \
-					syntax_simple_command.c syntax_io_redirect.c
+					syntax_simple_command.c syntax_io_redirect.c syntax_word.c \
+					get_combined_word.c
 
 SRC_UTILS_DIR	= utils/
 SRC_UTILS		= ft_isspace.c free.c

@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:59:05 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/21 15:09:59 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/23 14:44:04 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	syntax_redirects(t_ast **ast_redirects)
 {
 	t_redirects	*redirects;
 
-	printf("===redirects===\n");
 	*ast_redirects = ft_calloc(1, sizeof(t_ast));
 	(*ast_redirects)->type = AST_REDIRECTS;
 	(*ast_redirects)->data = ft_calloc(1, sizeof(t_redirects));

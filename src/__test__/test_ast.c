@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 19:23:17 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/21 15:32:31 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/23 17:04:22 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,16 @@
 
 void	print_simple_command(t_simple_command *simple_command)
 {
+	int	ac;
+
 	printf("===simple_command===\n");
 	printf("exec_path: %s\n", simple_command->exec_path);
-	printf("argv: %s\n", simple_command->argv);
+	ac = 0;
+	while (simple_command->argv[ac])
+	{
+		printf("argv[%d]: %s\n", ac, simple_command->argv[ac]);
+		ac++;
+	}
 }
 
 void	print_io_redirect(t_io_redirect *io_redirect)

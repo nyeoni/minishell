@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:14:23 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/21 14:43:10 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/22 01:22:43 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 # define AST_H
 
 # include "token.h"
-
-// # define AST_PIPELINE 0
-// # define AST_COMMAND 1
-// # define AST_REDIRECTS 2
 
 typedef struct s_command		t_command;
 typedef struct s_simple_command	t_simple_command;
@@ -66,7 +62,7 @@ typedef struct s_command
 typedef struct s_simple_command
 {
 	char						*exec_path;
-	char						*argv;
+	char						**argv;
 }								t_simple_command;
 
 /* <redirects> -> <io_redirect> { <redirects> } */

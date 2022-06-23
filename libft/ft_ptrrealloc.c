@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   syntax_io_redirect.c                               :+:      :+:    :+:   */
+/*   ft_ptrrealloc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/20 04:59:57 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/23 17:04:59 by nkim             ###   ########.fr       */
+/*   Created: 2022/06/22 20:33:43 by nkim              #+#    #+#             */
+/*   Updated: 2022/06/22 20:35:34 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	syntax_io_redirect(t_io_redirect **io_redirect)
+void	*ft_ptrrealloc(void *buf, int before_size, int after_size)
 {
-	*io_redirect = ft_calloc(1, sizeof(t_io_redirect));
-	(*io_redirect)->redirect_op = match(T_REDIRECT);
-	if (!ft_strncmp((*io_redirect)->redirect_op, "<<", 3))
-		(*io_redirect)->file_path = get_combined_heredoc_word();
-	else
-		(*io_redirect)->file_path = get_combined_word();
+	int		idx;
+	char	**src;
+	char	**dst;
+
+	src = (char **)buf;
+	dst = (char **)malloc(sizeof(char *) * after_size);
+	idx = 0;
+	while (idx < before_size)
+	{
+		dst[idx] = src[idx];
+		idx++;
+	}
+	free(buf);
+	return ((void *)dst);
 }

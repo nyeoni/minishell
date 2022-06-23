@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:40:53 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 14:34:29 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/22 13:07:13 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ typedef enum e_unit
 	U_OUT = '>',
 	U_PIPE = '|',
 	U_DOUBLE_QUOTES = '\"',
-	U_SINGLE_QUOTES = '\''
+	U_SINGLE_QUOTES = '\'',
+	U_BACK_SLASH	= '\\'
 }				t_unit;
 
 typedef enum e_redirect_op

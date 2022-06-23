@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:11:59 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 17:31:09 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/22 21:40:11 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	get_quote(t_token *token, char **begin, char **end)
 	if (!*end)
 	{
 		printf("인용문이 닫히지 않았습니다!\n");
+		*end = *begin;
 		return ;
 	}
 	else
@@ -58,7 +59,7 @@ void	lexical_analyzer(t_token *token, char **begin, char **end)
 		g_manager.rc++;
 	*begin = &g_manager.command_line[g_manager.rc];
 	*end = *begin;
-	if (**begin == U_DOUBLE_QUOTES || **begin == U_SINGLE_QUOTES)
+	if ((**begin == U_DOUBLE_QUOTES || **begin == U_SINGLE_QUOTES))
 		get_quote(token, begin, end);
 	else if (**begin == U_IN || **begin == U_OUT)
 		get_redirect_op(token, begin, end);
