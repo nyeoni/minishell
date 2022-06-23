@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/23 17:12:07 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/23 17:13:21 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ void				syntax_command(t_ast **ast_command);
 void				syntax_redirects(t_ast **ast_redirects);
 void				syntax_simple_command(t_simple_command **simple_command);
 void				syntax_io_redirect(t_io_redirect **io_redirect);
+char				*syntax_word(char *token);
+char				*syntax_heredoc_word(char *token);
+char				*get_combined_word(void);
+char				*get_combined_heredoc_word(void);
 
 /* BUILTIN */
 void				execute_cmd(char **argv);
@@ -88,7 +92,7 @@ void				remove_env(t_env *target);
 
 /* EXEC */
 void				ft_execve(char **argv);
-void exec_ast(t_ast *ast);
+void				exec_ast(t_ast *ast);
 
 /* SIGNAL */
 void				exit_eof(char *command_line);
