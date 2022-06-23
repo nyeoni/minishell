@@ -6,7 +6,7 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/24 03:40:55 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/24 03:51:03 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,13 @@ SRCS_DIR		= ./src/
 LIBFT_DIR 		= libft/
 LIBFT_FLAGS		= -L ./$(LIBFT_DIR) -lft
 
-LIB_DIR			= /opt/homebrew/Cellar/readline/8.1.2/lib
-LIB_HEADER		= /opt/homebrew/Cellar/readline/8.1.2/include
+# hannkim
+# LIB_DIR			= /opt/homebrew/Cellar/readline/8.1.2/lib
+# LIB_HEADER		= /opt/homebrew/Cellar/readline/8.1.2/include
+
+# nkim
+LIB_DIR			= /usr/local/opt/readline/lib
+LIB_HEADER		= /usr/local/opt/readline/include
 
 LIB_FLAGS		= -lreadline -L $(LIB_DIR) -I $(LIB_HEADER)
 
