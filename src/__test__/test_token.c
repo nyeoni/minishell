@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:11:37 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/24 03:46:13 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/24 03:56:12 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	test_builtin(void)
 	char	*tmp;
 
 	arg = ft_split(g_manager.command_line, ' ');
-	execute_builtin(arg);
+	exec_builtin(arg);
 	ptr = arg;
 	while (*ptr)
 	{

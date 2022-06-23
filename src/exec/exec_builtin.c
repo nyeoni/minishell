@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute_builtin.c                                  :+:      :+:    :+:   */
+/*   exec_builtin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-void	execute_builtin(char **argv)
+void	exec_builtin(char **argv)
 {
 	if (!ft_strncmp(*argv, "cd", 3))
 		ft_cd(argv);
