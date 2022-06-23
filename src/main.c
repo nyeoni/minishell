@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/23 17:13:46 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/24 03:38:43 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,6 @@ void	initiate_env(char **envp)
 		add_env(get_name(*ptr), get_value(*ptr));
 		ptr++;
 	}
-}
-
-void	execute_cmd(char **argv)
-{
-	if (!ft_strncmp(*argv, "cd", 3))
-		ft_cd(argv);
-	else if (!ft_strncmp(*argv, "echo", 5))
-		ft_echo(argv);
-	else if (!ft_strncmp(*argv, "pwd", 4))
-		ft_pwd(argv);
-	else if (!ft_strncmp(*argv, "env", 4))
-		ft_env();
-	else if (!ft_strncmp(*argv, "exit", 5))
-		ft_exit();
-	else if (!ft_strncmp(*argv, "export", 7))
-		ft_export(argv);
-	else if (!ft_strncmp(*argv, "unset", 6))
-		ft_unset(argv);
-	else
-		ft_execve(argv);
 }
 
 int	main(int argc, char **argv, char **envp)

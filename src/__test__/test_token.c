@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_token.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:11:37 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 19:29:22 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/24 03:46:13 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	test_builtin(void)
 	char	*tmp;
 
 	arg = ft_split(g_manager.command_line, ' ');
-	execute_cmd(arg);
+	execute_builtin(arg);
 	ptr = arg;
 	while (*ptr)
 	{
