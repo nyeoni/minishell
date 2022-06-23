@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_analyzer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:12:20 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/21 23:38:58 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/22 03:14:01 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,10 @@ char	*match(t_type type)
 	t_token	token;
 
 	token = fetch_token(UPDATE);
-	printf("match type: %d, value: %s\n", token.type, token.value);
 	if (token.type == type)
 		return (token.value);
 	else
-	{
 		return (NULL);
-	}
 }
 
 /*
