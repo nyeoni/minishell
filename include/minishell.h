@@ -6,14 +6,15 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/24 03:37:08 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/24 03:45:11 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "libft.h"
+# include "../libft/libft.h"
+
 # include "ast.h"
 # include "parser.h"
 # include "builtin.h"
