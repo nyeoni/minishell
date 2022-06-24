@@ -6,13 +6,13 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:11:59 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/22 21:40:11 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/24 17:41:57 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	get_word(t_token *token, char **begin, char **end)
+static void	get_word(t_token *token, char **begin, char **end)
 {
 	token->type = T_WORD;
 	while (**end && (!ft_isspace(**end)) && !ft_strchr("<>|\"'", **end))
@@ -20,7 +20,7 @@ void	get_word(t_token *token, char **begin, char **end)
 }
 
 // TODO: 인용문이 닫히지 않았을 때 처리하기
-void	get_quote(t_token *token, char **begin, char **end)
+static void	get_quote(t_token *token, char **begin, char **end)
 {
 	token->type = T_WORD;
 	*end = ft_strchr(*begin + 1, **begin);
@@ -34,13 +34,13 @@ void	get_quote(t_token *token, char **begin, char **end)
 		(*end)++;
 }
 
-void	get_pipe(t_token *token, char **begin, char **end)
+static void	get_pipe(t_token *token, char **begin, char **end)
 {
 	token->type = T_PIPE;
 	(*end)++;
 }
 
-void	get_redirect_op(t_token *token, char **begin, char **end)
+static void	get_redirect_op(t_token *token, char **begin, char **end)
 {
 	token->type = T_REDIRECT;
 	if (**begin == U_IN && *(*begin + 1) == U_IN)
