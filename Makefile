@@ -6,7 +6,7 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/24 16:39:26 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/24 17:01:03 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,6 @@ SRC_PARSER		= lexical_analyzer.c syntax_analyzer.c token.c \
 					syntax_simple_command.c syntax_io_redirect.c syntax_word.c \
 					get_combined_word.c
 
-SRC_UTILS_DIR	= utils/
-SRC_UTILS		= ft_isspace.c free.c
-
 SRC_BUILTIN_DIR	= builtin/
 SRC_BUILTIN		= ft_echo.c ft_cd.c ft_pwd.c ft_export.c ft_unset.c \
 							ft_env.c ft_exit.c
@@ -64,7 +61,10 @@ SRC_EXEC_DIR	= exec/
 SRC_EXEC		= exec_general.c exec_builtin.c
 
 SRC_SIGNAL_DIR	= signal/
-SRC_SIGNAL		= check_signal.c exit_eof.c
+SRC_SIGNAL		= check_signal.c
+
+SRC_UTILS_DIR	= utils/
+SRC_UTILS		= ft_isspace.c ft_exit_eof.c
 
 SRC				= main.c \
 					$(addprefix $(SRC_PARSER_DIR), $(SRC_PARSER)) \

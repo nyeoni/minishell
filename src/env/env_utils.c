@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:23:16 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/20 16:44:58 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/24 16:47:28 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_env	*get_env(char *identifier)
 	return (NULL);
 }
 
-int	is_valid_identifier(char *identifier)
+int	valid_env_name(char *identifier)
 {
 	char	*ptr;
 
@@ -48,7 +48,7 @@ int	is_valid_identifier(char *identifier)
 	return (EXIT_SUCCESS);
 }
 
-char	*get_name(char *argv)
+char	*get_env_name(char *argv)
 {
 	char	*name;
 	int		len;
@@ -61,7 +61,7 @@ char	*get_name(char *argv)
 	return (name);
 }
 
-char	*get_value(char *argv)
+char	*get_env_value(char *argv)
 {
 	char	*value;
 	char	*ptr;
@@ -75,4 +75,20 @@ char	*get_value(char *argv)
 		exit(EXIT_FAILURE);
 	ft_strlcpy(value, ptr, len);
 	return (value);
+}
+
+void	free_env(void)
+{
+	t_env	*tmp;
+
+	while (g_manager.env)
+	{
+		tmp = g_manager.env;
+		g_manager.env = g_manager.env->next;
+		if (tmp->name)
+			free(tmp->name);
+		if (tmp->value)
+			free(tmp->value);
+		free(tmp);
+	}
 }

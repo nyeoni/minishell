@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:58:45 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/20 23:58:47 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/24 16:46:59 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ static void	exec_export(char *argv)
 	t_env	*ptr;
 	char	*name;
 
-	name = get_name(argv);
+	name = get_env_name(argv);
 	ptr = get_env(name);
 	if (ptr)
 	{
 		free(ptr->value);
-		ptr->value = get_value(argv);
+		ptr->value = get_env_value(argv);
 		free(name);
-	}		
+	}
 	else
-		add_env(name, get_value(argv));
+		add_env(name, get_env_value(argv));
 }
 
 void	ft_export(char **argv)
@@ -56,7 +56,7 @@ void	ft_export(char **argv)
 	{
 		if (ft_strchr(*argv, '='))
 		{
-			if (is_valid_identifier(*argv) == EXIT_FAILURE)
+			if (valid_env_name(*argv) == EXIT_FAILURE)
 				throw_error_env("export", *argv);
 			else
 				exec_export(*argv);
