@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:13 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/05 16:18:45 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/24 13:55:10 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,22 @@ void	ft_echo(char **argv)
 {
 	int	option;
 	int	i;
+	int	j;
 
 	option = 0;
 	i = 1;
-	if (!ft_strncmp(argv[1], "-n", 3))
+	j = 2;
+	if (!ft_strncmp(argv[1], "-n", 2))
 	{
-		option = 1;
-		i++;
+		while (argv[1][j] == 'n')
+			j++;
+		if (argv[1][j])
+			option = 0;
+		else
+		{
+			option = 1;
+			i++;
+		}
 	}
 	while (argv[i])
 	{
