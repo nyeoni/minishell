@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/24 16:23:20 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/24 16:24:59 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ void				exec_ast(t_ast *ast);
 
 /* SIGNAL */
 void				exit_eof(char *command_line);
-void				ft_signal(void);
+void				check_signal(void);
 
 #endif

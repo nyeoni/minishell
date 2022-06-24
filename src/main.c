@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/24 03:38:43 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/24 16:24:59 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char **argv, char **envp)
 		exit(EXIT_FAILURE);
 	}
 	initiate_env(envp);
-	ft_signal();
+	check_signal();
 	while (1)
 	{
 		command_line = readline("blackhole-shell$ ");
