@@ -6,7 +6,7 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/24 16:23:35 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/24 16:39:26 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ SRC_EXEC_DIR	= exec/
 SRC_EXEC		= exec_general.c exec_builtin.c
 
 SRC_SIGNAL_DIR	= signal/
-SRC_SIGNAL		= ft_signal.c ft_eof.c
+SRC_SIGNAL		= check_signal.c exit_eof.c
 
 SRC				= main.c \
 					$(addprefix $(SRC_PARSER_DIR), $(SRC_PARSER)) \
