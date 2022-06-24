@@ -6,28 +6,29 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:37 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/04 21:49:49 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/24 23:16:07 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_pwd(char **argv)
+int	ft_pwd(char **argv)
 {
 	char	*cwd;
 
 	if (argv[1])
 	{
 		throw_error("pwd", NULL, strerror(errno));
-		return ;
+		return (EXIT_FAILURE);
 	}
 	cwd = getcwd(NULL, 0);
 	if (!cwd)
 	{
 		throw_error("pwd", NULL, strerror(errno));
-		return ;
+		return (EXIT_FAILURE);
 	}
 	ft_putstr_fd(cwd, STDOUT_FILENO);
 	ft_putstr_fd("\n", STDOUT_FILENO);
 	free(cwd);
+	return (1);
 }

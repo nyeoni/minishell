@@ -12,20 +12,21 @@
 
 #include "minishell.h"
 
-void	exec_builtin(char **argv)
+int	exec_builtin(char **argv)
 {
+	if (!ft_strncmp(*argv, "echo", 5))
+		return (ft_echo(argv));
 	if (!ft_strncmp(*argv, "cd", 3))
-		ft_cd(argv);
-	else if (!ft_strncmp(*argv, "echo", 5))
-		ft_echo(argv);
+		return (ft_cd(argv));
 	else if (!ft_strncmp(*argv, "pwd", 4))
-		ft_pwd(argv);
+		return (ft_pwd(argv));
 	else if (!ft_strncmp(*argv, "env", 4))
-		ft_env();
+		return (ft_env());
+	else if (!ft_strncmp(*argv, "export", 7))
+		return (ft_export(argv));
+	else if (!ft_strncmp(*argv, "unset", 6))
+		return (ft_unset(argv));
 	else if (!ft_strncmp(*argv, "exit", 5))
 		ft_exit();
-	else if (!ft_strncmp(*argv, "export", 7))
-		ft_export(argv);
-	else if (!ft_strncmp(*argv, "unset", 6))
-		ft_unset(argv);
+	return (EXIT_FAILURE);
 }

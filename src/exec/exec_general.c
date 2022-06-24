@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_general.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:00:00 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/24 17:00:04 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/24 22:56:22 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,13 @@ static char	*find_file(char *cmd, char **path)
 }
 
 /* error -> envp, filename free? -> exit? */
-void	exec_general(char **argv)
+int	exec_general(char **argv)
 {
 	char	**envp;
 	char	**path;
 	char	*filename;
 	int		i;
+	int		exit_code;
 
 	path = ft_split(get_env("PATH")->value, ':');
 	filename = find_file(argv[0], path);
@@ -94,6 +95,6 @@ void	exec_general(char **argv)
 	}
 	free(path);
 	signal(SIGQUIT, SIG_DFL);
-	execve(filename, argv, envp);
-	exit(EXIT_FAILURE);
+	exit_code = execve(filename, argv, envp);
+	return (exit_code);
 }

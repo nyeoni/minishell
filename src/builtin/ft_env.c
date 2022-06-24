@@ -6,13 +6,13 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:58:28 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/20 23:58:30 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/24 22:46:48 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_env(void)
+int	ft_env(void)
 {
 	t_env	*ptr;
 

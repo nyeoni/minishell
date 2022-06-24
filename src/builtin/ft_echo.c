@@ -6,40 +6,46 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:13 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/24 13:55:10 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/24 23:18:31 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_echo(char **argv)
+static int	check_echo_option(char *option)
 {
-	int	option;
+	int	flag;
 	int	i;
-	int	j;
 
-	option = 0;
-	i = 1;
-	j = 2;
-	if (!ft_strncmp(argv[1], "-n", 2))
+	flag = 0;
+	i = 2;
+	if (!ft_strncmp(option, "-n", i))
 	{
-		while (argv[1][j] == 'n')
-			j++;
-		if (argv[1][j])
-			option = 0;
-		else
-		{
-			option = 1;
+		while (option[i] == 'n')
 			i++;
-		}
+		if (option[i])
+			flag = 0;
+		else
+			flag = 1;
 	}
-	while (argv[i])
+	return (flag);
+}
+
+int	ft_echo(char **argv)
+{
+	int	flag;
+
+	flag = check_option(++argv);
+	if (flag)
+		argv++;
+	while (argv)
 	{
-		ft_putstr_fd(argv[i], STDOUT_FILENO);
-		if (argv[i + 1])
+		ft_putstr_fd(*argv, STDOUT_FILENO);
+		if (*(argv + 1))
 			ft_putstr_fd(" ", STDOUT_FILENO);
-		i++;
+		argv++;
 	}
-	if (!option)
+	if (!flag)
 		ft_putstr_fd("\n", STDOUT_FILENO);
+	return (EXIT_SUCCESS);
 }

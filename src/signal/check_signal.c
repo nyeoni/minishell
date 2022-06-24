@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_signal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:00:23 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/24 17:00:27 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/24 22:56:55 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	handle_sigint(int signum)
 	rl_replace_line("", 1);
 	rl_on_new_line();
 	rl_redisplay();
+	g_manager.exit_code = 1;
 }
 
 /* SIGINT : ctrl + c, SIGQUIT : ctrl + \ */
