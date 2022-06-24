@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/24 03:56:12 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/24 16:23:20 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void				remove_env(t_env *target);
 
 /* EXEC */
 void				exec_builtin(char **argv);
-void				ft_execve(char **argv);
+void				exec_general(char **argv);
 void				exec_ast(t_ast *ast);
 
 /* SIGNAL */

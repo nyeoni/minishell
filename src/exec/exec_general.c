@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_execve.c                                        :+:      :+:    :+:   */
+/*   exec_general.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:22:30 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/22 18:27:07 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/24 16:23:08 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static char	*find_file(char *cmd, char **path)
 }
 
 /* error -> envp, filename free? -> exit? */
-void	ft_execve(char **argv)
+void	exec_general(char **argv)
 {
 	char	**envp;
 	char	**path;
