@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/24 03:38:43 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/24 17:16:23 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	initiate_env(char **envp)
 	ptr = envp;
 	while (*ptr)
 	{
-		add_env(get_name(*ptr), get_value(*ptr));
+		add_env(get_env_name(*ptr), get_env_value(*ptr));
 		ptr++;
 	}
 }
@@ -44,11 +44,11 @@ int	main(int argc, char **argv, char **envp)
 		exit(EXIT_FAILURE);
 	}
 	initiate_env(envp);
-	ft_signal();
+	check_signal();
 	while (1)
 	{
-		command_line = readline("blackhole-shell$ ");
-		exit_eof(command_line);
+		command_line = readline(PS1);
+		ft_exit_eof(command_line);
 		if (*command_line)
 			add_history(command_line);
 		init_manger(command_line);

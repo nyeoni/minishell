@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_signal.c                                        :+:      :+:    :+:   */
+/*   check_signal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/22 18:18:30 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/22 18:18:46 by hannkim          ###   ########.fr       */
+/*   Created: 2022/06/24 17:00:23 by nkim              #+#    #+#             */
+/*   Updated: 2022/06/24 17:00:27 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	handle_sigint(int signum)
 }
 
 /* SIGINT : ctrl + c, SIGQUIT : ctrl + \ */
-void	ft_signal(void)
+void	check_signal(void)
 {
 	signal(SIGINT, handle_sigint);
 	signal(SIGQUIT, SIG_IGN);
