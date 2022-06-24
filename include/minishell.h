@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/24 16:24:59 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/24 17:30:20 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@
 # define TRUE 1
 # define FALSE 0
 
+# define PS1 "\e[0;95mblackhole-shell$ \e[0m"
+# define PS2 "> "
+
 typedef struct s_env
 {
 	char			*name;
@@ -52,7 +55,6 @@ extern t_manager	g_manager;
 
 /* UTILS */
 int					ft_isspace(int c);
-void				free_env(void);
 
 /* PARSER */
 
@@ -62,11 +64,12 @@ void				free_env(void);
 
 /* ENV */
 t_env				*get_env(char *identifier);
-int					is_valid_identifier(char *identifier);
-char				*get_name(char *argv);
-char				*get_value(char *argv);
+int					valid_env_name(char *identifier);
+char				*get_env_name(char *argv);
+char				*get_env_value(char *argv);
 void				add_env(char *name, char *value);
 void				remove_env(t_env *target);
+void				free_env(void);
 
 /* EXEC */
 void				exec_builtin(char **argv);
@@ -74,7 +77,7 @@ void				exec_general(char **argv);
 void				exec_ast(t_ast *ast);
 
 /* SIGNAL */
-void				exit_eof(char *command_line);
+void				ft_exit_eof(char *command_line);
 void				check_signal(void);
 
 #endif
