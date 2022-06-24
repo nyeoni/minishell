@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:58:45 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/24 16:46:59 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/24 23:16:31 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ static void	exec_export(char *argv)
 		add_env(name, get_env_value(argv));
 }
 
-void	ft_export(char **argv)
+int	ft_export(char **argv)
 {
 	if (!argv[1])
 	{
 		env_quotes();
-		return ;
+		return (1);
 	}
 	argv++;
 	while (*argv)
@@ -63,4 +63,5 @@ void	ft_export(char **argv)
 		}
 		argv++;
 	}
+	return (1);
 }

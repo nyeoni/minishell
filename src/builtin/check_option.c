@@ -1,39 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unset.c                                         :+:      :+:    :+:   */
+/*   check_option.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/20 23:58:57 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/24 23:16:46 by hannkim          ###   ########.fr       */
+/*   Created: 2022/06/24 20:17:21 by hannkim           #+#    #+#             */
+/*   Updated: 2022/06/24 23:17:35 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_unset(char **argv)
+int	check_option(char **argv)
 {
-	t_env	*target;
-
-	if (!argv[1])
-		return (0);
-	argv++;
-	while (*argv)
-	{
-		if (ft_strchr(*argv, '='))
-			throw_error_env("unset", *argv);
-		else if (valid_env_name(*argv) == EXIT_FAILURE)
-			throw_error_env("unset", *argv);
-		else
-		{
-			target = get_env(*argv);
-			if (target)
-			{
-				remove_env(target);
-			}
-		}
-		argv++;
-	}
 	return (1);
 }

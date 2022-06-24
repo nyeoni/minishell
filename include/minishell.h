@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/24 17:30:20 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/24 23:18:01 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_manager
 	t_env			*env;
 	char			*command_line;
 	int				rc;
+	int				exit_code;
 }					t_manager;
 
 extern t_manager	g_manager;
@@ -72,8 +73,8 @@ void				remove_env(t_env *target);
 void				free_env(void);
 
 /* EXEC */
-void				exec_builtin(char **argv);
-void				exec_general(char **argv);
+int					exec_builtin(char **argv);
+int					exec_general(char **argv);
 void				exec_ast(t_ast *ast);
 
 /* SIGNAL */

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/24 17:01:03 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/24 20:20:40 by hannkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,12 +27,12 @@ LIBFT_DIR 		= libft/
 LIBFT_FLAGS		= -L ./$(LIBFT_DIR) -lft
 
 # hannkim
-# LIB_DIR			= /opt/homebrew/Cellar/readline/8.1.2/lib
-# LIB_HEADER		= /opt/homebrew/Cellar/readline/8.1.2/include
+LIB_DIR			= /opt/homebrew/Cellar/readline/8.1.2/lib
+LIB_HEADER		= /opt/homebrew/Cellar/readline/8.1.2/include
 
 # nkim
-LIB_DIR			= /usr/local/opt/readline/lib
-LIB_HEADER		= /usr/local/opt/readline/include
+# LIB_DIR			= /usr/local/opt/readline/lib
+# LIB_HEADER		= /usr/local/opt/readline/include
 
 LIB_FLAGS		= -lreadline -L $(LIB_DIR) -I $(LIB_HEADER)
 
@@ -44,7 +44,7 @@ SRC_PARSER		= lexical_analyzer.c syntax_analyzer.c token.c \
 
 SRC_BUILTIN_DIR	= builtin/
 SRC_BUILTIN		= ft_echo.c ft_cd.c ft_pwd.c ft_export.c ft_unset.c \
-							ft_env.c ft_exit.c
+							ft_env.c ft_exit.c is_builtin.c check_option.c
 SRC_ERROR_DIR	= error/
 SRC_ERROR		= throw_error.c throw_error_env.c throw_error_exit.c
 
