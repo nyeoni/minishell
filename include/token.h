@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:40:53 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/22 13:07:13 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/25 18:32:10 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ typedef enum e_unit
 
 typedef enum e_redirect_op
 {
-	IN,
-	OUT,
-	HEREDOC,
-	APPEND
+	R_IN,
+	R_OUT,
+	R_HEREDOC,
+	R_APPEND
 }				t_redirect_op;
 
 #endif
