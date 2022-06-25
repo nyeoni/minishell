@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   throw_error.c                                      :+:      :+:    :+:   */
+/*   test_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/20 23:59:10 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/25 16:24:47 by hannkim          ###   ########.fr       */
+/*   Created: 2022/06/25 19:47:51 by hannkim           #+#    #+#             */
+/*   Updated: 2022/06/25 19:48:22 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
-   throw_error
-   cmd: command name
-   argv: command argv
-   err: error message
-*/
-int	throw_error(char *cmd, char *argv, char *err)
+/* main insert below readline() */
+void	test_builtin(void)
 {
-	ft_putstr_fd("blackhole-shell: ", STDERR_FILENO);
-	ft_putstr_fd(cmd, STDERR_FILENO);
-	ft_putstr_fd(": ", STDERR_FILENO);
-	if (argv)
+	char	**arg;
+	char	**ptr;
+	char	*tmp;
+
+	arg = ft_split(g_manager.command_line, ' ');
+	exec_builtin(arg);
+	ptr = arg;
+	while (*ptr)
 	{
-		ft_putstr_fd(argv, STDERR_FILENO);
-		ft_putstr_fd(": ", STDERR_FILENO);
+		tmp = *ptr;
+		ptr++;
+		free(tmp);
 	}
-	ft_putstr_fd(err, STDERR_FILENO);
-	ft_putstr_fd("\n", STDERR_FILENO);
-	return (EXIT_FAILURE);
+	free(arg);
 }
