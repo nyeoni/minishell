@@ -6,34 +6,40 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:58:57 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/24 23:16:46 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/25 23:02:54 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/*
+	Invalid env_name -> exit_code = EXIT_FAILURE
+	Invalid option -> exit_code = 2
+*/
 int	ft_unset(char **argv)
 {
 	t_env	*target;
+	int		exit_code;
 
-	if (!argv[1])
-		return (0);
+	exit_code = EXIT_SUCCESS;
+	if (!*(argv + 1))
+		return (exit_code);
 	argv++;
 	while (*argv)
 	{
-		if (ft_strchr(*argv, '='))
-			throw_error_env("unset", *argv);
+		if (check_option(*argv) == EXIT_FAILURE)
+			exit_code = throw_error_usage("unset", *argv) + 1;
+		else if (ft_strchr(*argv, '='))
+			exit_code = throw_error_env("unset", *argv);
 		else if (valid_env_name(*argv) == EXIT_FAILURE)
-			throw_error_env("unset", *argv);
+			exit_code = throw_error_env("unset", *argv);
 		else
 		{
 			target = get_env(*argv);
 			if (target)
-			{
 				remove_env(target);
-			}
 		}
 		argv++;
 	}
-	return (1);
+	return (exit_code);
 }

@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   throw_error_exit.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 02:44:26 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/24 02:59:50 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/25 23:11:52 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	throw_error_exit(char *cmd, char *err, int exit_code)
+int	throw_error_exit(char *cmd, char *err, int exit_code)
 {
+	g_manager.exit_code = exit_code;
 	throw_error(cmd, NULL, err);
-	exit(exit_code);
+	exit(g_manager.exit_code);
+	return (EXIT_FAILURE);
 }

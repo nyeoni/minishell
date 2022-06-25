@@ -6,13 +6,14 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:26 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/12 15:24:36 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/25 22:29:26 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_exit(void)
+// TODO : exit code 계산
+void	ft_exit(char **argv)
 {
 	ft_putstr_fd("exit\n", STDOUT_FILENO);
 	free_env();
