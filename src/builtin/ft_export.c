@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:58:45 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/24 23:16:31 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/25 23:03:07 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,33 @@ static void	exec_export(char *argv)
 		add_env(name, get_env_value(argv));
 }
 
+/*
+	Invalid env_name -> exit_code = EXIT_FAILURE
+	Invalid option -> exit_code = 2
+*/
 int	ft_export(char **argv)
 {
+	int	exit_code;
+
+	exit_code = EXIT_SUCCESS;
 	if (!argv[1])
 	{
 		env_quotes();
-		return (1);
+		return (exit_code);
 	}
 	argv++;
 	while (*argv)
 	{
-		if (ft_strchr(*argv, '='))
+		if (check_option(*argv) == EXIT_FAILURE)
+			exit_code = throw_error_usage("export", *argv) + 1;
+		else if (ft_strchr(*argv, '='))
 		{
 			if (valid_env_name(*argv) == EXIT_FAILURE)
-				throw_error_env("export", *argv);
+				exit_code = throw_error_env("export", *argv);
 			else
 				exec_export(*argv);
 		}
 		argv++;
 	}
-	return (1);
+	return (exit_code);
 }

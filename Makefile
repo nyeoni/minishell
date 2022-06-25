@@ -6,7 +6,7 @@
 #    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/24 20:20:40 by hannkim          ###   ########.fr        #
+#    Updated: 2022/06/25 20:00:13 by hannkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,8 @@ SRC_BUILTIN_DIR	= builtin/
 SRC_BUILTIN		= ft_echo.c ft_cd.c ft_pwd.c ft_export.c ft_unset.c \
 							ft_env.c ft_exit.c is_builtin.c check_option.c
 SRC_ERROR_DIR	= error/
-SRC_ERROR		= throw_error.c throw_error_env.c throw_error_exit.c
+SRC_ERROR		= throw_error.c throw_error_env.c throw_error_exit.c \
+							throw_error_usage.c
 
 SRC_ENV_DIR	= env/
 SRC_ENV		= env_list.c env_utils.c
@@ -55,7 +56,7 @@ SRC_FORK_DIR	= fork/
 SRC_FORK		= processor.c
 
 SRC_TEST_DIR	= __test__/
-SRC_TEST		= test_token.c test_ast.c
+SRC_TEST		= test_token.c test_ast.c test_builtin.c
 
 SRC_EXEC_DIR	= exec/
 SRC_EXEC		= exec_general.c exec_builtin.c

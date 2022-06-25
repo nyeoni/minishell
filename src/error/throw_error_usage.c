@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   throw_error_usage.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/04 18:20:37 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/25 23:03:01 by hannkim          ###   ########.fr       */
+/*   Created: 2022/06/25 19:58:57 by hannkim           #+#    #+#             */
+/*   Updated: 2022/06/25 21:55:02 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*
-	Invalid option -> exit_code = EXIT_FAILURE
-	Ignore arguments -> exit_code = EXIT_SUCCESS
+	print usage
+	bash: "cmd": --: invalid option 
+	"cmd": usage: "cmd" no option
 */
-int	ft_pwd(char **argv)
+int	throw_error_usage(char *cmd, char *argv)
 {
-	char	*cwd;
-
-	if (*(argv + 1) && check_option(*(argv + 1)) == EXIT_FAILURE)
-		return (throw_error_usage("pwd", *(argv + 1)));
-	cwd = getcwd(NULL, 0);
-	if (!cwd)
-		return (throw_error("pwd", NULL, strerror(errno)));
-	ft_putstr_fd(cwd, STDOUT_FILENO);
+	ft_putstr_fd("bash: ", STDOUT_FILENO);
+	ft_putstr_fd(cmd, STDOUT_FILENO);
+	ft_putstr_fd(": ", STDOUT_FILENO);
+	write(STDOUT_FILENO, argv, 2);
+	ft_putstr_fd(": invalid option\n", STDOUT_FILENO);
+	ft_putstr_fd(cmd, STDOUT_FILENO);
+	ft_putstr_fd(": usage: ", STDOUT_FILENO);
+	ft_putstr_fd(cmd, STDOUT_FILENO);
 	ft_putstr_fd("\n", STDOUT_FILENO);
-	free(cwd);
-	return (EXIT_SUCCESS);
+	return (EXIT_FAILURE);
 }

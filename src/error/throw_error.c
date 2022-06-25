@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   throw_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:59:10 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/24 02:42:14 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/25 16:24:47 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
    argv: command argv
    err: error message
 */
-void	throw_error(char *cmd, char *argv, char *err)
+int	throw_error(char *cmd, char *argv, char *err)
 {
 	ft_putstr_fd("blackhole-shell: ", STDERR_FILENO);
 	ft_putstr_fd(cmd, STDERR_FILENO);
@@ -30,4 +30,5 @@ void	throw_error(char *cmd, char *argv, char *err)
 	}
 	ft_putstr_fd(err, STDERR_FILENO);
 	ft_putstr_fd("\n", STDERR_FILENO);
+	return (EXIT_FAILURE);
 }

@@ -6,12 +6,13 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:13 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/24 23:18:31 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/25 22:46:19 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+// TODO : -n -n -n 연속 option 처리하기
 static int	check_echo_option(char *option)
 {
 	int	flag;
@@ -35,7 +36,7 @@ int	ft_echo(char **argv)
 {
 	int	flag;
 
-	flag = check_option(++argv);
+	flag = check_echo_option(*(argv + 1));
 	if (flag)
 		argv++;
 	while (argv)
