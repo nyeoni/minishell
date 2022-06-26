@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/25 20:00:13 by hannkim          ###   ########.fr        #
+#    Updated: 2022/06/26 18:34:40 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,12 +27,12 @@ LIBFT_DIR 		= libft/
 LIBFT_FLAGS		= -L ./$(LIBFT_DIR) -lft
 
 # hannkim
-LIB_DIR			= /opt/homebrew/Cellar/readline/8.1.2/lib
-LIB_HEADER		= /opt/homebrew/Cellar/readline/8.1.2/include
+# LIB_DIR			= /opt/homebrew/Cellar/readline/8.1.2/lib
+# LIB_HEADER		= /opt/homebrew/Cellar/readline/8.1.2/include
 
 # nkim
-# LIB_DIR			= /usr/local/opt/readline/lib
-# LIB_HEADER		= /usr/local/opt/readline/include
+LIB_DIR			= /usr/local/opt/readline/lib
+LIB_HEADER		= /usr/local/opt/readline/include
 
 LIB_FLAGS		= -lreadline -L $(LIB_DIR) -I $(LIB_HEADER)
 
@@ -49,17 +49,23 @@ SRC_ERROR_DIR	= error/
 SRC_ERROR		= throw_error.c throw_error_env.c throw_error_exit.c \
 							throw_error_usage.c
 
-SRC_ENV_DIR	= env/
-SRC_ENV		= env_list.c env_utils.c
+SRC_ENV_DIR		= env/
+SRC_ENV			= env_list.c env_utils.c
 
-SRC_FORK_DIR	= fork/
-SRC_FORK		= processor.c
+SRC_PROCESS_DIR	= subshell/
+SRC_PROCESS		= wait_subshell.c create_subshell.c
+
+SRC_REDIRECT_DIR= redirect/
+SRC_REDIRECT	= redirect_in_file.c redirect_out_file.c redirect_append_file.c redirect_heredoc.c
+
+SRC_MANAGER_DIR	= manager/
+SRC_MANAGER		=
 
 SRC_TEST_DIR	= __test__/
 SRC_TEST		= test_token.c test_ast.c test_builtin.c
 
 SRC_EXEC_DIR	= exec/
-SRC_EXEC		= exec_general.c exec_builtin.c
+SRC_EXEC		= exec_ast.c exec_general.c exec_builtin.c
 
 SRC_SIGNAL_DIR	= signal/
 SRC_SIGNAL		= check_signal.c
@@ -70,6 +76,8 @@ SRC_UTILS		= ft_isspace.c ft_exit_eof.c
 SRC				= main.c \
 					$(addprefix $(SRC_PARSER_DIR), $(SRC_PARSER)) \
 					$(addprefix $(SRC_BUILTIN_DIR), $(SRC_BUILTIN)) \
+					$(addprefix $(SRC_REDIRECT_DIR), $(SRC_REDIRECT)) \
+					$(addprefix $(SRC_PROCESS_DIR), $(SRC_PROCESS)) \
 					$(addprefix $(SRC_ERROR_DIR), $(SRC_ERROR)) \
 					$(addprefix $(SRC_UTILS_DIR), $(SRC_UTILS)) \
 					$(addprefix $(SRC_ENV_DIR), $(SRC_ENV)) \
