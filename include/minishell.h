@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/25 17:01:36 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/26 18:28:55 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 # include "ast.h"
 # include "parser.h"
+# include "subshell.h"
+# include "redirect.h"
 # include "builtin.h"
 # include "error.h"
 
@@ -33,6 +35,8 @@
 # define SUCCESS_FLAG 0
 # define TRUE 1
 # define FALSE 0
+# define READ 0
+# define WRITE 1
 
 # define PS1 "\e[0;95mblackhole-shell$ \e[0m"
 # define PS2 "> "
@@ -50,9 +54,13 @@ typedef struct s_manager
 	char			*command_line;
 	int				rc;
 	int				exit_code;
+	int				pipe_fd[2];
 }					t_manager;
 
 extern t_manager	g_manager;
+
+/* MANAGER */
+void				set_exit_code(int status);
 
 /* UTILS */
 int					ft_isspace(int c);
@@ -75,7 +83,7 @@ void				free_env(void);
 /* EXEC */
 int					exec_builtin(char **argv);
 int					exec_general(char **argv);
-void				exec_ast(t_ast *ast);
+int					exec_ast(t_ast *ast);
 
 /* SIGNAL */
 void				ft_exit_eof(char *command_line);

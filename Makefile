@@ -6,7 +6,7 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/26 18:34:40 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/26 18:36:14 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,8 +52,8 @@ SRC_ERROR		= throw_error.c throw_error_env.c throw_error_exit.c \
 SRC_ENV_DIR		= env/
 SRC_ENV			= env_list.c env_utils.c
 
-SRC_PROCESS_DIR	= subshell/
-SRC_PROCESS		= wait_subshell.c create_subshell.c
+SRC_SUBSHELL_DIR= subshell/
+SRC_SUBSHELL	= wait_subshell.c create_subshell.c
 
 SRC_REDIRECT_DIR= redirect/
 SRC_REDIRECT	= redirect_in_file.c redirect_out_file.c redirect_append_file.c redirect_heredoc.c
@@ -77,7 +77,7 @@ SRC				= main.c \
 					$(addprefix $(SRC_PARSER_DIR), $(SRC_PARSER)) \
 					$(addprefix $(SRC_BUILTIN_DIR), $(SRC_BUILTIN)) \
 					$(addprefix $(SRC_REDIRECT_DIR), $(SRC_REDIRECT)) \
-					$(addprefix $(SRC_PROCESS_DIR), $(SRC_PROCESS)) \
+					$(addprefix $(SRC_SUBSHELL_DIR), $(SRC_SUBSHELL)) \
 					$(addprefix $(SRC_ERROR_DIR), $(SRC_ERROR)) \
 					$(addprefix $(SRC_UTILS_DIR), $(SRC_UTILS)) \
 					$(addprefix $(SRC_ENV_DIR), $(SRC_ENV)) \
