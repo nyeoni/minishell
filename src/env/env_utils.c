@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 12:23:16 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/24 16:47:28 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/26 15:32:20 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+// TODO : $? -> exit_code 반환
 t_env	*get_env(char *identifier)
 {
 	t_env				*ptr;
