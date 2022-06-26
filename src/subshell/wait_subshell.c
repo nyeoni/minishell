@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wait_children.c                                    :+:      :+:    :+:   */
+/*   wait_subshell.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 21:44:51 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/26 18:21:19 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/26 21:09:33 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,17 @@ void	set_exit_code(int status)
 	}
 	else
 		g_manager.exit_code = EXIT_FAILURE;
-	// printf("exit_code: %d\n", g_manager.exit_code);
 }
 
 void	wait_subshell(pid_t last_pid)
 {
-	pid_t pid;
-	int status;
+	pid_t	pid;
+	int		status;
 
 	pid = 0;
 	while (pid != ERROR_FLAG)
 	{
 		pid = waitpid(-1, &status, WUNTRACED);
-		// printf("...finish waiting %d\n", pid);
 		if (pid == last_pid)
 			set_exit_code(status);
 	}
