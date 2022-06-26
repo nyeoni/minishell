@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/26 21:59:47 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/26 22:13:31 by hannkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= minishell
 CC 				= cc
 ifdef DEBUG
+	# CFLAGS		= -g3
 	CFLAGS		= -g3 -fsanitize=address
 else
 	CFLAGS 		= -Wall -Wextra -Werror
@@ -27,12 +28,12 @@ LIBFT_DIR 		= libft/
 LIBFT_FLAGS		= -L ./$(LIBFT_DIR) -lft
 
 # hannkim
-# LIB_DIR			= /opt/homebrew/Cellar/readline/8.1.2/lib
-# LIB_HEADER		= /opt/homebrew/Cellar/readline/8.1.2/include
+LIB_DIR			= /opt/homebrew/Cellar/readline/8.1.2/lib
+LIB_HEADER		= /opt/homebrew/Cellar/readline/8.1.2/include
 
 # nkim
-LIB_DIR			= /usr/local/opt/readline/lib
-LIB_HEADER		= /usr/local/opt/readline/include
+# LIB_DIR			= /usr/local/opt/readline/lib
+# LIB_HEADER		= /usr/local/opt/readline/include
 
 LIB_FLAGS		= -lreadline -L $(LIB_DIR) -I $(LIB_HEADER)
 
@@ -62,7 +63,7 @@ SRC_MANAGER_DIR	= manager/
 SRC_MANAGER		=
 
 SRC_TEST_DIR	= __test__/
-SRC_TEST		= test_token.c test_ast.c test_builtin.c
+SRC_TEST		= test_token.c test_ast.c test_builtin.c test_general.c
 
 SRC_EXEC_DIR	= exec/
 SRC_EXEC		= exec_ast.c exec_general.c exec_builtin.c \

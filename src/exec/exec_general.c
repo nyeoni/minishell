@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_general.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:00:00 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/26 21:09:50 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/26 22:12:12 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static char	*find_file(char *cmd, char **path)
 {
 	char		*filename;
 	char		*tmp;
-	struct stat	*buf;
+	struct stat	buf;
 	int			i;
 
 	i = 0;
@@ -67,7 +67,7 @@ static char	*find_file(char *cmd, char **path)
 		tmp = ft_strjoin(path[i], "/");
 		filename = ft_strjoin(tmp, cmd);
 		free(tmp);
-		if (stat(filename, buf) != -1)
+		if (stat(filename, &buf) != -1)
 			return (filename);
 		free(filename);
 		i++;
@@ -86,6 +86,7 @@ int	exec_general(char **argv)
 
 	path = ft_split(get_env("PATH")->value, ':');
 	filename = find_file(argv[0], path);
+	printf("filename : %s\n", filename);
 	envp = get_string_env();
 	i = 0;
 	while (path[i])
