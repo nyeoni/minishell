@@ -6,7 +6,7 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/26 18:36:14 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/26 21:59:47 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,9 @@ SRC_TEST_DIR	= __test__/
 SRC_TEST		= test_token.c test_ast.c test_builtin.c
 
 SRC_EXEC_DIR	= exec/
-SRC_EXEC		= exec_ast.c exec_general.c exec_builtin.c
+SRC_EXEC		= exec_ast.c exec_general.c exec_builtin.c \
+					exec_subshell.c exec_single_command.c \
+					exec_simple_command.c exec_io_redirect.c
 
 SRC_SIGNAL_DIR	= signal/
 SRC_SIGNAL		= check_signal.c

@@ -6,30 +6,33 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/26 18:28:55 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/26 21:58:32 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+/* CUSTOM HEADER FILE */
 # include "../libft/libft.h"
-
 # include "ast.h"
-# include "parser.h"
-# include "subshell.h"
-# include "redirect.h"
 # include "builtin.h"
 # include "error.h"
+# include "exec.h"
+# include "parser.h"
+# include "redirect.h"
+# include "subshell.h"
 
+/* BUILTIN HEADER FILE */
 # include <stdio.h>
-# include <readline/readline.h>
 # include <readline/history.h>
+# include <readline/readline.h>
+# include <signal.h>
 # include <string.h>
 # include <sys/errno.h>
 # include <sys/stat.h>
-# include <signal.h>
 
+/* MECRO VARIABLES */
 # define NULL_LINE 0;
 # define ERROR_FLAG -1
 # define SUCCESS_FLAG 0
@@ -41,6 +44,7 @@
 # define PS1 "\e[0;95mblackhole-shell$ \e[0m"
 # define PS2 "> "
 
+/* STRUCUTER */
 typedef struct s_env
 {
 	char			*name;
@@ -65,12 +69,6 @@ void				set_exit_code(int status);
 /* UTILS */
 int					ft_isspace(int c);
 
-/* PARSER */
-
-/* BUILTIN */
-
-/* ERROR */
-
 /* ENV */
 t_env				*get_env(char *identifier);
 int					valid_env_name(char *identifier);
@@ -79,11 +77,6 @@ char				*get_env_value(char *argv);
 void				add_env(char *name, char *value);
 void				remove_env(t_env *target);
 void				free_env(void);
-
-/* EXEC */
-int					exec_builtin(char **argv);
-int					exec_general(char **argv);
-int					exec_ast(t_ast *ast);
 
 /* SIGNAL */
 void				ft_exit_eof(char *command_line);
