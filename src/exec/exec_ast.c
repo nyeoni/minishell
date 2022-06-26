@@ -6,110 +6,131 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:40:07 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/24 22:36:37 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/26 18:25:08 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec_redirects(t_redirects *redirects)
+int		exec_io_redirect(t_io_redirect *io_redirect)
 {
-	if (redirects->redirects)
-		exec_ast(redirects->redirects);
+	printf("exec_io_redirect\n");
+	if (io_redirect->redirect_op == R_IN)
+		return (redirect_in_file(io_redirect->file_path));
+	else if (io_redirect->redirect_op == R_OUT)
+		return (redirect_out_file(io_redirect->file_path));
+	else if (io_redirect->redirect_op == R_HEREDOC)
+		return (redirect_heredoc(io_redirect->file_path));
+	else if (io_redirect->redirect_op == R_APPEND)
+		return (redirect_append_file(io_redirect->file_path));
+	else
+		return (ERROR_FLAG);
+}
+
+int		exec_redirects(t_redirects *redirects)
+{
+	int flag;
+
+	flag = SUCCESS_FLAG;
+	printf("exec_redirects\n");
 	if (redirects->io_redirect)
-		;
+		flag = exec_io_redirect(redirects->io_redirect);
+	if (flag != SUCCESS_FLAG)
+		return (ERROR_FLAG);
+	if (redirects->redirects)
+		flag = exec_ast(redirects->redirects);
+	return (flag);
+}
+
+int		exec_simple_command(t_simple_command *simple_command)
+{
+	int exit_code;
+
+	if (is_builtin(simple_command->exec_path))
+		exit_code = exec_builtin(simple_command->argv);
+	else
+		exit_code = exec_general(simple_command->argv);
+	g_manager.exit_code = exit_code;
+	if (exit_code == EXIT_SUCCESS)
+		return (SUCCESS_FLAG);
+	else
+		return (ERROR_FLAG);
 }
 
 // TODO: command->reidrects 가 있을때 heredoc 먼저 처리하는 로직 추가
-// return exit_code
-void	exec_command(t_command *command)
+int		exec_command(t_command *command)
 {
+	int flag;
+
+	flag = SUCCESS_FLAG;
+	// printf("exec_command\n");
 	if (command->redirects)
-	{
-		// heredoc first
-		exec_ast(command->redirects);
-	}
+		flag = exec_ast(command->redirects);
+	if (flag != SUCCESS_FLAG)
+		return (ERROR_FLAG);
 	if (command->simple_command)
-			exit(g_manager.exit_code);
-		;
+		flag = exec_simple_command(command->simple_command);
+	return (flag);
 }
 
-void	exec_pipe(t_pipe_line *pipe_line)
 // 2개이상의 pipe 가 있는 명령어 실행하는 함수
-{
-	// 재귀함수 처리
-
-	// while 수만큼 exec_command 하면 되지 않나?
-
-
-	// 1. pipe_line->command 먼저 처리
-	// pipe 생성 pipe_fd 생성
-	// pid = fork()
-	// if child
-	// close pipe_fd[wr]
-	// dup2 pipe_fd[wr] -> stdout
-	// close pipe_fd[rd]
-	// exec_ast(pipe_line->command);
-	//
-}
-
-void	exec_single_command(t_command *command)
+int		exec_subshell(t_pipe_line *pipe_line)
 {
 	pid_t pid;
-	int status;
+
+	pid = create_subshell(pipe_line);
+	if (pid == ERROR_FLAG)
+		return (ERROR_FLAG);
+	if (pipe_line->pipe_line
+		&& pipe_line->pipe_line->type == AST_PIPELINE)
+		exec_subshell(pipe_line->pipe_line->data);
+	else
+		wait_subshell(pid);
+	return (SUCCESS_FLAG);
+}
+
+int		exec_single_command(t_command *command)
+{
+	pid_t pid;
 
 	if (is_builtin(command->simple_command->exec_path))
+		return (exec_command(command));
+
+	pid = fork();
+	if (pid < 0)
+		throw_error_exit("fork", strerror(errno), EXIT_FAILURE);
+	else if (pid == 0)
 	{
-		// 여기서는 exit_code global_variable 로 관리
 		exec_command(command);
+		exit(g_manager.exit_code);
 	}
 	else
 	{
-		pid = fork();
-		if (pid == 0)
-		{
-			exec_command(command);
-		}
-		else
-		{
-			waitpid(pid, &status, )
-		}
-		// 여기서는 exit(exit_code);
-		// fork
+		wait_subshell(pid);
 	}
+	return (SUCCESS_FLAG);
 }
 
-void	exec_pipe_line(t_pipe_line *pipe_line)
+int		exec_pipe_line(t_pipe_line *pipe_line)
 {
 	if (pipe_line->pipe_line)
-		exec_pipe(pipe_line);
-	else if (pipe_line->command)
-		exec_single_command(pipe_line->command->data);
+		return (exec_subshell(pipe_line));
+	else if (pipe_line->command
+			&& pipe_line->command->type == AST_COMMAND)
+		return (exec_single_command(pipe_line->command->data));
 	else
 		printf("empty pipeline\n");
+	return (ERROR_FLAG);
 }
 
-/*
-	void	exec_ast(t_ast *ast)
-	{
-		if (ast->type == AST_PIPELINE)
-			exec_pipe_line(ast->data);
-		else if (ast->type == AST_COMMAND)
-			exec_command(ast->data);
-		else if (ast->type == AST_REDIRECTS)
-			exec_redirects(ast->data);
-		else
-			return ; // 여기에 NULL인게 처리됨
-	}
-*/
-void	exec_ast(t_ast *ast)
+int		exec_ast(t_ast *ast)
 {
 	if (ast->type == AST_PIPELINE)
-		exec_pipe_line(ast->data);
+		return (exec_pipe_line(ast->data));
 	else if (ast->type == AST_COMMAND)
-		exec_command(ast->data);
+		return (exec_command(ast->data));
 	else if (ast->type == AST_REDIRECTS)
-		exec_redirects(ast->data);
-	else // AST_NULL 인지 확인하기
-		printf("no ast type\n");
+		return (exec_redirects(ast->data));
+	else
+		return (ERROR_FLAG);
 }

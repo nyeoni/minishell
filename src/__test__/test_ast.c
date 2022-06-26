@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 19:23:17 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/25 18:42:58 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/26 15:46:08 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,5 @@ void	test_ast(t_ast *ast)
 		if (pipe_line->pipe_line)
 			test_ast(pipe_line->pipe_line);
 	}
+	printf("*****************\n");
 }
