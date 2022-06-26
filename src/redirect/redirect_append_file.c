@@ -6,15 +6,15 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 20:01:20 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/26 18:31:34 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/26 21:12:44 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int redirect_append_file(char *file_path)
+int	redirect_append_file(char *file_path)
 {
-	int fd;
+	int	fd;
 
 	fd = open(file_path, O_WRONLY | O_CREAT | O_APPEND, 00644);
 	if (fd < 0)
