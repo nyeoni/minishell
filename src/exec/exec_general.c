@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_general.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:00:00 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/24 22:56:22 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/26 21:09:50 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ int	exec_general(char **argv)
 		i++;
 	}
 	free(path);
-	signal(SIGQUIT, SIG_DFL);
 	exit_code = execve(filename, argv, envp);
 	return (exit_code);
 }

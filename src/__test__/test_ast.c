@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 19:23:17 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/23 17:04:22 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/26 22:07:45 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,18 @@ void	print_simple_command(t_simple_command *simple_command)
 
 void	print_io_redirect(t_io_redirect *io_redirect)
 {
+	char	*redirect_op;
+
 	printf("===io_redirect===\n");
-	printf("redirect_op: %s\n", io_redirect->redirect_op);
+	if (io_redirect->redirect_op == R_IN)
+		redirect_op = "<";
+	else if (io_redirect->redirect_op == R_OUT)
+		redirect_op = ">";
+	else if (io_redirect->redirect_op == R_HEREDOC)
+		redirect_op = "<<";
+	else if (io_redirect->redirect_op == R_APPEND)
+		redirect_op = ">>";
+	printf("redirect_op: %s\n", redirect_op);
 	printf("argv: %s\n", io_redirect->file_path);
 }
 
@@ -77,4 +87,5 @@ void	test_ast(t_ast *ast)
 		if (pipe_line->pipe_line)
 			test_ast(pipe_line->pipe_line);
 	}
+	printf("*****************\n");
 }
