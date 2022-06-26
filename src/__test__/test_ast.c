@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 19:23:17 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/26 15:46:08 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/26 22:07:45 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	print_simple_command(t_simple_command *simple_command)
 
 void	print_io_redirect(t_io_redirect *io_redirect)
 {
-	char *redirect_op;
+	char	*redirect_op;
 
 	printf("===io_redirect===\n");
 	if (io_redirect->redirect_op == R_IN)
