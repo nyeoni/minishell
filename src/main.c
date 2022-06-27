@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/27 18:09:57 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/27 18:16:27 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	main(int argc, char **argv, char **envp)
 	{
 		check_signal();
 		command_line = readline(PS1);
-		printf("after cmd line : %s\n", command_line);
 		ft_exit_eof(command_line);
 		if (*command_line)
 			add_history(command_line);

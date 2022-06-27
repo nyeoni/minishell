@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_subshell.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 18:24:53 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/27 18:00:40 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/27 20:24:56 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	connect_pipe(int pipe_fd[2], int pipe_type)
 }
 
 // TODO: fork 위에 signal 처리??
+// printf("pipe_rd: %d, pipe_wr: %d\n", pipe_fd[READ], pipe_fd[WRITE]);
 pid_t	create_subshell(t_pipe_line *pipe_line)
 {
 	static int	pipe_fd[2];
@@ -38,7 +39,6 @@ pid_t	create_subshell(t_pipe_line *pipe_line)
 		throw_error("pipe", NULL, strerror(errno));
 		return (ERROR_FLAG);
 	}
-	printf("pipe_rd: %d, pipe_wr: %d\n", pipe_fd[READ], pipe_fd[WRITE]);
 	reset_signal();
 	pid = fork();
 	if (pid < 0)

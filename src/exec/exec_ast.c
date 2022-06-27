@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:40:07 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/26 21:32:08 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/27 20:21:21 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,26 @@ int	exec_command(t_command *command)
 
 int	exec_pipe_line(t_pipe_line *pipe_line)
 {
+	int	flag;
+	int	backup_fd;
+
+	flag = SUCCESS_FLAG;
 	if (pipe_line->pipe_line)
-		return (exec_subshell(pipe_line));
+	{
+		backup_stdin_fd(&backup_fd);
+		flag = exec_subshell(pipe_line);
+		reset_stdin_fd(backup_fd);
+	}
 	else if (pipe_line->command && pipe_line->command->type == AST_COMMAND)
-		return (exec_single_command(pipe_line->command->data));
+	{
+		flag = exec_single_command(pipe_line->command->data);
+	}
 	else
+	{
+		flag = ERROR_FLAG;
 		printf("empty pipeline\n");
-	return (ERROR_FLAG);
+	}
+	return (flag);
 }
 
 int	exec_ast(t_ast *ast)
