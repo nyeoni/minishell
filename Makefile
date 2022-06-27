@@ -3,21 +3,40 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/26 22:13:31 by hannkim          ###   ########.fr        #
+#    Updated: 2022/06/27 18:03:22 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= minishell
 CC 				= cc
+
 ifdef DEBUG
-	# CFLAGS		= -g3
 	CFLAGS		= -g3 -fsanitize=address
+else ifdef LEAKS
+	CFLAGS		= -g
 else
 	CFLAGS 		= -Wall -Wextra -Werror
 endif
+
+ARCH := $(shell arch)
+GITUSER := $(USER)
+ifeq ($(GITUSER), chloek)
+	LIB_DIR		= /usr/local/opt/readline/lib
+	LIB_HEADER	= /usr/local/opt/readline/include
+else ifeq ($(GITUSER), hannkim)
+	LIB_DIR		= /opt/homebrew/Cellar/readline/8.1.2/lib
+	LIB_HEADER	= /opt/homebrew/Cellar/readline/8.1.2/include
+else ifeq ($(ARCH), i386)
+	LIB_DIR		= $(HOME)/.brew/opt/readline/lib
+	LIB_HEADER	= $(HOME)/.brew/opt/readline/include
+else ifeq ($(ARCH), arm64)
+	LIB_DIR		= /opt/homebrew/opt/readline/lib
+	LIB_HEADER	= /opt/homebrew/opt/readline/include
+endif
+
 AR				= ar rcs
 RM				= rm -f
 
@@ -27,21 +46,13 @@ SRCS_DIR		= ./src/
 LIBFT_DIR 		= libft/
 LIBFT_FLAGS		= -L ./$(LIBFT_DIR) -lft
 
-# hannkim
-LIB_DIR			= /opt/homebrew/Cellar/readline/8.1.2/lib
-LIB_HEADER		= /opt/homebrew/Cellar/readline/8.1.2/include
-
-# nkim
-# LIB_DIR			= /usr/local/opt/readline/lib
-# LIB_HEADER		= /usr/local/opt/readline/include
-
 LIB_FLAGS		= -lreadline -L $(LIB_DIR) -I $(LIB_HEADER)
 
 SRC_PARSER_DIR	= parser/
 SRC_PARSER		= lexical_analyzer.c syntax_analyzer.c token.c \
 					syntax_pipe_line.c syntax_command.c syntax_redirects.c \
 					syntax_simple_command.c syntax_io_redirect.c syntax_word.c \
-					get_combined_word.c
+					syntax_heredoc_word.c get_combined_word.c
 
 SRC_BUILTIN_DIR	= builtin/
 SRC_BUILTIN		= ft_echo.c ft_cd.c ft_pwd.c ft_export.c ft_unset.c \
@@ -120,3 +131,7 @@ re		: fclean all
 .PHONY	: debug
 debug	:
 	make DEBUG=1 all
+
+.PHONY	: leaks
+leaks	:
+	make LEAKS=1 all
