@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:00:00 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/26 22:12:12 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/27 15:58:54 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ int	exec_general(char **argv)
 
 	path = ft_split(get_env("PATH")->value, ':');
 	filename = find_file(argv[0], path);
-	printf("filename : %s\n", filename);
 	envp = get_string_env();
 	i = 0;
 	while (path[i])

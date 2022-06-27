@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:00:23 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/24 22:56:55 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/27 18:01:01 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,29 @@ static void	handle_sigint(int signum)
 	g_manager.exit_code = 1;
 }
 
+/* after parsing, before execute command */
+static void	reset_sigint(int signum)
+{
+	if (signum != SIGINT)
+		return ;
+	write(1, "\n", 1);
+}
+
+static void	reset_sigquit(int signum)
+{
+	if (signum != SIGQUIT)
+		return ;
+}
+
 /* SIGINT : ctrl + c, SIGQUIT : ctrl + \ */
 void	check_signal(void)
 {
 	signal(SIGINT, handle_sigint);
 	signal(SIGQUIT, SIG_IGN);
+}
+
+void	reset_signal(void)
+{
+	signal(SIGINT, reset_sigint);
+	signal(SIGQUIT, reset_sigquit);
 }

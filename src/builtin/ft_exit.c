@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:26 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/26 22:34:59 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/27 13:24:39 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,5 @@ void	ft_exit(char **argv)
 	free_env();
 	if (*(argv + 1))
 		exit_code = check_exit_arg(*(argv + 1));
-	printf("exit_code : %d\n", exit_code);
 	exit(exit_code);
 }
