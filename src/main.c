@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/06/27 17:59:49 by hannkim          ###   ########.fr       */
+=======
+/*   Updated: 2022/06/27 17:08:54 by nkim             ###   ########.fr       */
+>>>>>>> ea81541 (feat: Update exit_code special character parsing)
 /*                                                                            */
 /* ************************************************************************** */
 
