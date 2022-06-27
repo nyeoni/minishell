@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 18:24:53 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/27 17:05:43 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/27 18:00:40 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ pid_t	create_subshell(t_pipe_line *pipe_line)
 		return (ERROR_FLAG);
 	}
 	printf("pipe_rd: %d, pipe_wr: %d\n", pipe_fd[READ], pipe_fd[WRITE]);
-	reset_signal();		// signal!!
+	reset_signal();
 	pid = fork();
 	if (pid < 0)
 		throw_error_exit("fork", strerror(errno), EXIT_FAILURE);

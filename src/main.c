@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/27 17:20:48 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/27 17:59:49 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	main(int argc, char **argv, char **envp)
 			add_history(command_line);
 		init_manger(command_line);
 		ast = syntax_analyzer();
-		// test_ast(ast);
 		exec_ast(ast);
 		free(command_line);
 	}

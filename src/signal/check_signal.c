@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:00:23 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/27 17:03:34 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/27 18:01:01 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static void	reset_sigquit(int signum)
 {
 	if (signum != SIGQUIT)
 		return ;
-	// write(1, "\n", 1);
 }
 
 /* SIGINT : ctrl + c, SIGQUIT : ctrl + \ */
