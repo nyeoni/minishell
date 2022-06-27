@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirect.h                                         :+:      :+:    :+:   */
+/*   backup_stdin_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/26 18:27:34 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/27 20:18:36 by nkim             ###   ########.fr       */
+/*   Created: 2022/06/27 18:29:57 by nkim              #+#    #+#             */
+/*   Updated: 2022/06/27 19:14:48 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef REDIRECT_H
-# define REDIRECT_H
+#include "minishell.h"
 
-# include <fcntl.h>
-# include <unistd.h>
-
-int	redirect_in_file(char *file_path);
-int	redirect_out_file(char *file_path);
-int	redirect_append_file(char *file_path);
-int	redirect_heredoc(char *end_text);
-int	backup_stdin_fd(int *fd);
-int	reset_stdin_fd(int fd);
-
-#endif
+int	backup_stdin_fd(int *fd)
+{
+	*fd = dup(STDIN_FILENO);
+	if (*fd == -1)
+		return (throw_error("dup", NULL, strerror(errno)));
+	return (SUCCESS_FLAG);
+}
