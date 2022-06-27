@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/26 22:38:00 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/27 17:20:48 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,18 @@ int	main(int argc, char **argv, char **envp)
 		exit(EXIT_FAILURE);
 	}
 	initiate_env(envp);
-	check_signal();
 	while (1)
 	{
+		check_signal();
 		command_line = readline(PS1);
+		printf("after cmd line : %s\n", command_line);
 		ft_exit_eof(command_line);
 		if (*command_line)
 			add_history(command_line);
 		init_manger(command_line);
 		ast = syntax_analyzer();
-		test_ast(ast);
+		// test_ast(ast);
 		exec_ast(ast);
-		test_builtin();
 		free(command_line);
 	}
 	return (0);
