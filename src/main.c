@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 21:09:08 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/28 22:14:15 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ void	init_env(char **envp)
 	}
 }
 
+void	free_minishell(t_ast *ast)
+{
+	free_ast(ast);
+	free(g_manager.command_line);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	int		std_fd[3];
@@ -56,9 +62,9 @@ int	main(int argc, char **argv, char **envp)
 			ast = syntax_analyzer();
 			if (g_manager.exit_code == EXIT_SUCCESS)
 				exec_ast(ast);
+			free_minishell(ast);
+			reset_std_fd(std_fd);
 		}
-		free(command_line);
-		reset_std_fd(std_fd);
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }

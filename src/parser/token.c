@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:36:17 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 20:25:49 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 21:59:06 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_token	get_token(void)
 	token.type = T_NULL;
 	token.value = NULL;
 	flag = lexical_analyzer(&token, &begin, &end);
-	if (g_manager.rc >= ft_strlen(g_manager.command_line))
+	if (g_manager.rc >= (int)ft_strlen(g_manager.command_line))
 		return (token);
 	if (flag == ERROR_FLAG)
 		g_manager.exit_code = EXIT_SYNTAXERR;

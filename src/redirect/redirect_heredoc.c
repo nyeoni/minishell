@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 20:01:20 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/26 21:12:47 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 22:03:07 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 int	redirect_heredoc(char *end_text)
 {
+	end_text = NULL;
 	return (SUCCESS_FLAG);
 }
