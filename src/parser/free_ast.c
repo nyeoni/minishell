@@ -6,28 +6,11 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:40:12 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 21:50:33 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 22:12:16 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	free_io_redirect(t_io_redirect *io_redirect)
-{
-	if (io_redirect->file_path)
-		free(io_redirect->file_path);
-	free(io_redirect);
-}
-
-void	free_simple_command(t_simple_command *simple_command)
-{
-	int	ac;
-
-	ac = 0;
-	while (simple_command->argv[ac])
-		free(simple_command->argv[ac++]);
-	free(simple_command);
-}
 
 void	free_redirects(t_redirects *redirects)
 {

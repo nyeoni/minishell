@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_general.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:00:00 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 21:12:00 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/28 22:13:30 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ int	exec_general(char **argv)
 	char	**path;
 	char	*filename;
 	int		i;
-	int		exit_code;
 
 	path = ft_split(get_env("PATH")->value, ':');
 	filename = find_file(*argv, path);
