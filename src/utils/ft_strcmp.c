@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirect.h                                         :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/26 18:27:34 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 02:19:34 by hannkim          ###   ########.fr       */
+/*   Created: 2022/06/29 02:38:41 by hannkim           #+#    #+#             */
+/*   Updated: 2022/06/29 02:39:42 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef REDIRECT_H
-# define REDIRECT_H
+#include "minishell.h"
 
-# include <fcntl.h>
-# include <stdio.h>
-# include <unistd.h>
+int	ft_strcmp(char *s1, char *s2)
+{
+	size_t	n;
+	size_t	s1_len;
+	size_t	s2_len;
 
-int	redirect_in_file(char *file_path);
-int	redirect_out_file(char *file_path);
-int	redirect_append_file(char *file_path);
-int	redirect_heredoc(char *end_text);
-int	backup_std_fd(int std_fd[3]);
-int	reset_std_fd(int std_fd[3]);
-
-#endif
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	if (s1_len > s2_len)
+		n = s1_len;
+	else
+		n = s2_len;
+	return (ft_strncmp(s1, s2, n));
+}

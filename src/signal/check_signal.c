@@ -6,14 +6,14 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:00:23 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 00:20:32 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/29 02:24:30 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /* rl_replace_line : buffer flush */
-static void	handle_sigint(int signum)
+void	handle_sigint(int signum)
 {
 	if (signum != SIGINT)
 		return ;

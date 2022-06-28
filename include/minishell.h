@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/29 16:38:32 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/29 16:38:55 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void				set_exit_code(int status);
 
 /* UTILS */
 int					ft_isspace(int c);
+int					ft_strcmp(char *s1, char *s2);
 
 /* ENV */
 t_env				*get_env(char *identifier);
@@ -85,6 +86,6 @@ void				free_env(void);
 void				ft_exit_eof(char *command_line);
 void				check_signal(void);
 void				reset_signal(void);
-// void				handle_sigint(int signum);
+void				handle_sigint(int signum);
 
 #endif
