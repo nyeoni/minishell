@@ -12,7 +12,7 @@ jobs:
       - name: Update Homebrew
         run: |
           brew update --preinstall
-          cat "$(brew --repository)/Library/Taps/homebrew/homebrew-core/Formula/readline" > .github/brew-formulae
+          cat "$(brew --repository)/Library/Taps/homebrew/homebrew-core/Formula/readline.rb" > .github/brew-formulae
       - name: Cache readline
         uses: actions/cache@v2
         with:
