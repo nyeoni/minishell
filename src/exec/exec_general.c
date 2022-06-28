@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:00:00 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/27 15:58:54 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/28 21:12:00 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,24 @@ static char	*find_file(char *cmd, char **path)
 	return (ft_strdup(cmd));
 }
 
+static int	error_execve(char *argv)
+{
+	int	exit_code;
+
+	exit_code = EXIT_FAILURE;
+	if (errno == ENOENT)
+	{
+		exit_code = 127;
+		throw_error(argv, NULL, "command not found");
+	}
+	else if (errno == EACCES)
+	{
+		exit_code = 126;
+		throw_error(argv, NULL, strerror(errno));
+	}
+	return (exit_code);
+}
+
 /* error -> envp, filename free? -> exit? */
 int	exec_general(char **argv)
 {
@@ -85,7 +103,7 @@ int	exec_general(char **argv)
 	int		exit_code;
 
 	path = ft_split(get_env("PATH")->value, ':');
-	filename = find_file(argv[0], path);
+	filename = find_file(*argv, path);
 	envp = get_string_env();
 	i = 0;
 	while (path[i])
@@ -94,6 +112,6 @@ int	exec_general(char **argv)
 		i++;
 	}
 	free(path);
-	exit_code = execve(filename, argv, envp);
-	return (exit_code);
+	execve(filename, argv, envp);
+	return (error_execve(*argv));
 }
