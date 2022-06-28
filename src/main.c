@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 20:26:34 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 21:09:08 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,13 @@ int	main(int argc, char **argv, char **envp)
 		command_line = readline(PS1);
 		ft_exit_eof(command_line);
 		if (*command_line)
+		{
 			add_history(command_line);
-		init_manger(command_line);
-		ast = syntax_analyzer();
-		if (g_manager.exit_code == EXIT_SUCCESS)
-			exec_ast(ast);
+			init_manger(command_line);
+			ast = syntax_analyzer();
+			if (g_manager.exit_code == EXIT_SUCCESS)
+				exec_ast(ast);
+		}
 		free(command_line);
 		reset_std_fd(std_fd);
 	}
