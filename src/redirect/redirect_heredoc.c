@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 20:01:20 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 02:46:39 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/29 02:47:16 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,12 @@ int	redirect_heredoc(char *end_text, char *cmd)
 	{
 		line = readline("> ");
 		if (!line || !ft_strcmp(line, end_text))
-		{
-			if (dup2(fd, STDIN_FILENO) == -1)
-				throw_error_exit("dup", strerror(errno), EXIT_FAILURE);
-			free(line);
-			return (SUCCESS_FLAG);
-		}
+			break ;
 		ft_putendl_fd(line, fd);
 		free(line);
 	}
+	if (dup2(fd, STDIN_FILENO) == -1)
+		throw_error_exit("dup", strerror(errno), EXIT_FAILURE);
+	free(line);
+	return (SUCCESS_FLAG);
 }
