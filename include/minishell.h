@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/27 16:56:59 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/28 14:17:20 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
 # include "subshell.h"
 
 /* BUILTIN HEADER FILE */
-# include <stdio.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
+# include <stdio.h>
 # include <string.h>
 # include <sys/errno.h>
 # include <sys/stat.h>
@@ -57,8 +57,8 @@ typedef struct s_manager
 	t_env			*env;
 	char			*command_line;
 	int				rc;
+	int				quote_error;
 	int				exit_code;
-	int				pipe_fd[2];
 }					t_manager;
 
 extern t_manager	g_manager;

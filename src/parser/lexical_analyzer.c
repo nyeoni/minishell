@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:11:59 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/24 17:41:57 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 17:20:42 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static void	get_quote(t_token *token, char **begin, char **end)
 	*end = ft_strchr(*begin + 1, **begin);
 	if (!*end)
 	{
-		printf("인용문이 닫히지 않았습니다!\n");
-		*end = *begin;
-		return ;
+		throw_error("syntax error", NULL, "unexpected end of file");
+		*end = g_manager.command_line + ft_strlen(g_manager.command_line) - 1;
+		g_manager.quote_error = 1;
 	}
 	else
 		(*end)++;
@@ -53,12 +53,14 @@ static void	get_redirect_op(t_token *token, char **begin, char **end)
 		(*end)++;
 }
 
-void	lexical_analyzer(t_token *token, char **begin, char **end)
+int	lexical_analyzer(t_token *token, char **begin, char **end)
 {
 	while (ft_isspace(g_manager.command_line[g_manager.rc]))
 		g_manager.rc++;
 	*begin = &g_manager.command_line[g_manager.rc];
 	*end = *begin;
+	if (g_manager.rc >= ft_strlen(g_manager.command_line))
+		return (ERROR_FLAG);
 	if ((**begin == U_DOUBLE_QUOTES || **begin == U_SINGLE_QUOTES))
 		get_quote(token, begin, end);
 	else if (**begin == U_IN || **begin == U_OUT)
@@ -67,4 +69,8 @@ void	lexical_analyzer(t_token *token, char **begin, char **end)
 		get_pipe(token, begin, end);
 	else
 		get_word(token, begin, end);
+	if (g_manager.quote_error)
+		return (ERROR_FLAG);
+	else
+		return (SUCCESS_FLAG);
 }

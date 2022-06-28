@@ -6,7 +6,7 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/27 20:19:29 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/28 00:13:28 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ SRC_BUILTIN		= ft_echo.c ft_cd.c ft_pwd.c ft_export.c ft_unset.c \
 							ft_env.c ft_exit.c is_builtin.c check_option.c
 SRC_ERROR_DIR	= error/
 SRC_ERROR		= throw_error.c throw_error_env.c throw_error_exit.c \
-							throw_error_usage.c
+					throw_error_usage.c throw_error_syntax.c
 
 SRC_ENV_DIR		= env/
 SRC_ENV			= env_list.c env_utils.c
