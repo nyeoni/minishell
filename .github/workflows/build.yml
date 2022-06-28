@@ -25,7 +25,12 @@ jobs:
         run: |
           env HOMEBREW_NO_AUTO_UPDATE=1 brew install readline
       - name: Export readline
-        run: brew info readline | grep export
-          $(brew info readline | grep export)
-      - name: make-build
+        shell: bash
+        run: |
+          brew info readline | grep export |
+          while read line
+          do
+            $(echo "$line" | cut -d ' ' -f2 >> $GITHUB_ENV)
+          done
+      - name: Build
         run: make
