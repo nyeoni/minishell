@@ -9,7 +9,23 @@ jobs:
     runs-on: macos-10.15
     steps:
       - uses: actions/checkout@v2
-      - name: find readline
-        run: $(brew info readline | grep export)
+      - name: Update Homebrew
+        run: |
+          brew update --preinstall
+          cat "$(brew --repository)/Library/Taps/homebrew/homebrew-core/Formula/readline" > .github/brew-formulae
+      - name: Cache readline
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/Library/Caches/Homebrew/readline
+            ~/Library/Caches/Homebrew/downloads/readline
+          key: brew-${{ hashFiles('.github/brew-formulae') }}
+          restore-keys: brew-
+      - name: Install readline
+        run: |
+          env HOMEBREW_NO_AUTO_UPDATE=1 brew install readline
+      - name: Export readline
+        run: brew info readline | grep export
+          $(brew info readline | grep export)
       - name: make-build
         run: make
