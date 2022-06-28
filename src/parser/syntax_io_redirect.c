@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:59:57 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/27 22:36:33 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 18:05:03 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ int	syntax_io_redirect(t_io_redirect **io_redirect)
 		(*io_redirect)->file_path = get_combined_heredoc_word();
 	else
 		(*io_redirect)->file_path = get_combined_word();
+	if (!(*io_redirect)->file_path)
+		return (ERROR_FLAG);
 	return (SUCCESS_FLAG);
 }

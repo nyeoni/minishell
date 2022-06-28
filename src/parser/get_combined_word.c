@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:54:25 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 16:30:49 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 18:05:44 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,16 @@
 char	*get_combined_heredoc_word(void)
 {
 	char	*combined_word;
+	char	*token;
 	char	*word;
 	char	*tmp;
 	char	next;
 
 	next = g_manager.command_line[g_manager.rc];
-	combined_word = syntax_heredoc_word(match(T_WORD));
+	token = match(T_WORD);
+	if (!token)
+		return (NULL);
+	combined_word = syntax_heredoc_word(token);
 	while (!ft_isspace(next) && fetch_token(GET).type == T_WORD)
 	{
 		next = g_manager.command_line[g_manager.rc];

@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:12:20 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 17:34:35 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 17:52:34 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ char	*match(t_type type)
 		return (token.value);
 	else
 		throw_error_syntax(token);
-	g_manager.exit_code = SYNTAX_ERR;
 	return (NULL);
 }
 
@@ -38,6 +37,7 @@ t_ast	*syntax_analyzer(void)
 	fetch_token(UPDATE);
 	if (fetch_token(GET).type == T_NULL)
 		return (NULL);
-	syntax_pipe_line(&ast);
+	if (syntax_pipe_line(&ast) == SUCCESS_FLAG)
+		g_manager.exit_code = EXIT_SUCCESS;
 	return (ast);
 }

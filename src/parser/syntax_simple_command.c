@@ -6,11 +6,37 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:58:37 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/27 21:58:21 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 18:18:42 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+/*
+   init_simple_command
+   initialize_simple_command structure
+   case 1) simple_command not allocated
+   case 2) simple_command already allocated
+*/
+static char	**init_simple_command(t_simple_command **simple_command, int *ac)
+{
+	char	**argv;
+
+	if (*simple_command == NULL)
+	{
+		*simple_command = ft_calloc(1, sizeof(t_simple_command));
+		(*simple_command)->exec_path = get_combined_word();
+		argv = ft_calloc((*ac) + 2, sizeof(char *));
+		argv[(*ac)++] = (*simple_command)->exec_path;
+	}
+	else
+	{
+		argv = (*simple_command)->argv;
+		while (argv[(*ac)])
+			(*ac)++;
+	}
+	return (argv);
+}
 
 /*
    syntax_simple_command
@@ -22,19 +48,7 @@ int	syntax_simple_command(t_simple_command **simple_command)
 	char	**argv;
 
 	ac = 0;
-	if (*simple_command == NULL)
-	{
-		*simple_command = ft_calloc(1, sizeof(t_simple_command));
-		(*simple_command)->exec_path = get_combined_word();
-		argv = ft_calloc(ac + 2, sizeof(char *));
-		argv[ac++] = (*simple_command)->exec_path;
-	}
-	else
-	{
-		argv = (*simple_command)->argv;
-		while (argv[ac])
-			ac++;
-	}
+	argv = init_simple_command(simple_command, &ac);
 	while (fetch_token(GET).type == T_WORD)
 	{
 		argv = ft_ptrrealloc(argv, ac, ac + 2);
