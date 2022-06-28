@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:00:00 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 21:04:26 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/28 21:12:00 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ static char	*find_file(char *cmd, char **path)
 	return (ft_strdup(cmd));
 }
 
-static int error_execve(char *argv)
+static int	error_execve(char *argv)
 {
-	int exit_code;
+	int	exit_code;
 
 	exit_code = EXIT_FAILURE;
 	if (errno == ENOENT)
@@ -85,7 +85,7 @@ static int error_execve(char *argv)
 		exit_code = 127;
 		throw_error(argv, NULL, "command not found");
 	}
-	else if (errno = EACCES)
+	else if (errno == EACCES)
 	{
 		exit_code = 126;
 		throw_error(argv, NULL, strerror(errno));
