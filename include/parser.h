@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 03:35:25 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/27 21:58:18 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 21:39:13 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ char	*syntax_heredoc_word(char *token);
 char	*get_combined_word(void);
 char	*get_combined_heredoc_word(void);
 char	*replace_env(char *token);
+
+void	free_ast(t_ast *ast);
 
 #endif
