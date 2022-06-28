@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 19:58:57 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/25 23:20:25 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/28 21:05:38 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 */
 int	throw_error_usage(char *cmd, char *argv)
 {
-	ft_putstr_fd("bash: ", STDOUT_FILENO);
+	ft_putstr_fd("blackhole-shell: ", STDOUT_FILENO);
 	ft_putstr_fd(cmd, STDOUT_FILENO);
 	ft_putstr_fd(": ", STDOUT_FILENO);
 	write(STDOUT_FILENO, argv, 2);
