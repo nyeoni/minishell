@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:58:37 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/23 17:00:26 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/27 21:58:21 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
    syntax_simple_command
    ac: argv count
 */
-void	syntax_simple_command(t_simple_command **simple_command)
+int	syntax_simple_command(t_simple_command **simple_command)
 {
 	int		ac;
 	char	**argv;
@@ -42,4 +42,5 @@ void	syntax_simple_command(t_simple_command **simple_command)
 	}
 	argv[ac] = NULL;
 	(*simple_command)->argv = argv;
+	return (SUCCESS_FLAG);
 }

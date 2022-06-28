@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 18:27:34 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/27 20:18:36 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 00:30:29 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define REDIRECT_H
 
 # include <fcntl.h>
+# include <stdio.h>
 # include <unistd.h>
 
 int	redirect_in_file(char *file_path);

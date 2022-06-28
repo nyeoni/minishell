@@ -6,14 +6,14 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:12:20 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/22 03:14:01 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 16:15:03 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*
-	else for Syntax error
+	Syntax error
 */
 char	*match(t_type type)
 {
@@ -22,8 +22,12 @@ char	*match(t_type type)
 	token = fetch_token(UPDATE);
 	if (token.type == type)
 		return (token.value);
+	else if (token.type == T_NULL)
+		throw_error("syntax error", NULL, "unexpected end of file");
 	else
-		return (NULL);
+		throw_error_syntax(token);
+	g_manager.exit_code = SYNTAX_ERR;
+	return (NULL);
 }
 
 /*

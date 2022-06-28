@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   throw_error_syntax.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/24 02:08:50 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 00:13:07 by nkim             ###   ########.fr       */
+/*   Created: 2022/06/20 23:59:10 by hannkim           #+#    #+#             */
+/*   Updated: 2022/06/28 00:32:36 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#include "minishell.h"
 
-# include "token.h"
-# include <sys/errno.h>
-
-# define SYNTAX_ERR 258
-
-int	throw_error(char *cmd, char *argv, char *err);
-int	throw_error_env(char *cmd, char *argv);
-int	throw_error_exit(char *cmd, char *err, int exit_code);
-int	throw_error_usage(char *cmd, char *argv);
-int	throw_error_syntax(t_token token);
-
-#endif
+/*
+   throw_error_syntax
+*/
+int	throw_error_syntax(t_token token)
+{
+	ft_putstr_fd("딸기쉘: syntax error near unexpected token `", 2);
+	if (token.type == T_PIPE)
+		ft_putstr_fd(token.value, 2);
+	else
+		ft_putstr_fd("newline", 2);
+	ft_putendl_fd("'", 2);
+	return (EXIT_FAILURE);
+}

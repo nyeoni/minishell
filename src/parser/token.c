@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:36:17 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/27 20:24:35 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 17:04:38 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_token	get_token(void)
 		return (token); // copy error
 	g_manager.rc += end - begin;
 	return (token);
+	flag : flag is only for quote_error (exception case)
 }
 */
 t_token	get_token(void)
@@ -43,12 +44,15 @@ t_token	get_token(void)
 	char	*begin;
 	char	*end;
 	t_token	token;
+	int		flag;
 
 	token.type = T_NULL;
 	token.value = NULL;
 	if (g_manager.rc >= ft_strlen(g_manager.command_line))
 		return (token);
-	lexical_analyzer(&token, &begin, &end);
+	flag = lexical_analyzer(&token, &begin, &end);
+	if (flag == ERROR_FLAG)
+		g_manager.exit_code = SYNTAX_ERR;
 	token.value = ft_calloc(end - begin + 1, sizeof(char));
 	if (!token.value)
 		return (token);
