@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:11:59 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 17:03:48 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 17:20:42 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int	lexical_analyzer(t_token *token, char **begin, char **end)
 		g_manager.rc++;
 	*begin = &g_manager.command_line[g_manager.rc];
 	*end = *begin;
+	if (g_manager.rc >= ft_strlen(g_manager.command_line))
+		return (ERROR_FLAG);
 	if ((**begin == U_DOUBLE_QUOTES || **begin == U_SINGLE_QUOTES))
 		get_quote(token, begin, end);
 	else if (**begin == U_IN || **begin == U_OUT)
