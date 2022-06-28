@@ -6,7 +6,7 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/28 22:13:05 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/28 22:34:16 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,17 +24,17 @@ endif
 ARCH := $(shell arch)
 GITUSER := $(USER)
 ifeq ($(GITUSER), chloek)
-	LIB_DIR		= /usr/local/opt/readline/lib
-	LIB_HEADER	= /usr/local/opt/readline/include
+	LDFLAGS		= -L/usr/local/opt/readline/lib
+	CPPFLAGS	= -I/usr/local/opt/readline/include
 else ifeq ($(GITUSER), hannkim)
-	LIB_DIR		= /opt/homebrew/Cellar/readline/8.1.2/lib
-	LIB_HEADER	= /opt/homebrew/Cellar/readline/8.1.2/include
+	LDFLAGS		= -L/opt/homebrew/Cellar/readline/8.1.2/lib
+	CPPFLAGS	= -I/opt/homebrew/Cellar/readline/8.1.2/include
 else ifeq ($(ARCH), i386)
-	LIB_DIR		= $(HOME)/.brew/opt/readline/lib
-	LIB_HEADER	= $(HOME)/.brew/opt/readline/include
+	LDFLAGS		= -L$(HOME)/.brew/opt/readline/lib
+	CPPFLAGS	= -I$(HOME)/.brew/opt/readline/include
 else ifeq ($(ARCH), arm64)
-	LIB_DIR		= /opt/homebrew/opt/readline/lib
-	LIB_HEADER	= /opt/homebrew/opt/readline/include
+	LDFLAGS		= -L/opt/homebrew/opt/readline/lib
+	CPPFLAGS	= -I/opt/homebrew/opt/readline/include
 endif
 
 AR				= ar rcs
@@ -46,7 +46,7 @@ SRCS_DIR		= ./src/
 LIBFT_DIR 		= libft/
 LIBFT_FLAGS		= -L ./$(LIBFT_DIR) -lft
 
-LIB_FLAGS		= -lreadline -L $(LIB_DIR) -I $(LIB_HEADER)
+LIB_FLAGS		= -lreadline $(LDFLAGS) $(CPPFLAGS)
 
 SRC_PARSER_DIR	= parser/
 SRC_PARSER		= lexical_analyzer.c syntax_analyzer.c token.c \
@@ -105,7 +105,7 @@ SRCS			= $(addprefix $(SRCS_DIR), $(SRC))
 OBJS 			= $(SRCS:.c=.o)
 
 .c.o:
-	$(CC) $(CFLAGS) -I $(HEADERS) -I $(LIB_HEADER) -o $@ -c $?
+	$(CC) $(CFLAGS) -I $(HEADERS) $(CPPFLAGS) -o $@ -c $?
 
 $(NAME): $(OBJS)
 	make -C $(LIBFT_DIR)
