@@ -11,7 +11,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: find readline
         run: $(brew info readline | grep export)
-      - name: make-debug
-        run: make debug
       - name: make-build
         run: make
