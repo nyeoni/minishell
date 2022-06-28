@@ -6,7 +6,7 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/28 20:09:54 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/28 21:39:30 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ SRC_PARSER_DIR	= parser/
 SRC_PARSER		= lexical_analyzer.c syntax_analyzer.c token.c \
 					syntax_pipe_line.c syntax_command.c syntax_redirects.c \
 					syntax_simple_command.c syntax_io_redirect.c syntax_word.c \
-					syntax_heredoc_word.c get_combined_word.c
+					syntax_heredoc_word.c get_combined_word.c free_ast.c
 
 SRC_BUILTIN_DIR	= builtin/
 SRC_BUILTIN		= ft_echo.c ft_cd.c ft_pwd.c ft_export.c ft_unset.c \

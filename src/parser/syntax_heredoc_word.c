@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:41:19 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/27 15:41:35 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 22:01:18 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 char	*syntax_heredoc_word(char *token)
 {
 	char	*word;
-	char	*tmp;
 
 	if (*token == U_DOUBLE_QUOTES || *token == U_SINGLE_QUOTES)
 		word = ft_substr(token, 1, ft_strlen(token) - 2);

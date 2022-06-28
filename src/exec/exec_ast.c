@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:40:07 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 20:42:36 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 22:04:27 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	exec_command(t_command *command)
 int	exec_pipe_line(t_pipe_line *pipe_line)
 {
 	int	flag;
-	int	backup_fd;
 
 	flag = SUCCESS_FLAG;
 	if (pipe_line->pipe_line)

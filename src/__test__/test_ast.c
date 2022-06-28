@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 19:23:17 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/26 22:07:45 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 22:03:59 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	print_io_redirect(t_io_redirect *io_redirect)
 		redirect_op = "<<";
 	else if (io_redirect->redirect_op == R_APPEND)
 		redirect_op = ">>";
+	else
+		redirect_op = "redirect_op error";
 	printf("redirect_op: %s\n", redirect_op);
 	printf("argv: %s\n", io_redirect->file_path);
 }
