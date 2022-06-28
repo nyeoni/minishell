@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:40:07 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 20:12:40 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 20:42:36 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	exec_redirects(t_redirects *redirects)
 	return (flag);
 }
 
-// TODO: command->reidrects 가 있을때 heredoc 먼저 처리하는 로직 추가
 int	exec_command(t_command *command)
 {
 	int	flag;

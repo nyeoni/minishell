@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:11:59 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 17:20:42 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 20:50:06 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static void	get_word(t_token *token, char **begin, char **end)
 		(*end)++;
 }
 
-// TODO: 인용문이 닫히지 않았을 때 처리하기
 static void	get_quote(t_token *token, char **begin, char **end)
 {
 	token->type = T_WORD;
