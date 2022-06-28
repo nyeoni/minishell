@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/28 14:17:20 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 20:15:17 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define FALSE 0
 # define READ 0
 # define WRITE 1
+# define ERROR 2
 
 # define PS1 "\e[0;95mblackhole-shell$ \e[0m"
 # define PS2 "> "

@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 02:08:50 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 00:13:07 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 20:25:50 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include "token.h"
 # include <sys/errno.h>
 
-# define SYNTAX_ERR 258
+# define EXIT_ENOENT 127
+# define EXIT_SYNTAXERR 258
 
 int	throw_error(char *cmd, char *argv, char *err);
 int	throw_error_env(char *cmd, char *argv);

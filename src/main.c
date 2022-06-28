@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 18:31:31 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 20:26:34 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,14 @@ void	init_env(char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
+	int		std_fd[3];
 	char	*command_line;
 	t_ast	*ast;
 
 	if (argc > 1)
-	{
-		printf("ERROR : %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-	}
+		throw_error_exit(argv[1], strerror(ENOENT), EXIT_ENOENT);
 	init_env(envp);
+	backup_std_fd(std_fd);
 	while (1)
 	{
 		check_signal();
@@ -57,6 +56,7 @@ int	main(int argc, char **argv, char **envp)
 		if (g_manager.exit_code == EXIT_SUCCESS)
 			exec_ast(ast);
 		free(command_line);
+		reset_std_fd(std_fd);
 	}
 	return (0);
 }

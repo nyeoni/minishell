@@ -6,7 +6,7 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/28 00:13:28 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/28 20:09:54 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,7 @@ SRC_SUBSHELL	= wait_subshell.c create_subshell.c
 
 SRC_REDIRECT_DIR= redirect/
 SRC_REDIRECT	= redirect_in_file.c redirect_out_file.c redirect_append_file.c \
-					redirect_heredoc.c backup_stdin_fd.c reset_stdin_fd.c
+					redirect_heredoc.c backup_std_fd.c reset_std_fd.c
 
 SRC_MANAGER_DIR	= manager/
 SRC_MANAGER		=
