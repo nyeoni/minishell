@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:59:10 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/28 17:25:33 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 17:33:56 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int	throw_error_syntax(t_token token)
 	else
 		ft_putstr_fd("newline", 2);
 	ft_putendl_fd("'", 2);
-	return (EXIT_FAILURE);
+	g_manager.exit_code = SYNTAX_ERR;
+	return (ERROR_FLAG);
 }

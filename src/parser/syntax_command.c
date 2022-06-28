@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:58:02 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/27 21:46:39 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/28 17:32:27 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ int	syntax_command(t_ast **ast_command)
 	(*ast_command)->data = ft_calloc(1, sizeof(t_command));
 	command = (*ast_command)->data;
 	ast_redirects = &command->redirects;
+	if (!(fetch_token(GET).type == T_WORD
+			|| fetch_token(GET).type == T_REDIRECT))
+		return (throw_error_syntax(fetch_token(GET)));
 	while (fetch_token(GET).type == T_WORD
 		|| fetch_token(GET).type == T_REDIRECT)
 	{
