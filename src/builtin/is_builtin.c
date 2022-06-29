@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 03:31:38 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/24 03:31:53 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/29 02:40:51 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 int	is_builtin(char *exec_path)
 {
-	if (!ft_strncmp(exec_path, "cd", 3))
+	if (!ft_strcmp(exec_path, "cd"))
 		return (TRUE);
-	else if (!ft_strncmp(exec_path, "echo", 5))
+	else if (!ft_strcmp(exec_path, "echo"))
 		return (TRUE);
-	else if (!ft_strncmp(exec_path, "pwd", 4))
+	else if (!ft_strcmp(exec_path, "pwd"))
 		return (TRUE);
-	else if (!ft_strncmp(exec_path, "env", 4))
+	else if (!ft_strcmp(exec_path, "env"))
 		return (TRUE);
-	else if (!ft_strncmp(exec_path, "exit", 5))
+	else if (!ft_strcmp(exec_path, "exit"))
 		return (TRUE);
-	else if (!ft_strncmp(exec_path, "export", 7))
+	else if (!ft_strcmp(exec_path, "export"))
 		return (TRUE);
-	else if (!ft_strncmp(exec_path, "unset", 6))
+	else if (!ft_strcmp(exec_path, "unset"))
 		return (TRUE);
 	else
 		return (FALSE);
