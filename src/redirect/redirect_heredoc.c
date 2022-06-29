@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 20:01:20 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 21:43:07 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/29 22:25:12 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	redirect_heredoc(char *end_text, char *heredoc_path)
 
 	signal(SIGINT, handle_sigint_heredoc);
 	signal(SIGQUIT, SIG_IGN);
-	rl_instream->_file = 3;
+	rl_instream->_file = BACKUP_FD;
 	fd = open(heredoc_path, O_WRONLY | O_CREAT | O_EXCL | O_TRUNC, 0644);
 	if (fd < 0)
 		throw_error_exit("", strerror(errno), EXIT_FAILURE);
@@ -37,5 +37,6 @@ int	redirect_heredoc(char *end_text, char *heredoc_path)
 		ft_putendl_fd(line, fd);
 		free(line);
 	}
+	close(fd);
 	return (EXIT_FAILURE);
 }
