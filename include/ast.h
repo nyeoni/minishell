@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:14:23 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/25 18:09:34 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/29 18:16:43 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef enum e_ast_type
 	AST_PIPELINE,
 	AST_COMMAND,
 	AST_REDIRECTS
-}				t_ast_type;
+}								t_ast_type;
 
 /* ast tree generate node
    t_ast can be...
@@ -77,6 +77,7 @@ typedef struct s_io_redirect
 {
 	t_redirect_op				redirect_op;
 	char						*file_path;
+	char						*heredoc_path;
 }								t_io_redirect;
 
 #endif
