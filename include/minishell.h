@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/29 21:20:19 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/30 04:11:12 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@
 # include <string.h>
 # include <sys/errno.h>
 # include <sys/stat.h>
+
+# define SPLASHIMG "" \
+					""
 
 /* MECRO VARIABLES */
 # define NULL_LINE 0;
