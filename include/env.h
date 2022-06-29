@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 16:40:11 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 20:36:45 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/29 21:39:17 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define TMPENV "TMPDIR"
 # define TMPKEY "blackhole-"
 # define TMPDIR "/tmp/"
+# define PATHENV "PATH"
 
 typedef struct s_env
 {

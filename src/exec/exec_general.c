@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:00:00 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 13:00:32 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/29 21:27:17 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,13 @@ int	exec_general(char **argv)
 	char	*filename;
 	int		i;
 
-	path = ft_split(get_env("PATH")->value, ':');
+	if (get_env(PATHENV))
+		path = ft_split(get_env(PATHENV)->value, ':');
+	else
+	{
+		path = (char **)ft_calloc(2, sizeof(char *));
+		*path = ft_strdup(".");
+	}
 	filename = find_file(*argv, path);
 	envp = get_string_env();
 	i = 0;
