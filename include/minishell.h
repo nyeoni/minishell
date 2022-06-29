@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/29 16:38:55 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/29 17:22:22 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../libft/libft.h"
 # include "ast.h"
 # include "builtin.h"
+# include "env.h"
 # include "error.h"
 # include "exec.h"
 # include "parser.h"
@@ -48,12 +49,6 @@
 # define PS2 "> "
 
 /* STRUCUTER */
-typedef struct s_env
-{
-	char			*name;
-	char			*value;
-	struct s_env	*next;
-}					t_env;
 
 typedef struct s_manager
 {
@@ -74,13 +69,6 @@ int					ft_isspace(int c);
 int					ft_strcmp(char *s1, char *s2);
 
 /* ENV */
-t_env				*get_env(char *identifier);
-int					valid_env_name(char *identifier);
-char				*get_env_name(char *argv);
-char				*get_env_value(char *argv);
-void				add_env(char *name, char *value);
-void				remove_env(t_env *target);
-void				free_env(void);
 
 /* SIGNAL */
 void				ft_exit_eof(char *command_line);
