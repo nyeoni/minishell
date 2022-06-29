@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/29 01:31:42 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/29 12:03:23 by hannkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ SRC_SIGNAL_DIR	= signal/
 SRC_SIGNAL		= check_signal.c
 
 SRC_UTILS_DIR	= utils/
-SRC_UTILS		= ft_isspace.c ft_exit_eof.c
+SRC_UTILS		= ft_isspace.c ft_exit_eof.c ft_strcmp.c
 
 SRC				= main.c \
 					$(addprefix $(SRC_PARSER_DIR), $(SRC_PARSER)) \
