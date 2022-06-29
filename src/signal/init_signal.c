@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   change_signal.c                                    :+:      :+:    :+:   */
+/*   init_signal.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 21:38:00 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/29 21:38:02 by hannkim          ###   ########.fr       */
+/*   Created: 2022/06/24 17:00:23 by nkim              #+#    #+#             */
+/*   Updated: 2022/06/29 18:58:30 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	change_sigint(int signum)
+/* rl_replace_line : buffer flush */
+static void	handle_sigint(int signum)
 {
 	if (signum != SIGINT)
 		return ;
 	write(1, "\n", 1);
+	rl_replace_line("", 1);
+	rl_on_new_line();
+	rl_redisplay();
+	g_manager.exit_code = 1;
 }
 
-/* do nothing */
-static void	change_sigquit(int signum)
+/* SIGINT : ctrl + c, SIGQUIT : ctrl + \ */
+void	init_signal(void)
 {
-	if (signum != SIGQUIT)
-		return ;
-}
-
-/*
-	before fork, change handler
-	SIGQUIT don't have to ignore in execve()
-	if use SIG_DFL, parent process will exit with child process
-*/
-void	change_signal(void)
-{
-	signal(SIGINT, change_sigint);
-	signal(SIGQUIT, change_sigquit);
+	signal(SIGINT, handle_sigint);
+	signal(SIGQUIT, SIG_IGN);
 }
