@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 18:24:53 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 16:35:19 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/29 21:52:53 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	connect_pipe(int pipe_fd[2], int pipe_type)
 	close_pipe_fd(pipe_fd);
 }
 
-// TODO: fork 위에 signal 처리??
 // printf("pipe_rd: %d, pipe_wr: %d\n", pipe_fd[READ], pipe_fd[WRITE]);
 pid_t	create_subshell(t_pipe_line *pipe_line)
 {
@@ -39,7 +38,7 @@ pid_t	create_subshell(t_pipe_line *pipe_line)
 		throw_error("pipe", NULL, strerror(errno));
 		return (ERROR_FLAG);
 	}
-	reset_signal();
+	change_signal();
 	pid = fork();
 	if (pid < 0)
 		throw_error_exit("fork", strerror(errno), EXIT_FAILURE);

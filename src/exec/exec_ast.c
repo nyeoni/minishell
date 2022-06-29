@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_ast.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:40:07 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 22:04:27 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/29 21:43:53 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	exec_redirects(t_redirects *redirects)
 	int	flag;
 
 	flag = SUCCESS_FLAG;
-	printf("exec_redirects\n");
 	if (redirects->io_redirect)
 		flag = exec_io_redirect(redirects->io_redirect);
 	if (flag != SUCCESS_FLAG)

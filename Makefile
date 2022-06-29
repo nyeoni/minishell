@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/29 17:22:24 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/29 21:20:27 by hannkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ SRC_EXEC		= exec_ast.c exec_general.c exec_builtin.c \
 					exec_simple_command.c exec_io_redirect.c
 
 SRC_SIGNAL_DIR	= signal/
-SRC_SIGNAL		= check_signal.c
+SRC_SIGNAL		= init_signal.c change_signal.c handle_sigint_heredoc.c
 
 SRC_UTILS_DIR	= utils/
 SRC_UTILS		= ft_isspace.c ft_exit_eof.c ft_strcmp.c

@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_single_command.c                              :+:      :+:    :+:   */
+/*   change_signal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/26 21:18:52 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 19:02:18 by hannkim          ###   ########.fr       */
+/*   Created: 2022/06/29 21:38:00 by hannkim           #+#    #+#             */
+/*   Updated: 2022/06/29 21:38:02 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	exec_single_command(t_command *command)
+static void	change_sigint(int signum)
 {
-	pid_t	pid;
+	if (signum != SIGINT)
+		return ;
+	write(1, "\n", 1);
+}
 
-	if (is_builtin(command->simple_command->exec_path))
-		return (exec_command(command));
-	change_signal();
-	pid = fork();
-	if (pid < 0)
-		throw_error_exit("fork", strerror(errno), EXIT_FAILURE);
-	else if (pid == 0)
-	{
-		exec_command(command);
-		exit(g_manager.exit_code);
-	}
-	else
-	{
-		wait_subshell(pid);
-	}
-	return (SUCCESS_FLAG);
+/* do nothing */
+static void	change_sigquit(int signum)
+{
+	if (signum != SIGQUIT)
+		return ;
+}
+
+/*
+	before fork, change handler
+	SIGQUIT don't have to ignore in execve()
+	if use SIG_DFL, parent process will exit with child process
+*/
+void	change_signal(void)
+{
+	signal(SIGINT, change_sigint);
+	signal(SIGQUIT, change_sigquit);
 }
