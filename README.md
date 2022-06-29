@@ -1,4 +1,5 @@
 # minishell
+[![build](https://github.com/Chloekkk/minishell/actions/workflows/build.yml/badge.svg)](https://github.com/Chloekkk/minishell/actions/workflows/build.yml)
 ![norminette](https://github.com/Chloekkk/minishell/workflows/norminette/badge.svg)
 
 ### :tada: Special Thanks to
