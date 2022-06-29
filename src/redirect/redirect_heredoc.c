@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 20:01:20 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 21:42:20 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/29 21:43:07 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 	"rl_instream->_file = 3" means standard input -> 
 */
-int	redirect_heredoc(char *end_text)
+int	redirect_heredoc(char *end_text, char *heredoc_path)
 {
 	int		fd;
 	char	*line;

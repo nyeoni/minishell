@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_io_redirect.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 21:31:57 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 20:53:08 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/29 21:44:08 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	exec_io_redirect(t_io_redirect *io_redirect)
 {
-	printf("exec_io_redirect\n");
 	if (io_redirect->redirect_op == R_IN)
 		return (redirect_in_file(io_redirect->file_path));
 	else if (io_redirect->redirect_op == R_OUT)
