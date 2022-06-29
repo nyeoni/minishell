@@ -6,11 +6,29 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:59:57 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 18:05:03 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/29 20:38:58 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char	*create_heredoc_path(void)
+{
+	unsigned static int	cnt;
+	char				*cnt_arr;
+	char				*heredoc_path;
+	char				*tmpdir;
+
+	if (get_env(TMPENV) == NULL)
+		tmpdir = ft_strjoin(TMPDIR, TMPKEY);
+	else
+		tmpdir = ft_strjoin(get_env(TMPENV)->value, TMPKEY);
+	cnt_arr = ft_itoa(cnt);
+	heredoc_path = ft_strjoin(tmpdir, cnt_arr);
+	free(tmpdir);
+	free(cnt_arr);
+	return (heredoc_path);
+}
 
 /*
 	syntax_io_redirect
@@ -28,10 +46,13 @@ int	syntax_io_redirect(t_io_redirect **io_redirect)
 		(*io_redirect)->redirect_op = R_IN;
 	else if (!ft_strncmp(redirect_op, ">", 2))
 		(*io_redirect)->redirect_op = R_OUT;
-	else if (!ft_strncmp(redirect_op, "<<", 3))
-		(*io_redirect)->redirect_op = R_HEREDOC;
 	else if (!ft_strncmp(redirect_op, ">>", 3))
 		(*io_redirect)->redirect_op = R_APPEND;
+	else if (!ft_strncmp(redirect_op, "<<", 3))
+	{
+		(*io_redirect)->redirect_op = R_HEREDOC;
+		(*io_redirect)->heredoc_path = create_heredoc_path();
+	}
 	free(redirect_op);
 	if ((*io_redirect)->redirect_op == R_HEREDOC)
 		(*io_redirect)->file_path = get_combined_heredoc_word();

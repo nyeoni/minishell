@@ -6,12 +6,16 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 16:40:11 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 16:41:50 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/29 20:36:45 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENV_H
 # define ENV_H
+
+# define TMPENV "TMPDIR"
+# define TMPKEY "blackhole-"
+# define TMPDIR "/tmp/"
 
 typedef struct s_env
 {
