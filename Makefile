@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/29 12:03:23 by hannkim          ###   ########.fr        #
+#    Updated: 2022/06/29 17:22:24 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,8 @@ SRC_ERROR		= throw_error.c throw_error_env.c throw_error_exit.c \
 					throw_error_usage.c throw_error_syntax.c
 
 SRC_ENV_DIR		= env/
-SRC_ENV			= env_list.c env_utils.c
+SRC_ENV			= get_env.c valid_env_name.c get_env_name.c \
+					get_env_value.c add_env.c remove_env.c free_env.c
 
 SRC_SUBSHELL_DIR= subshell/
 SRC_SUBSHELL	= wait_subshell.c create_subshell.c
