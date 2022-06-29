@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/29 05:18:33 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/29 16:13:22 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@
 # define WRITE 1
 # define ERROR 2
 
-# define PS1 "\e[48;5;231m ✴ \e[0m\e[38;5;231m\e[48;5;63m\uE0B0\e[0m\e[0m \
-				\e[48;5;63m blackhole-shell \e[0m\e[38;5;63m\uE0B0 \e[0m"
+# define PS1 "\e[48;5;231m ✴ \e[0m\e[38;5;231m\e[48;5;63m\uE0B0\e[0m\e[0m\
+\e[48;5;63m blackhole-shell \e[0m\e[38;5;63m\uE0B0 \e[0m"
+
 # define PS2 "> "
 
 /* STRUCUTER */
