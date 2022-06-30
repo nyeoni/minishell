@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_combined_word.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:54:25 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 18:05:44 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 18:13:22 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*get_combined_heredoc_word(void)
 	if (!token)
 		return (NULL);
 	combined_word = syntax_heredoc_word(token);
-	while (!ft_isspace(next) && fetch_token(GET).type == T_WORD)
+	while (!bs_isspace(next) && fetch_token(GET).type == T_WORD)
 	{
 		next = g_manager.command_line[g_manager.rc];
 		word = syntax_heredoc_word(match(T_WORD));
@@ -59,7 +59,7 @@ char	*get_combined_word(void)
 	if (!token)
 		return (NULL);
 	combined_word = syntax_word(token);
-	while (!ft_isspace(next) && fetch_token(GET).type == T_WORD)
+	while (!bs_isspace(next) && fetch_token(GET).type == T_WORD)
 	{
 		next = g_manager.command_line[g_manager.rc];
 		word = syntax_word(match(T_WORD));

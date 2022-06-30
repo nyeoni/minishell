@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_word.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 21:49:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 14:23:32 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 18:21:30 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*extract_env_name(char *token)
 	int		nc;
 
 	nc = 0;
-	name = ft_calloc(1, sizeof(char));
+	name = bs_calloc(1, sizeof(char));
 	while (ft_isalnum(*token))
 	{
 		name = ft_realloc(name, nc + 2);

@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit_eof.c                                      :+:      :+:    :+:   */
+/*   bs_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/22 16:23:11 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/24 16:50:28 by nkim             ###   ########.fr       */
+/*   Created: 2022/06/08 20:09:45 by nkim              #+#    #+#             */
+/*   Updated: 2022/06/30 18:13:24 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/* EOF : ctrl + d */
-void	ft_exit_eof(char	*command_line)
+int	bs_isspace(int c)
 {
-	if (!command_line)
-	{
-		ft_putstr_fd("exit\n", STDERR_FILENO);
-		exit(EXIT_SUCCESS);
-	}
+	if (c == '\t' || c == '\n' || c == '\v'
+		|| c == '\f' || c == '\r' || c == ' ')
+		return (1);
+	else
+		return (0);
 }

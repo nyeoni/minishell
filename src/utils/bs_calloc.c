@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_env.c                                          :+:      :+:    :+:   */
+/*   bs_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 16:38:53 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 18:20:18 by hannkim          ###   ########.fr       */
+/*   Created: 2022/06/30 18:10:38 by hannkim           #+#    #+#             */
+/*   Updated: 2022/06/30 18:23:08 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "utils.h"
 
-void	add_env(char *name, char *value)
+void	*bs_calloc(size_t count, size_t size)
 {
-	t_env	*ptr;
-	t_env	*new;
+	size_t	i;
+	void	*res;
 
-	ptr = g_manager.env;
-	new = (t_env *)bs_calloc(1, sizeof(t_env));
-	if (!new)
+	res = (void *)malloc(size * count);
+	if (!(res))
 		exit(EXIT_FAILURE);
-	new->name = name;
-	new->value = value;
-	new->next = NULL;
-	if (!g_manager.env)
+	i = 0;
+	while (i < size * count)
 	{
-		g_manager.env = new;
-		return ;
+		*((char *)res + i) = '\0';
+		i++;
 	}
-	while (ptr->next)
-		ptr = ptr->next;
-	ptr->next = new;
+	return (res);
 }

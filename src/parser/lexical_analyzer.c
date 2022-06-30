@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexical_analyzer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:11:59 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 18:28:21 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 18:40:00 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	get_word(t_token *token, char **end)
 {
 	token->type = T_WORD;
-	while (**end && (!ft_isspace(**end)) && !ft_strchr("<>|\"'", **end))
+	while (**end && (!bs_isspace(**end)) && !ft_strchr("<>|\"'", **end))
 		(*end)++;
 }
 
@@ -54,7 +54,7 @@ static void	get_redirect_op(t_token *token, char **end)
 
 int	lexical_analyzer(t_token *token, char **begin, char **end)
 {
-	while (ft_isspace(g_manager.command_line[g_manager.rc]))
+	while (bs_isspace(g_manager.command_line[g_manager.rc]))
 		g_manager.rc++;
 	*begin = &g_manager.command_line[g_manager.rc];
 	*end = *begin;

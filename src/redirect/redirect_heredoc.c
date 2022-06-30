@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect_heredoc.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 20:01:20 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 17:43:20 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 18:13:04 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	redirect_heredoc(char *end_text, char *heredoc_path)
 	while (!g_manager.exit_code)
 	{
 		line = readline(PS2);
-		if (!line || !ft_strcmp(line, end_text))
+		if (!line || !bs_strcmp(line, end_text))
 			return (end_of_heredoc(line, fd));
 		ft_putendl_fd(line, fd);
 		free(line);

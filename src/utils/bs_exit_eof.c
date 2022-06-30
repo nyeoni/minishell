@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_env.c                                          :+:      :+:    :+:   */
+/*   bs_exit_eof.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 16:38:53 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 18:20:18 by hannkim          ###   ########.fr       */
+/*   Created: 2022/06/22 16:23:11 by hannkim           #+#    #+#             */
+/*   Updated: 2022/06/30 18:12:40 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	add_env(char *name, char *value)
+/* EOF : ctrl + d */
+void	bs_exit_eof(char	*command_line)
 {
-	t_env	*ptr;
-	t_env	*new;
-
-	ptr = g_manager.env;
-	new = (t_env *)bs_calloc(1, sizeof(t_env));
-	if (!new)
-		exit(EXIT_FAILURE);
-	new->name = name;
-	new->value = value;
-	new->next = NULL;
-	if (!g_manager.env)
+	if (!command_line)
 	{
-		g_manager.env = new;
-		return ;
+		ft_putstr_fd("exit\n", STDERR_FILENO);
+		exit(EXIT_SUCCESS);
 	}
-	while (ptr->next)
-		ptr = ptr->next;
-	ptr->next = new;
 }

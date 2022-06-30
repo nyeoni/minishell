@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:36:17 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 18:31:44 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 18:40:33 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_token	get_token(void)
 		return (token);
 	if (flag == ERROR_FLAG)
 		g_manager.exit_code = EXIT_SYNTAXERR;
-	token.value = ft_calloc(end - begin + 1, sizeof(char));
+	token.value = bs_calloc(end - begin + 1, sizeof(char));
 	if (!token.value)
 		return (token);
 	if (!ft_strlcpy(token.value, begin, end - begin + 1))

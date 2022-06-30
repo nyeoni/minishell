@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:00:00 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 13:26:23 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/30 18:20:43 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static char	**get_string_env(void)
 
 	ptr = g_manager.env;
 	count = get_count();
-	ret = (char **)ft_calloc(count + 1, sizeof(char *));
+	ret = (char **)bs_calloc(count + 1, sizeof(char *));
 	if (!ret)
 		exit(EXIT_FAILURE);
 	i = 0;
@@ -105,7 +105,7 @@ int	exec_general(char **argv)
 		path = ft_split(get_env(PATHENV)->value, ':');
 	else
 	{
-		path = (char **)ft_calloc(2, sizeof(char *));
+		path = (char **)bs_calloc(2, sizeof(char *));
 		*path = ft_strdup(".");
 	}
 	filename = find_file(*argv, path);

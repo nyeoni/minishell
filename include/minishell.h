@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/30 16:02:57 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/30 18:16:09 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include "redirect.h"
 # include "subshell.h"
 # include "signal.h"
+# include "utils.h"
 
 /* BUILTIN HEADER FILE */
 # include <readline/history.h>
@@ -90,8 +91,7 @@ extern t_manager	g_manager;
 void				set_exit_code(int status);
 
 /* UTILS */
-int					ft_isspace(int c);
-int					ft_strcmp(char *s1, char *s2);
+
 
 /* ENV */
 

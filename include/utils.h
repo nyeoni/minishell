@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 20:09:45 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/20 14:35:57 by nkim             ###   ########.fr       */
+/*   Created: 2022/06/30 18:15:27 by hannkim           #+#    #+#             */
+/*   Updated: 2022/06/30 18:23:21 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-int	ft_isspace(int c)
-{
-	if (c == '\t' || c == '\n' || c == '\v'
-		|| c == '\f' || c == '\r' || c == ' ')
-		return (1);
-	else
-		return (0);
-}
+# include <stdio.h>
+# include <stdlib.h>
+
+int		bs_isspace(int c);
+int		bs_strcmp(char *s1, char *s2);
+void	bs_exit_eof(char *command_line);
+void	*bs_calloc(size_t count, size_t size);
+
+#endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_redirects.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:59:05 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 19:05:21 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 18:21:17 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	init_syntax_redirects(t_ast **ast_redirects)
 {
-	*ast_redirects = ft_calloc(1, sizeof(t_ast));
+	*ast_redirects = bs_calloc(1, sizeof(t_ast));
 	(*ast_redirects)->type = AST_REDIRECTS;
-	(*ast_redirects)->data = ft_calloc(1, sizeof(t_redirects));
+	(*ast_redirects)->data = bs_calloc(1, sizeof(t_redirects));
 }
 
 /*

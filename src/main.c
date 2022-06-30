@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 17:18:10 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 18:12:32 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(int argc, char **argv, char **envp)
 	{
 		init_signal();
 		command_line = readline(PS1);
-		ft_exit_eof(command_line);
+		bs_exit_eof(command_line);
 		if (*command_line)
 		{
 			add_history(command_line);
