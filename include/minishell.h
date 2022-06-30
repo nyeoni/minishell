@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/30 18:25:47 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/30 18:32:21 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 /* BUILTIN HEADER FILE */
 # include <readline/history.h>
 # include <readline/readline.h>
-# include <signal.h>
 # include <stdio.h>
 # include <string.h>
 # include <sys/errno.h>
