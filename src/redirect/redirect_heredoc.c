@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 20:01:20 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 18:13:04 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/30 18:42:52 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	redirect_heredoc(char *end_text, char *heredoc_path)
 	int		fd;
 	char	*line;
 
-	printf("heredoc \n");
 	handle_signal_heredoc();
 	fd = open(heredoc_path, O_WRONLY | O_CREAT | O_EXCL | O_TRUNC, 0644);
 	if (fd < 0)
