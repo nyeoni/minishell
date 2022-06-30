@@ -5,51 +5,65 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 04:50:24 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 17:24:41 by nkim             ###   ########.fr       */
+/*   Created: 2022/06/21 16:40:07 by nkim              #+#    #+#             */
+/*   Updated: 2022/06/30 17:40:03 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	exec_redirect_heredoc(t_ast *ast)
+int	exec_redirects(t_redirects *redirects)
 {
-	int				flag;
-	t_redirects		*redirects;
-	t_io_redirect	*io_redirect;
+	int	flag;
 
 	flag = SUCCESS_FLAG;
-	redirects = NULL;
-	io_redirect = NULL;
-	if (ast && ast->type == AST_REDIRECTS)
-		redirects = ast->data;
-	if (redirects && redirects->io_redirect)
-		io_redirect = redirects->io_redirect;
-	if (io_redirect->redirect_op == R_HEREDOC)
-		flag = redirect_heredoc(io_redirect->end_text, io_redirect->file_path);
+	if (redirects->io_redirect)
+		flag = exec_io_redirect(redirects->io_redirect);
+	if (flag != SUCCESS_FLAG)
+		return (ERROR_FLAG);
 	if (redirects->redirects)
-		flag &= exec_redirect_heredoc(redirects->redirects);
+		flag = exec_ast(redirects->redirects);
 	return (flag);
 }
 
-int	exec_heredoc(t_ast *ast)
+int	exec_command(t_command *command)
 {
-	int			flag;
-	t_pipe_line	*pipe_line;
-	t_command	*command;
+	int	flag;
 
 	flag = SUCCESS_FLAG;
-	pipe_line = NULL;
-	command = NULL;
-	if (ast && ast->type == AST_PIPELINE)
-		pipe_line = ast->data;
-	if (pipe_line && pipe_line->command->type == AST_COMMAND)
-		command = pipe_line->command->data;
-	if (command && command->redirects)
-		flag = exec_redirect_heredoc(command->redirects);
-	if (pipe_line && pipe_line->pipe_line)
-		flag &= exec_heredoc(pipe_line->pipe_line);
+	if (command->redirects)
+		flag = exec_ast(command->redirects);
+	if (flag != SUCCESS_FLAG)
+		return (ERROR_FLAG);
+	if (command->simple_command)
+		flag = exec_simple_command(command->simple_command);
 	return (flag);
+}
+
+int	exec_pipe_line(t_pipe_line *pipe_line)
+{
+	int	flag;
+
+	flag = SUCCESS_FLAG;
+	if (pipe_line->pipe_line)
+		flag = exec_subshell(pipe_line);
+	else if (pipe_line->command && pipe_line->command->type == AST_COMMAND)
+		flag = exec_single_command(pipe_line->command->data);
+	else
+		flag = ERROR_FLAG;
+	return (flag);
+}
+
+int	exec_ast(t_ast *ast)
+{
+	if (ast->type == AST_PIPELINE)
+		return (exec_pipe_line(ast->data));
+	else if (ast->type == AST_COMMAND)
+		return (exec_command(ast->data));
+	else if (ast->type == AST_REDIRECTS)
+		return (exec_redirects(ast->data));
+	else
+		return (ERROR_FLAG);
 }
 
 int	exec_command_line(t_ast *ast)
