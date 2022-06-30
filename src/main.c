@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 18:32:57 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/30 19:01:01 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	init_manger(char *command_line)
 void	reset_minishell(t_ast *ast, int std_fd[3])
 {
 	free_ast(ast);
-	free(g_manager.command_line);
 	reset_std_fd(std_fd);
 }
 
@@ -63,6 +62,7 @@ int	main(int argc, char **argv, char **envp)
 				exec_command_line(ast);
 			reset_minishell(ast, std_fd);
 		}
+		free(command_line);
 	}
 	return (EXIT_SUCCESS);
 }
