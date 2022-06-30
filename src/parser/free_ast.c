@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_ast.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:40:12 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 19:26:03 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 01:10:35 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	free_pipe_line(t_pipe_line *pipe_line)
 
 void	free_ast(t_ast *ast)
 {
+	if (ast == AST_NULL)
+		return ;
 	if (ast->type == AST_PIPELINE)
 		free_pipe_line(ast->data);
 	else if (ast->type == AST_COMMAND)
