@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 04:50:24 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 16:13:31 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 17:24:41 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	exec_redirect_heredoc(t_ast *ast)
 	if (io_redirect->redirect_op == R_HEREDOC)
 		flag = redirect_heredoc(io_redirect->end_text, io_redirect->file_path);
 	if (redirects->redirects)
-		flag &= exec_redirect_heredoc(ast);
+		flag &= exec_redirect_heredoc(redirects->redirects);
 	return (flag);
 }
 
