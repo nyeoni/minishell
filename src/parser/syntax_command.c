@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_command.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:58:02 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 18:58:47 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 18:20:53 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	init_syntax_command(t_ast **ast_command)
 {
-	*ast_command = ft_calloc(1, sizeof(t_ast));
+	*ast_command = bs_calloc(1, sizeof(t_ast));
 	(*ast_command)->type = AST_COMMAND;
-	(*ast_command)->data = ft_calloc(1, sizeof(t_command));
+	(*ast_command)->data = bs_calloc(1, sizeof(t_command));
 }
 
 int	syntax_command(t_ast **ast_command)

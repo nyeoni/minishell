@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_env_name.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 16:37:30 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 16:37:43 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 18:20:37 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_env_name(char *argv)
 	int		len;
 
 	len = ft_strchr(argv, '=') - argv + 1;
-	name = (char *)ft_calloc(len, sizeof(char));
+	name = (char *)bs_calloc(len, sizeof(char));
 	if (!name)
 		exit(EXIT_FAILURE);
 	ft_strlcpy(name, argv, len);

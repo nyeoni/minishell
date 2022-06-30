@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 17:18:10 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 19:01:01 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	init_manger(char *command_line)
 void	reset_minishell(t_ast *ast, int std_fd[3])
 {
 	free_ast(ast);
-	free(g_manager.command_line);
 	reset_std_fd(std_fd);
 }
 
@@ -53,17 +52,17 @@ int	main(int argc, char **argv, char **envp)
 	{
 		init_signal();
 		command_line = readline(PS1);
-		ft_exit_eof(command_line);
+		bs_exit_eof(command_line);
 		if (*command_line)
 		{
 			add_history(command_line);
 			init_manger(command_line);
 			ast = syntax_analyzer();
-			test_ast(ast);
 			if (g_manager.exit_code == EXIT_SUCCESS)
 				exec_command_line(ast);
 			reset_minishell(ast, std_fd);
 		}
+		free(command_line);
 	}
 	return (EXIT_SUCCESS);
 }

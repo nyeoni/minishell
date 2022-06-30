@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_simple_command.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:58:37 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 18:18:42 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 18:21:25 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static char	**init_simple_command(t_simple_command **simple_command, int *ac)
 
 	if (*simple_command == NULL)
 	{
-		*simple_command = ft_calloc(1, sizeof(t_simple_command));
+		*simple_command = bs_calloc(1, sizeof(t_simple_command));
 		(*simple_command)->exec_path = get_combined_word();
-		argv = ft_calloc((*ac) + 2, sizeof(char *));
+		argv = bs_calloc((*ac) + 2, sizeof(char *));
 		argv[(*ac)++] = (*simple_command)->exec_path;
 	}
 	else
