@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 04:50:24 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 17:38:56 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 01:42:27 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	exec_redirect_heredoc(t_ast *ast)
 	if (io_redirect->redirect_op == R_HEREDOC)
 		flag = redirect_heredoc(io_redirect->end_text, io_redirect->file_path);
 	if (redirects->redirects)
-		flag &= exec_redirect_heredoc(redirects->redirects);
+		flag |= exec_redirect_heredoc(redirects->redirects);
 	return (flag);
 }
 
@@ -48,6 +48,6 @@ int	exec_heredoc(t_ast *ast)
 	if (command && command->redirects)
 		flag = exec_redirect_heredoc(command->redirects);
 	if (pipe_line && pipe_line->pipe_line)
-		flag &= exec_heredoc(pipe_line->pipe_line);
+		flag |= exec_heredoc(pipe_line->pipe_line);
 	return (flag);
 }

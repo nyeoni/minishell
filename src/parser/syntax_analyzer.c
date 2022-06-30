@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:12:20 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 18:33:26 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 01:12:42 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_ast	*syntax_analyzer(void)
 {
 	t_ast	*ast;
 
+	ast = NULL;
 	fetch_token(UPDATE);
 	if (syntax_pipe_line(&ast) == SUCCESS_FLAG
 		&& g_manager.quote_error == SUCCESS_FLAG)

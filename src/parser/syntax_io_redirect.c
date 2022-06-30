@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_io_redirect.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:59:57 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 18:20:58 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/30 21:55:54 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ char	*create_heredoc_path(void)
 	heredoc_path = ft_strjoin(tmpdir, cnt_arr);
 	free(tmpdir);
 	free(cnt_arr);
+	cnt++;
 	return (heredoc_path);
 }
 

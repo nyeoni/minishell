@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 19:23:17 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 05:04:54 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 01:01:42 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	test_ast(t_ast *ast)
 	t_pipe_line	*pipe_line;
 
 	printf("*****test_ast*****\n");
-	if (ast->type == AST_PIPELINE)
+	if (ast && ast->type == AST_PIPELINE)
 	{
 		printf("===pipe_line===\n");
 		pipe_line = ast->data;
