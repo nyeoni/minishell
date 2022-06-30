@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_single_command.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 21:18:52 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 19:02:18 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/30 21:13:21 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	exec_single_command(t_command *command)
 {
 	pid_t	pid;
 
-	if (is_builtin(command->simple_command->exec_path))
+	if (command->simple_command
+		&& is_builtin(command->simple_command->exec_path))
 		return (exec_command(command));
 	change_signal();
 	pid = fork();
