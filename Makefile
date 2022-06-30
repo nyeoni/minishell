@@ -6,7 +6,7 @@
 #    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/29 21:20:27 by hannkim          ###   ########.fr        #
+#    Updated: 2022/06/30 14:18:38 by hannkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,24 +102,33 @@ SRCS			= $(addprefix $(SRCS_DIR), $(SRC))
 OBJS 			= $(SRCS:.c=.o)
 
 .c.o:
-	$(CC) $(CFLAGS) -I $(HEADERS) $(CPPFLAGS) -o $@ -c $?
+	@$(CC) $(CFLAGS) -I $(HEADERS) $(CPPFLAGS) -o $@ -c $?
+	@echo $(CUT)$(BOLD)$(MINT) Compiling with $(CFLAGS)...$(RESET)
+	@echo $(CUT)$(MAUVE) [$(notdir $^)] to [$(notdir $@)] $(RESET)
+	@printf $(UP)$(UP)
 
 $(NAME): $(OBJS)
-	make -C $(LIBFT_DIR)
-	$(CC) $(CFLAGS) $(LIB_FLAGS) $(LIBFT_FLAGS) -o $(NAME) $(OBJS)
+	@make -C $(LIBFT_DIR)
+	@$(CC) $(CFLAGS) $(LIB_FLAGS) $(LIBFT_FLAGS) -o $(NAME) $(OBJS)
+	@printf $(CUT)$(CUT)
+	@echo $(BOLD)$(L_PURPLE) ✨BLACKHOLE-SHELL✨ $(GREEN)is ready 🎉 $(RESET)
 
 .PHONY	: all
 all		: $(NAME)
 
 .PHONY	: clean
 clean	:
-	make -C $(LIBFT_DIR) clean
-	$(RM) $(OBJS) a.out a.out.dSYM
+	@make -C $(LIBFT_DIR) clean
+	@$(RM) $(OBJS) a.out a.out.dSYM
+	@echo $(BOLD)$(MAUVE) 🗒 object files $(PINK)have been cleaned....🗑️$(RESET)
+
 
 .PHONY	: fclean
 fclean	: clean
-	make -C $(LIBFT_DIR) fclean
-	$(RM) $(NAME) a.out a.out.dSYM
+	@make -C $(LIBFT_DIR) fclean
+	@$(RM) $(NAME) a.out a.out.dSYM
+	@echo $(BOLD)$(L_PURPLE) ✨BLACKHOLE-SHELL✨ $(PINK)has been cleaned....🗑️$(RESET)
+
 
 .PHONY	: cc
 cc 		: $(NAME) $(SOURCES)
@@ -129,8 +138,38 @@ re		: fclean all
 
 .PHONY	: debug
 debug	:
-	make DEBUG=1 all
+	@make DEBUG=1 all
 
 .PHONY	: leaks
 leaks	:
-	make LEAKS=1 all
+	@make LEAKS=1 all
+
+######################### Color #########################
+GREEN="\033[32m"
+
+L_GREEN="\033[1;32m"
+YELLOW="\033[33m"
+RED="\033[31m"
+L_RED="\033[1;31m"
+BLUE="\033[34m"
+L_BLUE="\033[1;34m"
+MUTED="\033[130m"
+RESET="\033[0m"
+BOLD="\033[1m"
+# L_PURPLE="\033[1;35m"
+MINT="\033[38;5;51m"
+L_PURPLE="\033[38;5;55m"
+MAUVE="\033[38;5;147m"
+PINK="\033[38;5;175m"
+
+L_CYAN="\033[1;36m"
+L_GRAY="\033[1;37m"
+L_WHITE="\033[1;38m"
+L_YELLOW="\033[1;93m"
+UP = "\033[A"
+DOWN = "\033[B"
+RIGHT = "\033[C"
+LEFT = "\033[D"
+CUT = "\033[K"
+SAVE = "\033[s"
+RESTORE = "\033[u"
