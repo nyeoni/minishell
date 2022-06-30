@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 20:01:20 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 22:25:12 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/29 23:20:45 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	redirect_heredoc(char *end_text, char *heredoc_path)
 		if (!line || !ft_strcmp(line, end_text))
 		{
 			free(line);
+			close(fd);
 			return (redirect_in_file(heredoc_path));
 		}
 		ft_putendl_fd(line, fd);
