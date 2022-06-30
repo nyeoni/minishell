@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:57:08 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 18:21:08 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/30 19:25:33 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	syntax_pipe_line(t_ast **ast_pipe_line)
 {
 	t_pipe_line	*pipe_line;
 	t_token		token;
+	char		*pipe;
 
 	init_syntax_pipe_line(ast_pipe_line);
 	pipe_line = (*ast_pipe_line)->data;
@@ -33,10 +34,12 @@ int	syntax_pipe_line(t_ast **ast_pipe_line)
 		return (ERROR_FLAG);
 	if (fetch_token(GET).type == T_PIPE)
 	{
-		if (match(T_PIPE) == NULL)
+		pipe = match(T_PIPE);
+		if (pipe == NULL)
 			return (ERROR_FLAG);
 		if (syntax_pipe_line(&pipe_line->pipe_line))
 			return (ERROR_FLAG);
+		free(pipe);
 	}
 	return (SUCCESS_FLAG);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 16:39:29 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 16:39:39 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 19:44:47 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,17 @@
 
 void	remove_env(t_env *target)
 {
-	t_env	*prev;
+	t_env	*tmp;
 
-	prev = g_manager.env;
-	while (prev->next != target)
-		prev = prev->next;
-	prev->next = target->next;
+	tmp = g_manager.env;
+	if (tmp == target)
+		g_manager.env = tmp->next;
+	else
+	{
+		while (tmp->next != target)
+			tmp = tmp->next;
+		tmp->next = target->next;
+	}
 	free(target->name);
 	free(target->value);
 	free(target);
