@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:11:59 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 21:59:52 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 18:28:21 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	get_quote(t_token *token, char **end)
 	if (!*end)
 	{
 		throw_error("syntax error", NULL, "unexpected end of file");
-		*end = g_manager.command_line + ft_strlen(g_manager.command_line) - 1;
+		*end = g_manager.command_line + ft_strlen(g_manager.command_line);
 		g_manager.quote_error = 1;
 	}
 	else
