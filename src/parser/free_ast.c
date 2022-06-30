@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_ast.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:40:12 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 22:12:16 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 19:26:03 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,5 @@ void	free_ast(t_ast *ast)
 		free_command(ast->data);
 	else if (ast->type == AST_REDIRECTS)
 		free_redirects(ast->data);
-	else if (ast->type == AST_NULL)
-		return ;
+	free(ast);
 }
