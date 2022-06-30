@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:14:23 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 18:16:43 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 05:03:22 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct s_io_redirect
 {
 	t_redirect_op				redirect_op;
 	char						*file_path;
-	char						*heredoc_path;
+	char						*end_text;
 }								t_io_redirect;
 
 #endif

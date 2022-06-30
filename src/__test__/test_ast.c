@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 19:23:17 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 18:56:02 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 05:04:54 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ void	print_io_redirect(t_io_redirect *io_redirect)
 	else if (io_redirect->redirect_op == R_HEREDOC)
 	{
 		redirect_op = "<<";
-		printf("heredoc_path: %s\n", io_redirect->heredoc_path);
+		printf("end_text: %s\n", io_redirect->end_text);
 	}
 	else
 		redirect_op = "redirect_op error";
 	printf("redirect_op: %s\n", redirect_op);
-	printf("argv: %s\n", io_redirect->file_path);
+	printf("file_path: %s\n", io_redirect->file_path);
 }
 
 void	print_redirects(t_ast *ast)

@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:59:57 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 20:38:58 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 16:18:51 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,15 @@ int	syntax_io_redirect(t_io_redirect **io_redirect)
 	else if (!ft_strncmp(redirect_op, "<<", 3))
 	{
 		(*io_redirect)->redirect_op = R_HEREDOC;
-		(*io_redirect)->heredoc_path = create_heredoc_path();
+		(*io_redirect)->file_path = create_heredoc_path();
 	}
 	free(redirect_op);
 	if ((*io_redirect)->redirect_op == R_HEREDOC)
-		(*io_redirect)->file_path = get_combined_heredoc_word();
+		(*io_redirect)->end_text = get_combined_heredoc_word();
 	else
 		(*io_redirect)->file_path = get_combined_word();
+	if ((*io_redirect)->redirect_op == R_HEREDOC && !(*io_redirect)->end_text)
+		return (ERROR_FLAG);
 	if (!(*io_redirect)->file_path)
 		return (ERROR_FLAG);
 	return (SUCCESS_FLAG);
