@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:00:00 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 21:27:17 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/30 13:26:23 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,12 @@ static int	error_execve(char *argv)
 	exit_code = EXIT_FAILURE;
 	if (errno == ENOENT)
 	{
-		exit_code = 127;
+		exit_code = EXIT_ENOENT;
 		throw_error(argv, NULL, "command not found");
 	}
 	else if (errno == EACCES)
 	{
-		exit_code = 126;
+		exit_code = EXIT_EACCES;
 		throw_error(argv, NULL, strerror(errno));
 	}
 	return (exit_code);
