@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/03 22:59:15 by nkim              #+#    #+#              #
-#    Updated: 2022/06/22 20:36:25 by nkim             ###   ########.fr        #
+#    Updated: 2022/06/30 13:46:10 by hannkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,17 +32,17 @@ OBJ	=	$(SRC:.c=.o)
 all : $(NAME)
 
 clean :
-	rm -rf $(OBJ)
+	@rm -rf $(OBJ)
 
 fclean : clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re : fclean all
 
 $(NAME) : $(OBJ)
-	ar $(AFLAGS) $@ $?
+	@ar $(AFLAGS) $@ $?
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $?
+	@$(CC) $(CFLAGS) -c $?
 
 .PHONY : all clean fclean re
