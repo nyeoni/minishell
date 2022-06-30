@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 02:08:50 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 20:25:50 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 13:26:15 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "token.h"
 # include <sys/errno.h>
 
+# define EXIT_EACCES 126
 # define EXIT_ENOENT 127
 # define EXIT_SYNTAXERR 258
 
