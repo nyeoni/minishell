@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/30 04:11:41 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 16:02:57 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "parser.h"
 # include "redirect.h"
 # include "subshell.h"
+# include "signal.h"
 
 /* BUILTIN HEADER FILE */
 # include <readline/history.h>
@@ -93,11 +94,5 @@ int					ft_isspace(int c);
 int					ft_strcmp(char *s1, char *s2);
 
 /* ENV */
-
-/* SIGNAL */
-void				ft_exit_eof(char *command_line);
-void				init_signal(void);
-void				change_signal(void);
-void				handle_sigint_heredoc(int signum);
 
 #endif
