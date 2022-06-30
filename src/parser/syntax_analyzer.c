@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 14:12:20 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 20:53:23 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 18:33:26 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ char	*match(t_type type)
 	return (NULL);
 }
 
-/*
-	TODO: NULL일때 prompt 가 newLine 받는 상태로
-*/
 t_ast	*syntax_analyzer(void)
 {
 	t_ast	*ast;

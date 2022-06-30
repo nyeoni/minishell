@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:36:17 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 21:59:06 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 18:31:44 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,6 @@
 /*
    get_token
    get token for lexical_analyzer
-*/
-/*
-t_token	get_token(void)
-{
-	char	*begin;
-	char	*end;
-	t_token	token;
-
-	token.type = T_NULL;
-	token.value = NULL;
-	if (g_manager.rc >= ft_strlen(g_manager.command_line))
-		return (token); // EOF error
-	lexical_analyzer(&token, &begin, &end);
-	printf("token_type: %d, token_value: %s\n", token.type, token.value);
-	token.value = ft_calloc(end - begin + 1, sizeof(char));
-	if (!token.value)
-		return (token); // malloc error
-	if (!ft_strlcpy(token.value, begin, end - begin + 1))
-		return (token); // copy error
-	g_manager.rc += end - begin;
-	return (token);
-	flag : flag is only for quote_error (exception case)
-}
 */
 t_token	get_token(void)
 {
