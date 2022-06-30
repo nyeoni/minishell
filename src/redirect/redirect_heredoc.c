@@ -6,13 +6,13 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 20:01:20 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 16:04:52 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/30 16:10:37 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static	int end_of_heredoc(char *line, char *heredoc_path, int fd)
+static int	end_of_heredoc(char *line, char *heredoc_path, int fd)
 {
 	free(line);
 	if (close(fd) == -1)
