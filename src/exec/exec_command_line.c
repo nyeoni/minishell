@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_ast.c                                         :+:      :+:    :+:   */
+/*   exec_command_line.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:40:07 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 21:43:53 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/30 17:40:03 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,13 @@ int	exec_ast(t_ast *ast)
 		return (exec_redirects(ast->data));
 	else
 		return (ERROR_FLAG);
+}
+
+int	exec_command_line(t_ast *ast)
+{
+	if (exec_heredoc(ast))
+		return (ERROR_FLAG);
+	if (exec_ast(ast))
+		return (ERROR_FLAG);
+	return (SUCCESS_FLAG);
 }

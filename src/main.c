@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 13:00:35 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/30 17:18:10 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,9 @@ int	main(int argc, char **argv, char **envp)
 			add_history(command_line);
 			init_manger(command_line);
 			ast = syntax_analyzer();
+			test_ast(ast);
 			if (g_manager.exit_code == EXIT_SUCCESS)
-				exec_ast(ast);
+				exec_command_line(ast);
 			reset_minishell(ast, std_fd);
 		}
 	}

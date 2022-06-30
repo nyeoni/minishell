@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 21:26:05 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/26 21:32:17 by nkim             ###   ########.fr       */
+/*   Updated: 2022/06/30 17:39:36 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "ast.h"
 
+int	exec_command_line(t_ast *ast);
+int	exec_heredoc(t_ast *ast);
 int	exec_builtin(char **argv);
 int	exec_general(char **argv);
 int	exec_ast(t_ast *ast);

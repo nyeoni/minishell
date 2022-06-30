@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/30 16:03:46 by hannkim          ###   ########.fr        #
+#    Updated: 2022/06/30 17:38:37 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,8 @@ SRC_TEST_DIR	= __test__/
 SRC_TEST		= test_token.c test_ast.c test_builtin.c test_general.c
 
 SRC_EXEC_DIR	= exec/
-SRC_EXEC		= exec_ast.c exec_general.c exec_builtin.c \
+SRC_EXEC		= exec_command_line.c \
+					exec_heredoc.c exec_general.c exec_builtin.c \
 					exec_subshell.c exec_single_command.c \
 					exec_simple_command.c exec_io_redirect.c
 
