@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/30 18:16:09 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/06/30 18:25:47 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,5 @@ extern t_manager	g_manager;
 
 /* MANAGER */
 void				set_exit_code(int status);
-
-/* UTILS */
-
-
-/* ENV */
 
 #endif
