@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   throw_error_exit.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 02:44:26 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/25 23:11:52 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:15:25 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "error.h"
 
 int	throw_error_exit(char *cmd, char *err, int exit_code)
 {

@@ -6,11 +6,11 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:57:08 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 01:04:00 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:07:55 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "parser.h"
 
 static void	init_syntax_pipe_line(t_ast **ast_pipe_line)
 {

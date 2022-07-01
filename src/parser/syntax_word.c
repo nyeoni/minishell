@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_word.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 21:49:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 18:21:30 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:08:22 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "parser.h"
 
 /*
    extract_env_name

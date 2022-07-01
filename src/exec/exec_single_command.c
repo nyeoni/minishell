@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exec_single_command.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 21:18:52 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 16:15:37 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:55:46 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "bs_signal.h"
+#include "exec.h"
 
 int	exec_single_command(t_command *command)
 {
@@ -20,7 +19,8 @@ int	exec_single_command(t_command *command)
 	if (command->simple_command
 		&& is_builtin(command->simple_command->exec_path))
 		return (exec_command(command));
-	if (!bs_strcmp(*command->simple_command->argv, "./minishell"))
+	if (command->simple_command && !bs_strcmp(*command->simple_command->argv,
+			"./minishell"))
 		multishell_signal();
 	else
 		change_signal();

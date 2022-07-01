@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   throw_error_usage.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 19:58:57 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/28 21:05:38 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:15:40 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "error.h"
 
 /*
 	print usage
-	bash: "cmd": --: invalid option 
+	bash: "cmd": --: invalid option
 	"cmd": usage: "cmd" no option
 */
 int	throw_error_usage(char *cmd, char *argv)

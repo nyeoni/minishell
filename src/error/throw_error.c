@@ -6,11 +6,11 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:59:10 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/27 22:57:15 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:16:00 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "error.h"
 
 /*
    throw_error

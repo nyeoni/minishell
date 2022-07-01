@@ -6,11 +6,11 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 16:36:32 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 17:24:33 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:17:50 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "env.h"
 
 t_env	*get_env(char *identifier)
 {

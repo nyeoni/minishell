@@ -6,11 +6,11 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 21:31:24 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/26 21:31:37 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:12:29 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "exec.h"
 
 int	exec_simple_command(t_simple_command *simple_command)
 {

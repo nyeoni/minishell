@@ -6,11 +6,11 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 04:50:24 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 15:33:04 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:12:07 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "exec.h"
 
 char	*create_heredoc_path(void)
 {

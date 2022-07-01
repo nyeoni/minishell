@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   create_subshell.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 18:24:53 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 16:15:06 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:44:33 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "bs_signal.h"
+#include "subshell.h"
 
 void	close_pipe_fd(int pipe_fd[2])
 {

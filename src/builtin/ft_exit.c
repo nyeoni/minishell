@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:26 by hannkim           #+#    #+#             */
-/*   Updated: 2022/07/01 16:28:38 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 17:10:46 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "builtin.h"
 
 static int	check_lld(unsigned long long res, int sign)
 {
@@ -22,8 +22,8 @@ static int	check_lld(unsigned long long res, int sign)
 }
 
 /*
-	invalid exit_code (out of range long long) => return FALSE;
-	valid exit_code => return TRUE;
+	invalid exit_code (out of range long long) => return (FALSE);
+	valid exit_code => return (TRUE);
 */
 static int	valid_exit_code(const char *s)
 {

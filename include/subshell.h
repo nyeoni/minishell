@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 17:14:36 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/26 21:08:25 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:47:15 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define SUBSHELL_H
 
 # include "ast.h"
+# include "error.h"
+# include "minishell.h"
+# include "bs_signal.h"
+# include <stdio.h>
+# include <stdlib.h>
 # include <unistd.h>
 
 pid_t	create_subshell(t_pipe_line *pipe_line);

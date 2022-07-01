@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   throw_error_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 02:42:08 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/25 21:45:38 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:15:01 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "error.h"
 
 int	throw_error_env(char *cmd, char *argv)
 {

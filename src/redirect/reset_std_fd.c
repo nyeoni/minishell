@@ -6,11 +6,11 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 19:11:30 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 20:18:26 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 15:58:53 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "redirect.h"
 
 int	reset_std_fd(int std_fd[3])
 {

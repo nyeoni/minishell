@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_env_name.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 16:37:30 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 13:43:51 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:45:27 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "env.h"
 
 char	*get_env_name(char *argv)
 {

@@ -6,11 +6,11 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:54:25 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 15:08:14 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:05:18 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "parser.h"
 
 /*
    get_combined_heredoc_word

@@ -6,11 +6,11 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:29:57 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 21:24:36 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 15:55:14 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "redirect.h"
 
 int	backup_std_fd(int std_fd[3])
 {

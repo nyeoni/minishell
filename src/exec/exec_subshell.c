@@ -6,11 +6,11 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 21:18:05 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 18:34:16 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:38:10 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "exec.h"
 
 int	exec_subshell(t_pipe_line *pipe_line)
 {

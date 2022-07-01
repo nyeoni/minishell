@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   bs_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 02:38:41 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/30 18:13:06 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 15:46:41 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "utils.h"
 
 int	bs_strcmp(char *s1, char *s2)
 {
