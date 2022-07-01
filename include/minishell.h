@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/07/01 16:44:04 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:44:53 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,8 @@
 \n"
 
 /* MACRO VARIABLES */
-# define ERROR_FLAG -1
-# define SUCCESS_FLAG 0
 # define TRUE 1
 # define FALSE 0
-# define READ 0
-# define WRITE 1
-# define ERROR 2
 
 # define PS1 "\e[38;5;63m\e[48;5;231m ✦ \e[0m\e[0m\
 \e[38;5;231m\e[48;5;63m\uE0B0\e[0m\e[0m\

@@ -3,22 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 18:27:34 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 21:41:33 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 15:57:45 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef REDIRECT_H
 # define REDIRECT_H
 
+# define READ 0
+# define WRITE 1
+# define ERROR 2
 # define BACKUP_FD 255
 
+# include "error.h"
+# include "minishell.h"
 # include <fcntl.h>
 # include <stdio.h>
-# include <unistd.h>
 # include <sys/ioctl.h>
+# include <unistd.h>
 
 int	redirect_in_file(char *file_path);
 int	redirect_out_file(char *file_path);
