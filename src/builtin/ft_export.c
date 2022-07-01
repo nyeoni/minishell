@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:58:45 by hannkim           #+#    #+#             */
-/*   Updated: 2022/07/01 13:52:33 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 14:19:30 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,21 @@ static void	env_quotes(void)
 
 static void	exec_export(char *argv)
 {
-	t_env	*ptr;
 	char	*name;
+	char	*value;
+	t_env	*ptr;
 
 	name = get_env_name(argv);
+	value = get_env_value(argv);
 	ptr = get_env(name);
 	if (ptr)
 	{
-		if (ptr->value)
-			free(ptr->value);
-		ptr->value = get_env_value(argv);
+		if (value)
+		{
+			if (ptr->value)
+				free(ptr->value);
+			ptr->value = value;
+		}
 		free(name);
 	}
 	else
