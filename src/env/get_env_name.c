@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 16:37:30 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 18:20:37 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 13:43:51 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 char	*get_env_name(char *argv)
 {
 	char	*name;
-	int		len;
+	size_t	len;
 
-	len = ft_strchr(argv, '=') - argv + 1;
+	if (!ft_strchr(argv, '='))
+		len = ft_strlen(argv) + 1;
+	else
+		len = ft_strchr(argv, '=') - argv + 1;
 	name = (char *)bs_calloc(len, sizeof(char));
 	if (!name)
 		exit(EXIT_FAILURE);

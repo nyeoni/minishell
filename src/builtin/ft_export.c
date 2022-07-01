@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:58:45 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/25 23:03:07 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 13:52:33 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,13 @@ static void	env_quotes(void)
 	while (ptr)
 	{
 		ft_putstr_fd(ptr->name, STDOUT_FILENO);
-		write(STDOUT_FILENO, "=\"", 2);
-		ft_putstr_fd(ptr->value, STDOUT_FILENO);
-		write(STDOUT_FILENO, "\"\n", 2);
+		if (ptr->value)
+		{
+			write(STDOUT_FILENO, "=\"", 2);
+			ft_putstr_fd(ptr->value, STDOUT_FILENO);
+			write(STDOUT_FILENO, "\"", 2);
+		}
+		ft_putendl_fd("", STDOUT_FILENO);
 		ptr = ptr->next;
 	}
 }
@@ -36,7 +40,8 @@ static void	exec_export(char *argv)
 	ptr = get_env(name);
 	if (ptr)
 	{
-		free(ptr->value);
+		if (ptr->value)
+			free(ptr->value);
 		ptr->value = get_env_value(argv);
 		free(name);
 	}
@@ -63,13 +68,10 @@ int	ft_export(char **argv)
 	{
 		if (check_option(*argv) == EXIT_FAILURE)
 			exit_code = throw_error_usage("export", *argv) + 1;
-		else if (ft_strchr(*argv, '='))
-		{
-			if (valid_env_name(*argv) == EXIT_FAILURE)
-				exit_code = throw_error_env("export", *argv);
-			else
-				exec_export(*argv);
-		}
+		else if (valid_env_name(*argv) == EXIT_FAILURE)
+			exit_code = throw_error_env("export", *argv);
+		else
+			exec_export(*argv);
 		argv++;
 	}
 	return (exit_code);
