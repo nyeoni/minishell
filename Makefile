@@ -6,7 +6,7 @@
 #    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/06/30 18:14:08 by hannkim          ###   ########.fr        #
+#    Updated: 2022/07/01 16:31:12 by hannkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ SRC_EXEC		= exec_command_line.c \
 					exec_simple_command.c exec_io_redirect.c
 
 SRC_SIGNAL_DIR	= signal/
-SRC_SIGNAL		= init_signal.c change_signal.c handle_signal_heredoc.c
+SRC_SIGNAL		= init_signal.c change_signal.c heredoc_signal.c multishell_signal.c
 
 SRC_UTILS_DIR	= utils/
 SRC_UTILS		= bs_isspace.c bs_exit_eof.c bs_strcmp.c bs_calloc.c

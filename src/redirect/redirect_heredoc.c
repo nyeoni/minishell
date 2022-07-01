@@ -6,11 +6,12 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 20:01:20 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 18:42:52 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:30:11 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "bs_signal.h"
 
 static int	end_of_heredoc(char *line, int fd)
 {
@@ -25,7 +26,7 @@ int	redirect_heredoc(char *end_text, char *heredoc_path)
 	int		fd;
 	char	*line;
 
-	handle_signal_heredoc();
+	heredoc_signal();
 	fd = open(heredoc_path, O_WRONLY | O_CREAT | O_EXCL | O_TRUNC, 0644);
 	if (fd < 0)
 		throw_error_exit("open", strerror(errno), EXIT_FAILURE);

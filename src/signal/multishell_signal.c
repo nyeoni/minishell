@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_signal_heredoc.c                            :+:      :+:    :+:   */
+/*   multishell_signal.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 18:57:12 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/30 16:10:50 by hannkim          ###   ########.fr       */
+/*   Created: 2022/07/01 14:28:29 by hannkim           #+#    #+#             */
+/*   Updated: 2022/07/01 16:31:45 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "bs_signal.h"
 
-static void	handle_sigint_heredoc(int signum)
+static void	handle_sigint_multishell(int signum)
 {
 	if (signum != SIGINT)
 		return ;
-	ioctl(STDIN_FILENO, TIOCSTI, "\n");
-	g_manager.exit_code = 1;
-	return ;
 }
 
-void	handle_signal_heredoc(void)
+/* do nothing */
+static void	handle_sigquit_multishell(int signum)
 {
-	signal(SIGINT, handle_sigint_heredoc);
-	signal(SIGQUIT, SIG_IGN);
+	if (signum != SIGQUIT)
+		return ;
+}
+
+void	multishell_signal(void)
+{
+	signal(SIGINT, handle_sigint_multishell);
+	signal(SIGQUIT, handle_sigquit_multishell);
 }

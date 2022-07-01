@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 23:58:28 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/25 23:03:43 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 13:40:22 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,13 @@ int	ft_env(char **argv)
 		return (throw_error_usage("env", *(argv + 1)));
 	while (ptr)
 	{
-		ft_putstr_fd(ptr->name, STDOUT_FILENO);
-		write(STDOUT_FILENO, "=", 1);
-		ft_putstr_fd(ptr->value, STDOUT_FILENO);
-		write(STDOUT_FILENO, "\n", 1);
+		if (ptr->value)
+		{
+			ft_putstr_fd(ptr->name, STDOUT_FILENO);
+			write(STDOUT_FILENO, "=", 1);
+			ft_putstr_fd(ptr->value, STDOUT_FILENO);
+			write(STDOUT_FILENO, "\n", 1);
+		}
 		ptr = ptr->next;
 	}
 	return (EXIT_SUCCESS);
