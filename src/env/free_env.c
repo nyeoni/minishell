@@ -6,11 +6,11 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 16:38:15 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 16:38:21 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:18:07 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "env.h"
 
 void	free_env(void)
 {

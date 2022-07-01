@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   remove_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 16:39:29 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 19:44:47 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:17:44 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "env.h"
 
 void	remove_env(t_env *target)
 {

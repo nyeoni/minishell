@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   add_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 16:38:53 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 18:20:18 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:16:37 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "env.h"
 
 void	add_env(char *name, char *value)
 {
