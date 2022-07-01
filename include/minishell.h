@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/07/01 16:14:03 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:43:46 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@
 ****************************************\n\
 \n"
 
-/* MECRO VARIABLES */
+/* MACRO VARIABLES */
 # define NULL_LINE 0;
 # define ERROR_FLAG -1
 # define SUCCESS_FLAG 0
@@ -73,7 +73,7 @@
 
 # define PS2 "> "
 
-/* STRUCUTER */
+/* STRUCTURE */
 typedef struct s_manager
 {
 	t_env			*env;
