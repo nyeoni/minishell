@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:40:07 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 17:40:03 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 03:04:31 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ int	exec_ast(t_ast *ast)
 		return (ERROR_FLAG);
 }
 
-int	exec_command_line(t_ast *ast)
+int	exec_command_line(t_ast **ast)
 {
 	if (exec_heredoc(ast))
 		return (ERROR_FLAG);
-	if (exec_ast(ast))
+	if (exec_ast(*ast))
 		return (ERROR_FLAG);
 	return (SUCCESS_FLAG);
 }
