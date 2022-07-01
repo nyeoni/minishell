@@ -6,15 +6,19 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 02:08:50 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 15:57:11 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:15:23 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERROR_H
 # define ERROR_H
 
+# include "../libft/libft.h"
+# include "minishell.h"
 # include "token.h"
+# include <stdlib.h>
 # include <sys/errno.h>
+# include <unistd.h>
 
 # define ERROR_FLAG -1
 # define SUCCESS_FLAG 0
