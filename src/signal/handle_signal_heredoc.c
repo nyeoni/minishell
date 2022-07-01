@@ -6,11 +6,11 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:57:12 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/30 16:10:50 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:11:17 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "bs_signal.h"
 
 static void	handle_sigint_heredoc(int signum)
 {

@@ -6,11 +6,11 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:00:23 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 15:02:25 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:05:14 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "bs_signal.h"
 
 /* rl_replace_line : buffer flush */
 static void	handle_sigint(int signum)

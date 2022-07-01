@@ -6,11 +6,12 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 20:01:20 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 18:42:52 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:14:43 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "bs_signal.h"
 
 static int	end_of_heredoc(char *line, int fd)
 {

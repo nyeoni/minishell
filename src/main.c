@@ -6,12 +6,12 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 15:55:23 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:14:10 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "test.h"
+#include "bs_signal.h"
 
 t_manager	g_manager;
 

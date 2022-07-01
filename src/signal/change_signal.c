@@ -6,11 +6,11 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 21:38:00 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/29 21:38:02 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:12:43 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "bs_signal.h"
 
 static void	change_sigint(int signum)
 {

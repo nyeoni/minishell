@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/30 18:32:21 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:14:03 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include "parser.h"
 # include "redirect.h"
 # include "subshell.h"
-# include "signal.h"
 # include "utils.h"
 
 /* BUILTIN HEADER FILE */

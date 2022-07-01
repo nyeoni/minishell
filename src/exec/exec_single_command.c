@@ -6,11 +6,12 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 21:18:52 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 15:07:56 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:15:37 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "bs_signal.h"
 
 int	exec_single_command(t_command *command)
 {
@@ -20,10 +21,7 @@ int	exec_single_command(t_command *command)
 		&& is_builtin(command->simple_command->exec_path))
 		return (exec_command(command));
 	if (!bs_strcmp(*command->simple_command->argv, "./minishell"))
-	{
-		write(1, "!!!", 4);
 		multishell_signal();
-	}
 	else
 		change_signal();
 	pid = fork();

@@ -6,11 +6,12 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 18:24:53 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/29 21:52:53 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:15:06 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "bs_signal.h"
 
 void	close_pipe_fd(int pipe_fd[2])
 {
