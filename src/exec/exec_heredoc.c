@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 04:50:24 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 03:04:22 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 15:33:04 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static int	exec_redirect_heredoc(t_ast **ast)
 	t_redirects		*redirects;
 	t_io_redirect	*io_redirect;
 
+	token.type = T_NULL;
+	token.value = NULL;
 	flag = SUCCESS_FLAG;
 	redirects = NULL;
 	io_redirect = NULL;
