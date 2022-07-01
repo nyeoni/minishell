@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/07/01 16:46:37 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:51:29 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "exec.h"
 # include "parser.h"
 # include "redirect.h"
+# include "bs_signal.h"
 # include "subshell.h"
 # include "utils.h"
 
@@ -29,7 +30,6 @@
 # include <stdio.h>
 # include <string.h>
 # include <sys/errno.h>
-# include <sys/stat.h>
 
 # define SPLASHTEXT "\n\
 ██████╗*██╗******█████╗**██████╗██╗**██╗\n\
