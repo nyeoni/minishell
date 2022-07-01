@@ -6,11 +6,11 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 21:44:51 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/26 21:09:33 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 15:51:34 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "subshell.h"
 
 void	set_exit_code(int status)
 {
