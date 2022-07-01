@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:26 by hannkim           #+#    #+#             */
-/*   Updated: 2022/07/01 16:45:57 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 17:10:46 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	ft_exit(char **argv)
 		if (*(argv + 2))
 		{
 			ft_putendl_fd("blackhole-shell: exit: too many arguments",
-							STDERR_FILENO);
+				STDERR_FILENO);
 			return (EXIT_FAILURE);
 		}
 	}
