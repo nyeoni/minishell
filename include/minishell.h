@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/07/01 16:44:53 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:46:19 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 # define MINISHELL_H
 
 /* CUSTOM HEADER FILE */
-# include "../libft/libft.h"
 # include "ast.h"
-# include "builtin.h"
 # include "env.h"
 # include "error.h"
 # include "exec.h"
