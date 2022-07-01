@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_combined_word.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:54:25 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 18:13:22 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 15:08:14 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,14 @@
 char	*get_combined_heredoc_word(void)
 {
 	char	*combined_word;
-	char	*token;
 	char	*word;
 	char	*tmp;
 	char	next;
 
 	next = g_manager.command_line[g_manager.rc];
-	token = match(T_WORD);
-	if (!token)
+	if (fetch_token(GET).type != T_WORD)
 		return (NULL);
-	combined_word = syntax_heredoc_word(token);
+	combined_word = syntax_heredoc_word(match(T_WORD));
 	while (!bs_isspace(next) && fetch_token(GET).type == T_WORD)
 	{
 		next = g_manager.command_line[g_manager.rc];
