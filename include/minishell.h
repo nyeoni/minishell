@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/07/01 16:46:19 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:46:37 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,16 @@
 # define PS2 "> "
 
 /* STRUCTURE */
+typedef struct s_env	t_env;
 typedef struct s_manager
 {
-	t_env			*env;
-	char			*command_line;
-	int				rc;
-	int				quote_error;
-	int				exit_code;
-}					t_manager;
+	t_env				*env;
+	char				*command_line;
+	int					rc;
+	int					quote_error;
+	int					exit_code;
+}						t_manager;
 
-extern t_manager	g_manager;
+extern t_manager		g_manager;
 
 #endif

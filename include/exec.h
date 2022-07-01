@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 21:26:05 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 16:11:41 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:38:08 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "env.h"
 # include "error.h"
 # include "minishell.h"
+# include "subshell.h"
 
 int	exec_command_line(t_ast **ast);
 int	exec_heredoc(t_ast **ast);
