@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_simple_command.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:58:37 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 18:21:25 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:08:13 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "parser.h"
 
 /*
    init_simple_command

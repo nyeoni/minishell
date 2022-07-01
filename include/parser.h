@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 03:35:25 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/28 22:12:41 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:05:16 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define PARSER_H
 
 # include "ast.h"
+# include "minishell.h"
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef enum e_fetch_type
 {

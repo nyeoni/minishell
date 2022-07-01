@@ -6,11 +6,11 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:40:12 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 01:10:35 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:03:42 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "parser.h"
 
 void	free_redirects(t_redirects *redirects)
 {
