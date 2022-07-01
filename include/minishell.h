@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/07/01 16:43:46 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:44:04 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@
 \n"
 
 /* MACRO VARIABLES */
-# define NULL_LINE 0;
 # define ERROR_FLAG -1
 # define SUCCESS_FLAG 0
 # define TRUE 1
@@ -84,8 +83,5 @@ typedef struct s_manager
 }					t_manager;
 
 extern t_manager	g_manager;
-
-/* MANAGER */
-void				set_exit_code(int status);
 
 #endif

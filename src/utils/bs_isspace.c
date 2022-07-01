@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   bs_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 20:09:45 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 18:13:24 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 15:46:04 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "utils.h"
 
 int	bs_isspace(int c)
 {
-	if (c == '\t' || c == '\n' || c == '\v'
-		|| c == '\f' || c == '\r' || c == ' ')
+	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'
+		|| c == ' ')
 		return (1);
 	else
 		return (0);
