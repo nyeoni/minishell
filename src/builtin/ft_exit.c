@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:26 by hannkim           #+#    #+#             */
-/*   Updated: 2022/06/27 13:24:39 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 15:47:55 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,23 @@ static unsigned char	check_exit_arg(char *arg)
 	return (exit_code);
 }
 
-void	ft_exit(char **argv)
+int	ft_exit(char **argv)
 {
 	unsigned char	exit_code;
 
 	exit_code = EXIT_SUCCESS;
 	ft_putstr_fd("exit\n", STDOUT_FILENO);
-	free_env();
 	if (*(argv + 1))
+	{
 		exit_code = check_exit_arg(*(argv + 1));
+		if (*(argv + 2))
+		{
+			ft_putendl_fd("blackhole-shell: exit: too many arguments",
+				STDERR_FILENO);
+			return (EXIT_FAILURE);
+		}
+	}
+	free_env();
 	exit(exit_code);
+	return (EXIT_SUCCESS);
 }
