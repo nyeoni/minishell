@@ -6,14 +6,19 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 21:26:05 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 02:36:38 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:11:41 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXEC_H
 # define EXEC_H
 
+# include "../libft/libft.h"
 # include "ast.h"
+# include "builtin.h"
+# include "env.h"
+# include "error.h"
+# include "minishell.h"
 
 int	exec_command_line(t_ast **ast);
 int	exec_heredoc(t_ast **ast);

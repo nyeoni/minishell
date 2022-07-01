@@ -6,11 +6,11 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 21:31:57 by nkim              #+#    #+#             */
-/*   Updated: 2022/06/30 16:26:04 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/01 16:12:16 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "exec.h"
 
 int	exec_io_redirect(t_io_redirect *io_redirect)
 {
