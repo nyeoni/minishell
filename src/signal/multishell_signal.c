@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_signal.c                                      :+:      :+:    :+:   */
+/*   multishell_signal.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/24 17:00:23 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 15:02:25 by hannkim          ###   ########.fr       */
+/*   Created: 2022/07/01 14:28:29 by hannkim           #+#    #+#             */
+/*   Updated: 2022/07/01 15:48:55 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/* rl_replace_line : buffer flush */
-static void	handle_sigint(int signum)
+static void	multishell_sigint(int signum)
 {
 	if (signum != SIGINT)
 		return ;
-	write(1, "\n", 1);
-	rl_replace_line("", 1);
-	rl_on_new_line();
-	rl_redisplay();
-	g_manager.exit_code = 1;
 }
 
-/* SIGINT : ctrl + c, SIGQUIT : ctrl + \ */
-void	init_signal(void)
+/* do nothing */
+static void	multishell_sigquit(int signum)
 {
-	signal(SIGINT, handle_sigint);
-	signal(SIGQUIT, SIG_IGN);
+	if (signum != SIGQUIT)
+		return ;
+}
+
+void	multishell_signal(void)
+{
+	signal(SIGINT, multishell_sigint);
+	signal(SIGQUIT, multishell_sigquit);
 }
