@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:26 by hannkim           #+#    #+#             */
-/*   Updated: 2022/07/01 15:47:55 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:28:38 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,5 @@ int	ft_exit(char **argv)
 	}
 	free_env();
 	exit(exit_code);
-	return (EXIT_SUCCESS);
+	return (EXIT_FAILURE);
 }

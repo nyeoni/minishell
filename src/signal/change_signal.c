@@ -6,13 +6,13 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 21:38:00 by hannkim           #+#    #+#             */
-/*   Updated: 2022/07/01 16:12:43 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/01 16:29:27 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bs_signal.h"
 
-static void	change_sigint(int signum)
+static void	handle_sigint_change(int signum)
 {
 	if (signum != SIGINT)
 		return ;
@@ -20,7 +20,7 @@ static void	change_sigint(int signum)
 }
 
 /* do nothing */
-static void	change_sigquit(int signum)
+static void	handle_sigquit_change(int signum)
 {
 	if (signum != SIGQUIT)
 		return ;
@@ -33,6 +33,6 @@ static void	change_sigquit(int signum)
 */
 void	change_signal(void)
 {
-	signal(SIGINT, change_sigint);
-	signal(SIGQUIT, change_sigquit);
+	signal(SIGINT, handle_sigint_change);
+	signal(SIGQUIT, handle_sigquit_change);
 }
