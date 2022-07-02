@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:26 by hannkim           #+#    #+#             */
-/*   Updated: 2022/07/01 17:10:46 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/02 18:56:21 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,15 @@ static int	valid_exit_code(const char *s)
 
 /*
 	<exit_code>
-	string => 255 ("numeric argument required")
-	0~255 => 0~255
-	out of range 0~255 => overflow operation
-	long long MAX => 255
+	string => EXIT_MAX ("numeric argument required")
+	0~EXIT_MAX => 0~255
+	out of range 0~EXIT_MAX => overflow operation
+	long long MAX => EXIT_MAX
 	long long MIN => 0
-	out of range long long => 255 ("numeric argument required")
+	out of range long long => EXIT_MAX ("numeric argument required")
 */
 static unsigned char	check_exit_arg(char *arg)
 {
-	unsigned char	exit_code;
 	char			*ptr;
 
 	ptr = arg;
@@ -71,16 +70,17 @@ static unsigned char	check_exit_arg(char *arg)
 	{
 		if (!ft_isdigit(*ptr))
 		{
-			exit_code = 255;
-			return (exit_code);
+			throw_error("exit", ptr, "numeric argument required");
+			exit(EXIT_MAX);
 		}
 		ptr++;
 	}
-	if (valid_exit_code(arg) != 1)
-		exit_code = 255;
-	else
-		exit_code = ft_atoi(arg);
-	return (exit_code);
+	if (valid_exit_code(arg) == FALSE)
+	{
+		throw_error("exit", ptr, "numeric argument required");
+		exit(EXIT_MAX);
+	}
+	return (ft_atoi(arg));
 }
 
 int	ft_exit(char **argv)
@@ -93,11 +93,7 @@ int	ft_exit(char **argv)
 	{
 		exit_code = check_exit_arg(*(argv + 1));
 		if (*(argv + 2))
-		{
-			ft_putendl_fd("blackhole-shell: exit: too many arguments",
-				STDERR_FILENO);
-			return (EXIT_FAILURE);
-		}
+			return (throw_error("exit", NULL, "too many arguments"));
 	}
 	free_env();
 	exit(exit_code);
