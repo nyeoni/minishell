@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:57:08 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 16:07:55 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/03 14:32:24 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	syntax_pipe_line(t_ast **ast_pipe_line)
 	char		*pipe;
 
 	token = fetch_token(GET);
-	if (token.type == T_NULL)
-		return (SUCCESS_FLAG);
 	if (!(token.type == T_WORD || token.type == T_REDIRECT))
 		return (throw_error_syntax(token));
 	init_syntax_pipe_line(ast_pipe_line);
