@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:26 by hannkim           #+#    #+#             */
-/*   Updated: 2022/07/02 18:56:21 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/03 16:22:10 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,21 @@ static int	valid_exit_code(const char *s)
 	char				*ptr;
 	unsigned long long	res;
 	int					sign;
-	int					count;
 
 	ptr = (char *)s;
 	res = 0;
-	count = 0;
 	sign = 1;
 	if (*ptr == '-')
 	{
 		sign = -1;
 		ptr++;
 	}
-	while (*ptr && count < 19)
+	while (*ptr)
 	{
+		if (res > res * 10 + (*ptr - '0'))
+			return (FALSE);
 		res = res * 10 + (*ptr - '0');
 		ptr++;
-		count++;
 	}
 	return (check_lld(res, sign));
 }
@@ -88,7 +87,7 @@ int	ft_exit(char **argv)
 	unsigned char	exit_code;
 
 	exit_code = EXIT_SUCCESS;
-	ft_putstr_fd("exit\n", STDOUT_FILENO);
+	ft_putstr_fd("exit\n", STDERR_FILENO);
 	if (*(argv + 1))
 	{
 		exit_code = check_exit_arg(*(argv + 1));
