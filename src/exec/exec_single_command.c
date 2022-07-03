@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 21:18:52 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/03 16:50:32 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/03 17:52:09 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,13 @@ static int	exec_single_builtin(t_simple_command *simple_command)
 
 int	exec_single_command(t_command *command)
 {
+	int	flag;
+
+	flag = SUCCESS_FLAG;
+	if (command->redirects)
+		flag = exec_ast(command->redirects);
+	if (flag != SUCCESS_FLAG)
+		return (ERROR_FLAG);
 	if (command->simple_command
 		&& is_builtin(command->simple_command->exec_path))
 		return (exec_single_builtin(command->simple_command));
