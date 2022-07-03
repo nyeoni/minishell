@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/03 14:32:46 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/03 20:50:12 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int	main(int argc, char **argv, char **envp)
 			ast = syntax_analyzer();
 			if (ast && g_manager.exit_code == EXIT_SUCCESS)
 				exec_command_line(&ast);
+			else if (fetch_token(GET).value)
+				free(fetch_token(GET).value);
 			reset_minishell(ast, std_fd);
 		}
 		free(command_line);
