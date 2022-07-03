@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_env_name.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 16:37:01 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 16:45:35 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/03 18:19:05 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	valid_env_name(char *identifier)
 	while (*ptr && *ptr != '=')
 	{
 		if (((*ptr < 'a' || *ptr > 'z') && (*ptr < 'A' || *ptr > 'Z'))
-			&& (*ptr != '_') && ((*ptr >= '0' && *ptr <= '9')))
+			&& (*ptr != '_') && ((*ptr < '0' || *ptr > '9')))
 			return (EXIT_FAILURE);
 		ptr++;
 	}
