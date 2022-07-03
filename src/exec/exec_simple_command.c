@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 21:31:24 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 16:12:29 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/03 16:40:42 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	exec_simple_command(t_simple_command *simple_command)
 {
 	int	exit_code;
 
+	if (!bs_strcmp(simple_command->exec_path, "exit"))
+		redirect_out_trash();
 	if (is_builtin(simple_command->exec_path))
 		exit_code = exec_builtin(simple_command->argv);
 	else
