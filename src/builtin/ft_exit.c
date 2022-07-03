@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:20:26 by hannkim           #+#    #+#             */
-/*   Updated: 2022/07/03 16:22:10 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/03 17:24:02 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	check_lld(unsigned long long res, int sign)
 	invalid exit_code (out of range long long) => return (FALSE);
 	valid exit_code => return (TRUE);
 */
-static int	valid_exit_code(const char *s)
+int	valid_exit_code(const char *s)
 {
 	char				*ptr;
 	unsigned long long	res;
@@ -58,9 +58,9 @@ static int	valid_exit_code(const char *s)
 	long long MIN => 0
 	out of range long long => EXIT_MAX ("numeric argument required")
 */
-static unsigned char	check_exit_arg(char *arg)
+unsigned char	check_exit_arg(char *arg)
 {
-	char			*ptr;
+	char	*ptr;
 
 	ptr = arg;
 	if (*ptr == '-')

@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 21:18:52 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/03 16:39:57 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/03 16:50:32 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static int	exec_single_general(t_simple_command *simple_command)
 		throw_error_exit("fork", strerror(errno), EXIT_FAILURE);
 	else if (pid == 0)
 	{
-		exec_general(simple_command->argv);
+		exit_code = exec_general(simple_command->argv);
+		g_manager.exit_code = exit_code;
 		exit(g_manager.exit_code);
 	}
 	else
@@ -50,9 +51,6 @@ static int	exec_single_builtin(t_simple_command *simple_command)
 
 int	exec_single_command(t_command *command)
 {
-	pid_t	pid;
-	int		exit_code;
-
 	if (command->simple_command
 		&& is_builtin(command->simple_command->exec_path))
 		return (exec_single_builtin(command->simple_command));
