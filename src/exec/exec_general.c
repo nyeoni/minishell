@@ -6,7 +6,7 @@
 /*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:00:00 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/03 15:19:59 by hannkim          ###   ########.fr       */
+/*   Updated: 2022/07/03 16:12:58 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,16 @@ int	exec_general(char **argv)
 	char	**envp;
 	char	*filename;
 
+	envp = get_string_env();
 	if (ft_strchr(*argv, '/') == NULL)
 	{
 		if (get_env(PATHENV))
 			filename = bs_find_path(*argv);
 	}
+	else
+		filename = ft_strdup(*argv);
 	if (!argv[0][0])
 		throw_error_exit(argv[0], "command not found", EXIT_ENOENT);
-	envp = get_string_env();
 	execve(filename, argv, envp);
 	return (error_execve(*argv));
 }
