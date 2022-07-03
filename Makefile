@@ -6,7 +6,7 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/07/03 16:41:09 by nkim             ###   ########.fr        #
+#    Updated: 2022/07/03 17:38:18 by hannkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,17 +21,8 @@ else
 	CFLAGS 		= -Wall -Wextra -Werror
 endif
 
-GITUSER := $(USER)
-ifeq ($(GITUSER), chloek)
-	LDFLAGS		= -L/usr/local/opt/readline/lib
-	CPPFLAGS	= -I/usr/local/opt/readline/include
-else ifeq ($(GITUSER), hannkim)
-	LDFLAGS		= -L/opt/homebrew/Cellar/readline/8.1.2/lib
-	CPPFLAGS	= -I/opt/homebrew/Cellar/readline/8.1.2/include
-else
-	LDFLAGS		:= $(LDFLAGS)
-	CPPFLAGS	:= $(CPPFLAGS)
-endif
+LDFLAGS		:= $(LDFLAGS)
+CPPFLAGS	:= $(CPPFLAGS)
 
 AR				= ar rcs
 RM				= rm -f

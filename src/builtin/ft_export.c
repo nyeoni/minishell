@@ -24,9 +24,9 @@ static void	env_quotes(void)
 		{
 			write(STDOUT_FILENO, "=\"", 2);
 			ft_putstr_fd(ptr->value, STDOUT_FILENO);
-			write(STDOUT_FILENO, "\"", 2);
+			write(STDOUT_FILENO, "\"", 1);
 		}
-		ft_putendl_fd("", STDOUT_FILENO);
+		write(STDOUT_FILENO, "\n", 1);
 		ptr = ptr->next;
 	}
 }
