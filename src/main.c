@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:17:33 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 17:03:30 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/03 14:32:46 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,23 @@
 
 t_manager	g_manager;
 
-void	init_manger(char *command_line)
+static void	init_manger(char *command_line)
 {
 	g_manager.command_line = command_line;
 	g_manager.rc = 0;
 	g_manager.quote_error = 0;
 }
 
-void	reset_minishell(t_ast *ast, int std_fd[3])
+static void	reset_minishell(t_ast *ast, int std_fd[3])
 {
 	free_ast(ast);
 	reset_std_fd(std_fd);
 }
 
-void	init_minishell(int argc, char **argv, char **envp, int std_fd[3])
+static void	init_minishell(int argc, char **argv, char **envp, int std_fd[3])
 {
+	t_env	*oldpwd;
+
 	if (argc > 1)
 		throw_error_exit(argv[1], strerror(ENOENT), EXIT_ENOENT);
 	write(STDOUT_FILENO, SPLASHTEXT, 1934);
@@ -37,6 +39,13 @@ void	init_minishell(int argc, char **argv, char **envp, int std_fd[3])
 	{
 		add_env(get_env_name(*envp), get_env_value(*envp));
 		envp++;
+	}
+	oldpwd = get_env("OLDPWD");
+	if (oldpwd)
+	{
+		if (oldpwd->value)
+			free(oldpwd->value);
+		oldpwd->value = NULL;
 	}
 }
 
