@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 02:08:50 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 16:15:23 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/02 18:49:50 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define SUCCESS_FLAG 0
 # define EXIT_EACCES 126
 # define EXIT_ENOENT 127
+# define EXIT_MAX 255
 # define EXIT_SYNTAXERR 258
 
 int	throw_error(char *cmd, char *argv, char *err);

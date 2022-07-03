@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_general.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:00:00 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 16:11:43 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/03 15:19:59 by hannkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	**get_string_env(void)
 	if (!ret)
 		exit(EXIT_FAILURE);
 	i = 0;
-	while (ptr)
+	while (ptr && ptr->value)
 	{
 		tmp = ft_strjoin(ptr->name, "=");
 		ret[i] = ft_strjoin(tmp, ptr->value);
@@ -51,28 +51,6 @@ static char	**get_string_env(void)
 		i++;
 	}
 	return (ret);
-}
-
-/* find and return file's path (filename) */
-static char	*find_file(char *cmd, char **path)
-{
-	char		*filename;
-	char		*tmp;
-	struct stat	buf;
-	int			i;
-
-	i = 0;
-	while (path[i])
-	{
-		tmp = ft_strjoin(path[i], "/");
-		filename = ft_strjoin(tmp, cmd);
-		free(tmp);
-		if (stat(filename, &buf) != -1)
-			return (filename);
-		free(filename);
-		i++;
-	}
-	return (ft_strdup(cmd));
 }
 
 static int	error_execve(char *argv)
@@ -97,26 +75,16 @@ static int	error_execve(char *argv)
 int	exec_general(char **argv)
 {
 	char	**envp;
-	char	**path;
 	char	*filename;
-	int		i;
 
-	if (get_env(PATHENV))
-		path = ft_split(get_env(PATHENV)->value, ':');
-	else
+	if (ft_strchr(*argv, '/') == NULL)
 	{
-		path = (char **)bs_calloc(2, sizeof(char *));
-		*path = ft_strdup(".");
+		if (get_env(PATHENV))
+			filename = bs_find_path(*argv);
 	}
-	filename = find_file(*argv, path);
+	if (!argv[0][0])
+		throw_error_exit(argv[0], "command not found", EXIT_ENOENT);
 	envp = get_string_env();
-	i = 0;
-	while (path[i])
-	{
-		free(path[i]);
-		i++;
-	}
-	free(path);
 	execve(filename, argv, envp);
 	return (error_execve(*argv));
 }
