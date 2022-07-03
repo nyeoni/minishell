@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 04:59:05 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 16:08:05 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/03 20:18:37 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,11 @@ static void	init_syntax_redirects(t_ast **ast_redirects)
 */
 int	syntax_redirects(t_ast **ast_redirects)
 {
-	int			flag;
 	t_redirects	*redirects;
 
-	flag = SUCCESS_FLAG;
 	init_syntax_redirects(ast_redirects);
 	redirects = (*ast_redirects)->data;
 	if (syntax_io_redirect(&redirects->io_redirect))
 		return (ERROR_FLAG);
-	if (fetch_token(GET).type == T_REDIRECT)
-		flag |= syntax_redirects(&redirects->redirects);
-	return (flag);
+	return (SUCCESS_FLAG);
 }

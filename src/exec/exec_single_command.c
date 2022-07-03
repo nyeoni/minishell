@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 21:18:52 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/03 17:52:09 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/03 20:05:32 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	exec_single_command(t_command *command)
 	if (command->simple_command
 		&& is_builtin(command->simple_command->exec_path))
 		return (exec_single_builtin(command->simple_command));
-	else
+	else if (command->simple_command)
 		return (exec_single_general(command->simple_command));
+	return (flag);
 }
