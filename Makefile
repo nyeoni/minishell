@@ -6,7 +6,7 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/07/03 17:38:18 by hannkim          ###   ########.fr        #
+#    Updated: 2022/07/04 16:48:39 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,17 @@ else
 	CFLAGS 		= -Wall -Wextra -Werror
 endif
 
-LDFLAGS		:= $(LDFLAGS)
-CPPFLAGS	:= $(CPPFLAGS)
+ARCH := $(shell arch)
+ifeq ($(ARCH), i386)
+	LDFLAGS		= -L$(HOME)/.brew/opt/readline/lib
+	CPPFLAGS	= -I$(HOME)/.brew/opt/readline/include
+else ifeq ($(ARCH), arm64)
+	LDFLAGS		= -L/opt/homebrew/opt/readline/lib
+	CPPFLAGS	= -I/opt/homebrew/opt/readline/include
+else
+	LDFLAGS		:= $(LDFLAGS)
+	CPPFLAGS	:= $(CPPFLAGS)
+endif
 
 AR				= ar rcs
 RM				= rm -f
