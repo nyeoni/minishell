@@ -25,7 +25,7 @@ brew install readline
 ### 📦 Installation
 
 ```shell
-$ git clone https://github.com/Chloekkk/minishell.git
+git clone https://github.com/Chloekkk/minishell.git
 ```
 
 simply clone the repeository and install it
@@ -34,7 +34,7 @@ simply clone the repeository and install it
 ### 🚀 Run
 
 ```shell
-$ make
+make
 ```
 
 ### :tada: Special Thanks to
