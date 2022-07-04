@@ -4,10 +4,10 @@
 
 The objective of this project is for you to create a simple shell. Yes, your little bash or zsh. You will learn a lot about processes and file descriptors.
 
-<h1 align="center">
-  <p align="center">:sparkles: Blackhole-Shell :sparkles:</p>
+<h3 align="center">
+  <p align="center">:sparkles: Blackhole-Shell Preview :sparkles:</p>
    <img width="50%" src="https://user-images.githubusercontent.com/51353146/177104676-e7b2fc40-2ce7-40b3-95f3-9dbb5e7fe92f.gif" />
-</h1>
+</h3>
 
 ## 🚩 Getting Started
 
