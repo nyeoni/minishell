@@ -37,6 +37,9 @@ simply clone the repeository and install it
 make
 ```
 
+### 📖 Wiki
+- [Blackhole-shell WIKI](https://github.com/Chloekkk/minishell/wiki)
+
 ### :tada: Special Thanks to
 - [@yongjule](https://github.com/yongjulejule)
 - [@jiskim](https://github.com/jis-kim)
