@@ -31,6 +31,7 @@ git clone https://github.com/Chloekkk/minishell.git
 **docker**
 ```shell
 docker pull ghcr.io/chloekkk/blackholeshell:1.0.0
+docker run -it blackholeshell:1.0.0 
 ```
 
 simply clone the repeository and install it
