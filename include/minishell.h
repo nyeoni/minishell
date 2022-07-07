@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 18:35:25 by hannkim           #+#    #+#             */
-/*   Updated: 2022/07/01 16:51:29 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/05 18:12:15 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@
 # include "bs_signal.h"
 # include "subshell.h"
 # include "utils.h"
+# include "libft.h"
 
 /* BUILTIN HEADER FILE */
+# include <stdio.h>
 # include <readline/history.h>
 # include <readline/readline.h>
-# include <stdio.h>
 # include <string.h>
 # include <sys/errno.h>
 

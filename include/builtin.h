@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 03:33:04 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/03 17:20:03 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/07 13:40:35 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define BUILTIN_H
 
 # include "error.h"
+# include "libft.h"
 
 int				is_builtin(char *exec_path);
 int				check_option(char *argv);
