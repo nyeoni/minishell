@@ -6,12 +6,12 @@
 #    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 14:54:52 by hannkim           #+#    #+#              #
-#    Updated: 2022/07/04 16:48:39 by nkim             ###   ########.fr        #
+#    Updated: 2022/07/07 16:38:52 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= minishell
-CC 				= cc
+CC 				= gcc
 
 ifdef DEBUG
 	CFLAGS		= -g3 -fsanitize=address
@@ -21,28 +21,34 @@ else
 	CFLAGS 		= -Wall -Wextra -Werror
 endif
 
-ARCH := $(shell arch)
-ifeq ($(ARCH), i386)
-	LDFLAGS		= -L$(HOME)/.brew/opt/readline/lib
-	CPPFLAGS	= -I$(HOME)/.brew/opt/readline/include
-else ifeq ($(ARCH), arm64)
-	LDFLAGS		= -L/opt/homebrew/opt/readline/lib
-	CPPFLAGS	= -I/opt/homebrew/opt/readline/include
-else
+UNAME_S	:= $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+	CCFLAGS += -D LINUX
 	LDFLAGS		:= $(LDFLAGS)
 	CPPFLAGS	:= $(CPPFLAGS)
+	LIB_FLAGS	= -lreadline $(LDFLAGS) $(CPPFLAGS)
+endif
+ifeq ($(UNAME_S),Darwin)
+	ifeq ($(LDFLAGS), "FALSE")
+		$(shell $(brew install readline | brew info readline | grep export))
+	else ifeq ($(CPPFLAGS), "FALSE")
+		$(shell $(brew install readline | brew info readline | grep export))
+	endif
+	LDFLAGS		:= $(LDFLAGS)
+	CPPFLAGS	:= $(CPPFLAGS)
+	LIB_FLAGS	= -lreadline $(LDFLAGS) $(CPPFLAGS)
 endif
 
 AR				= ar rcs
 RM				= rm -f
 
-HEADERS 		= ./include/
 SRCS_DIR		= ./src/
+HEADERS 		= -I./include/
 
-LIBFT_DIR 		= libft/
-LIBFT_FLAGS		= -L ./$(LIBFT_DIR) -lft
+LIBFT_DIR 		= ./libft/
+LIBFT_HEADERS	= -I$(LIBFT_DIR)
+LIBFT_FLAGS		= -lft -L$(LIBFT_DIR) $(LIBFT_HEADERS)
 
-LIB_FLAGS		= -lreadline $(LDFLAGS) $(CPPFLAGS)
 
 SRC_PARSER_DIR	= parser/
 SRC_PARSER		= lexical_analyzer.c syntax_analyzer.c token.c \
@@ -103,14 +109,14 @@ SRCS			= $(addprefix $(SRCS_DIR), $(SRC))
 OBJS 			= $(SRCS:.c=.o)
 
 .c.o:
-	@$(CC) $(CFLAGS) -I $(HEADERS) $(CPPFLAGS) -o $@ -c $?
+	@$(CC) $(CFLAGS) -o $@ -c $^  $(HEADERS) $(CPPFLAGS) $(LIBFT_HEADERS)
 	@echo $(CUT)$(BOLD)$(MINT) Compiling with $(CFLAGS)...$(RESET)
 	@echo $(CUT)$(MAUVE) [$(notdir $^)] to [$(notdir $@)] $(RESET)
 	@printf $(UP)$(UP)
 
 $(NAME): $(OBJS)
-	@make -C $(LIBFT_DIR)
-	@$(CC) $(CFLAGS) $(LIB_FLAGS) $(LIBFT_FLAGS) -o $(NAME) $(OBJS)
+	@make -C $(LIBFT_DIR) all
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIB_FLAGS) $(LIBFT_FLAGS)
 	@printf $(CUT)$(CUT)
 	@echo $(BOLD)$(L_PURPLE) ✨BLACKHOLE-SHELL✨ $(GREEN)is ready 🎉 $(RESET)
 

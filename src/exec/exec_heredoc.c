@@ -6,7 +6,7 @@
 /*   By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 04:50:24 by nkim              #+#    #+#             */
-/*   Updated: 2022/07/01 16:12:07 by nkim             ###   ########.fr       */
+/*   Updated: 2022/07/05 02:26:05 by nkim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*create_heredoc_path(void)
 {
-	unsigned static int	cnt;
+	static unsigned int	cnt;
 	char				*cnt_arr;
 	char				*heredoc_path;
 	char				*tmpdir;

@@ -3,18 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hannkim <hannkim@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: nkim <nkim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/03 22:59:15 by nkim              #+#    #+#              #
-#    Updated: 2022/06/30 13:46:10 by hannkim          ###   ########.fr        #
+#    Updated: 2022/07/07 16:39:41 by nkim             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
-CC = gcc
-AFLAGS = rcs
-CFLAGS = -Wall -Wextra -Werror
-SRCS = *.c
+NAME	= libft.a
+HEADERS	= -I.
+
+CC		= gcc
+CFLAGS	= -Wall -Wextra -Werror
+
+AR		= ar
+AFLAGS	= rcs
 SRC	=	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c\
 		ft_memmove.c ft_memchr.c ft_memcmp.c ft_strlen.c\
 		ft_strlcpy.c ft_strlcat.c ft_strchr.c ft_strrchr.c\
@@ -40,9 +43,9 @@ fclean : clean
 re : fclean all
 
 $(NAME) : $(OBJ)
-	@ar $(AFLAGS) $@ $?
+	@$(AR) $(AFLAGS) $@ $^
 
 %.o : %.c
-	@$(CC) $(CFLAGS) -c $?
+	@$(CC) $(CFLAGS) $(HEADERS) -c $?
 
 .PHONY : all clean fclean re
