@@ -14,38 +14,36 @@ The objective of this project is for you to create a simple shell. Yes, your lit
 ### :seedling: Pre-Installation
 - GNU readline
 
-**Homebrew**
-```shell
-brew install readline
-```
+- **Homebrew**
+  ```shell
+  brew install readline
+  ```
 
-**Others** : [The GNU Readline Library](https://tiswww.case.edu/php/chet/readline/rltop.html)
+- **Others** : [The GNU Readline Library](https://tiswww.case.edu/php/chet/readline/rltop.html)
 
 
 ### 📦 Installation
-**github repo**
-```shell
-git clone https://github.com/Chloekkk/minishell.git
-```
+- **github repo**
+  ```shell
+  git clone https://github.com/Chloekkk/minishell.git
+  ```
 
-**docker**
-```shell
-docker pull ghcr.io/chloekkk/blackholeshell:1.0.0
-```
-
-simply clone the repeository and install it
+- **docker**
+  ```shell
+  docker pull ghcr.io/chloekkk/blackholeshell:1.0.0
+  ```
 
 
 ### 🚀 Run
-**github repo**
-```shell
-make
-```
+- **github repo**
+  ```shell
+  make
+  ```
 
-**docker**
-```shell
-docker run -it ghcr.io/chloekkk/blackholeshell:1.0.0
-```
+- **docker**
+  ```shell
+  docker run -it ghcr.io/chloekkk/blackholeshell:1.0.0
+  ```
 
 ### 📖 Wiki
 - [Blackhole-shell WIKI](https://github.com/Chloekkk/minishell/wiki)
