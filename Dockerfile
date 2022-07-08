@@ -1,6 +1,8 @@
 # Specify the parent image from which we build
 FROM gcc:latest
 
+LABEL org.opencontainers.image.source=ghcr.io/chloekkk/blackholeshell
+
 # Set the working directory
 WORKDIR /minishell
 
