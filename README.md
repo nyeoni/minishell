@@ -23,7 +23,7 @@ brew install readline
 
 
 ### 📦 Installation
-**github**
+**github repo**
 ```shell
 git clone https://github.com/Chloekkk/minishell.git
 ```
@@ -31,16 +31,20 @@ git clone https://github.com/Chloekkk/minishell.git
 **docker**
 ```shell
 docker pull ghcr.io/chloekkk/blackholeshell:1.0.0
-docker run -it ghcr.io/chloekkk/blackholeshell:1.0.0
 ```
 
 simply clone the repeository and install it
 
 
 ### 🚀 Run
-
+**github repo**
 ```shell
 make
+```
+
+**docker**
+```shell
+docker run -it ghcr.io/chloekkk/blackholeshell:1.0.0
 ```
 
 ### 📖 Wiki
