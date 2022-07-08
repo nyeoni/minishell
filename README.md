@@ -9,9 +9,7 @@ The objective of this project is for you to create a simple shell. Yes, your lit
    <img width="50%" src="https://user-images.githubusercontent.com/51353146/177104676-e7b2fc40-2ce7-40b3-95f3-9dbb5e7fe92f.gif" />
 </h3>
 
-## 🚩 Getting Started
-
-### :seedling: Pre-Installation
+## :seedling: Pre-Installation
 - GNU readline
 
 - **Homebrew**
@@ -22,7 +20,7 @@ The objective of this project is for you to create a simple shell. Yes, your lit
 - **Others** : [The GNU Readline Library](https://tiswww.case.edu/php/chet/readline/rltop.html)
 
 
-### 📦 Installation
+## 📦 Installation
 - **github repo**
   ```shell
   git clone https://github.com/Chloekkk/minishell.git
@@ -34,7 +32,7 @@ The objective of this project is for you to create a simple shell. Yes, your lit
   ```
 
 
-### 🚀 Run
+## 🚀 Run
 - **github repo**
   ```shell
   make
@@ -45,10 +43,10 @@ The objective of this project is for you to create a simple shell. Yes, your lit
   docker run -it ghcr.io/chloekkk/blackholeshell:1.0.0
   ```
 
-### 📖 Wiki
+## 📖 Wiki
 - [Blackhole-shell WIKI](https://github.com/Chloekkk/minishell/wiki)
 
-### :tada: Special Thanks to
+## :tada: Special Thanks to
 - [@yongjule](https://github.com/yongjulejule)
 - [@jiskim](https://github.com/jis-kim)
 - [@ghan](https://github.com/42ghan)
