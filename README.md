@@ -16,6 +16,18 @@ The objective of this project is for you to create a simple shell. Yes, your lit
   ```shell
   brew install readline
   ```
+  ```shell
+  brew info readline
+  ```
+    <img width="643" alt="스크린샷 2023-01-09 오후 8 59 54" src="https://user-images.githubusercontent.com/33301153/211303629-8ffcecf0-a42d-447f-ab45-c8c8b480d80e.png">
+  
+  ```shell
+  export LDFLAGS="<value>"
+  export CPPFLAGS="<value>"
+  ```
+
+
+
 
 - **Others** : [The GNU Readline Library](https://tiswww.case.edu/php/chet/readline/rltop.html)
 
